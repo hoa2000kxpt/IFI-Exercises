@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Itim|Lobster|Montserrat:500|Noto+Serif|Nunito|Patrick+Hand|Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i|Roboto+Slab|Saira');
+
+@font-face {
+    font-family: 'SVN Gotham';
+    src: url('../fonts/SVN-Gotham-Regular.otf'); 
+}
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+a {
+    color: #fff !important;
+}
+
+.tab-content .content img{
+    max-width: 100%;
+}
+
+.img-responsive {
+    /* display: block; */
+    max-width: 100%;
+    height: auto;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: #ffdf16 !important;
+}
+
+/*********** HEADER BELOW ***********/
+#header-below {
+    background-color: #9E1B30;
+}
+
+#header-below img {
+    padding: 10px 0;
+}
+
+#header-below .header-below-button-group ul {
+    display: flex;
+    text-align: center; 
+    margin-bottom: -0.7rem;    
+}
+
+#header-below .header-below-button-group ul li {
+    margin-right: 5rem;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    margin: 5px 13px 12px 15px;
+    border-radius: 30px;
+    /* text-align: center; */
+    margin: auto;
+}
+
+#header-below .header-below-button-group ul li input {
+    border-radius: 30px;
+    border: none;   
+}
+
+#header-below .header-below-button-group ul li:last-child {
+    border: none;
+}
+
+#header-below hr {
+    background-color: #fff;
+}
+
+#header-below .header-below-menu ul {
+    margin-top: -1rem;
+}
+
+#header-below .header-below-menu ul li {
+    border: none;
+    text-transform: uppercase;
+}
+
+
+#header-below .header-below-menu ul li a {
+    color: #F8C741 !important;
+    
+}
+
+#header-below .header-below-menu ul li a:hover {
+    color: yellow !important;
+}
+
+#header-below .header-below-button-group input {
+    background-image: url('./images/ic-search.png');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+
+
+
+.header-below-menu li a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    
+}
+
+.header-below-menu .icon {
+    display: none;
+}
+   
+  
+  /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+  
+  @media screen and (max-width: 1024px) and (min-width: 600px) {
+    .header-below-menu li:not(:first-child) {display: none;}
+    .header-below-menu a.icon {
+      float: right;
+      display: block;
+    }
+  
+    .header-below-menu.responsive {position: relative;}
+    .header-below-menu.responsive li a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .header-below-menu.responsive li {
+      float: none;
+      display: block !important;
+      text-align: left;
+    }
+
+    
+
+  }
+
+  /* @media screen and (max-width: 1200px) {
+    #header-below img {
+        width: calc(100% - 5rem);
+    }
+  } */

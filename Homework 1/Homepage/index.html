@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 </head>
 <body>
     <!----------------------------------------- HEADER ----------------------------------------->
@@ -15,7 +17,7 @@
 
         <!-------------------- HEADER TOP --------------------->
         <section id="header-top-menu" class="hidden-xs hidden-sm">
-            <div class="row">
+            <div class="row" >
                 <div class="container">
                     <div class="header-top-menu-contact">                        
                             <li class="header-top-menu-contact-phone">
@@ -42,13 +44,13 @@
                             </li>
                             
                             <li class="header-top-menu-login">
-                                <a id="login" class="header-top-menu-login-a" onclick="show_modal()">
+                                <a id="login" class="header-top-menu-login-a">
                                     Đăng nhập
                                 </a>
                             </li>
 
                             <li class="header-top-menu-register">
-                                <a class="header-top-menu-register-a" id="login" onclick="show_modal_register()">
+                                <a class="header-top-menu-register-a" id="sign-up">
                                     Đăng ký
                                 </a>
                             </li>
@@ -58,275 +60,62 @@
         </div>
         </section>
 
-        <!-------------------- HEADER TOP --------------------->
+        <!-------------------- HEADER BELOW --------------------->
         <section id="header-below">
             <div class="container">
-                <div class="col-lg-12 col-md-12">
-                    <div class="col-lg-2 col-md-3">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-xs-3 col-sm-3">
-                                <div class="header-below-logo">
-                                    <a id="logo" href="/" title="Trang Sức Cao Cấp Bảo Tín Mạnh Hải">
-                                        <img class="img-responsive" src="./assets/images/logo.png"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xs-7 col-sm-7 search-mobile hidden-lg hidden-md" style="padding: 0">
-                                <form onsubmit="return validateSearchMobile()" accept-charset="UTF-8" id="search-mobile"
-                                      action="/product/search" role="form"
-                                      method="post">
-                                    <div class="input-group">
-                                        <input type="text" id="input_search_mobile" name="q" class="required search"
-                                               placeholder="Tìm kiếm trang sức đẹp …">
-                                        <button type="submit" class="button_mini btn">
-                                            <img height="16" src="./assets/images/ic-search.png">
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-xs-2 col-sm-2">
-                                <a href="javascript:void(0)" class="clickmenu">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </a>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="./assets/images/logo.png" class="img-fluid"/>
                     </div>
-                    <div class="col-lg-10 col-md-9">
-                        <div class="header-below-menu-top col-lg-12 col-md-12">
+
+                    <div class="col-md-10">
+                        <div class="header-below-button-group">
                             <ul>
                                 <li>
-                                    <a href="/cua-hang">
-                                        <i class="fa fa-home" aria-hidden="true" style="float: left; display: flex;text-align: center;"></i></i>Hệ thống cửa hàng
-                                    </a>
+                                    <a href="/cua-hang"><i class="fa fa-home" aria-hidden="true" style="margin-right: 10px;"></i>Hệ thống cửa hàng</a>
                                 </li>
+
                                 <li>
-                                    <a href="/the-uu-dai">
-                                        <i class="icon"
-                                           style="background: url(./assets/images/icon-sale.png) no-repeat;width: 25px; height: 20px;float: left;"></i>Thẻ
-                                        ưu đãi BTMH
-                                    </a>
+                                    <a href="/the-uu-dai"><i class="fa fa-address-card" aria-hidden="true" style="margin-right: 10px;"></i>Thẻ ưu đãi BTMH</a>
                                 </li>
+
                                 <li>
-                                    <a href="/order/cart">
-                                        <i class="fa fa-shopping-cart" aria-hidden="true" style="float: left"></i>Giỏ hàng (<span>0</span>)
-                                    </a>
+                                    <a href="/order/cart"><i class="fa fa-shopping-cart" aria-hidden="true" style="margin-right: 10px;"></i>Giỏ hàng </a> 
                                 </li>
-                                <li>
-                                    <form onsubmit="return validateSearch()" accept-charset="UTF-8" id="search"
-                                          action="/product/search" role="form"
-                                          method="post">
-                                        <div class="input-group">
-                                            <input type="text" id="input_search" name="q" class="required search"
-                                                   placeholder="Tìm kiếm trang sức đẹp …">
-                                            <button type="submit" class="button_mini btn">
-                                                <img height="16" src="/img/ic-search.png">
-                                            </button>
-                                        </div>
-                                    </form>
+
+                                <li>                                    
+                                    <input type="text" name="menu-top-search" id="menu-top-search" 
+                                        placeholder="Tìm trang sức đẹp..." class="form-control">                                       
+                                                      
                                 </li>
                             </ul>
-                        </div>
-        
-                        <div class="header-below-menu-below col-lg-12 col-md-12">
-                            <div id="cbp-hrmenu" class="cbp-hrmenu">
-                                <ul>
-                                    <li>
-                                        <a href="/">
-                                            Trang chủ
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/gioi-thieu">
-                                            Giới thiệu
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/san-pham">
-                                            Sản phẩm
-                                        </a>
-                                        <div class="cbp-hrsub">
-                                            <div class="cbp-hrsub-inner">
-                                                <div>
-                                                    <ul>
-                                                                                                                                                            <li>
-                                                                <a href="/2-trang-suc-vang-ta">Trang sức vàng ta</a>
-                                                            </li>
-                                                                                                            <li>
-                                                                <a href="/3-trang-suc-da-quy">Trang sức đá quý</a>
-                                                            </li>
-                                                                                                            <li>
-                                                                <a href="/4-trang-suc-ngoc-trai">Trang sức ngọc trai</a>
-                                                            </li>
-                                                                                                            <li>
-                                                                <a href="/5-trang-suc-ngoc">Trang sức ngọc</a>
-                                                            </li>
-                                                                                                            <li>
-                                                                <a href="/7-trang-suc-vang">Trang sức vàng</a>
-                                                            </li>
-                                                                                                            <li>
-                                                                <a href="/8-trang-suc-cuoi">Trang sức cưới</a>
-                                                            </li>
-                                                                                                            <li>
-                                                                <a href="/9-trang-suc-bac">Trang sức bạc</a>
-                                                            </li>
-                                                                                                            <li>
-                                                                <a href="/100-kim-cuong">Kim cương</a>
-                                                            </li>
-                                                                                                            <li>
-                                                                <a href="/101-qua-tang">Quà tặng</a>
-                                                            </li>
-                                                                                                            <li>
-                                                                <a href="/102-trang-suc-phong-thuy">Trang sức phong thuỷ</a>
-                                                            </li>
-                                                                                                            <li>
-                                                                <a href="/103-bo-suu-tap-chearing">Bộ sưu tập Chearing</a>
-                                                            </li>
-                                                                                                    </ul>
-                                                </div>
-                                                <div>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="/danh-muc/bong-tai">Bông
-                                                                tai</a></li>
-                                                        <li>
-                                                            <a href="/danh-muc/nhan">Nhẫn</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/danh-muc/lac-tay">Lắc</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/danh-muc/vong-tay">Vòng</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/danh-muc/day-chuyen">Dây
-                                                                chuyền</a></li>
-                                                        <li>
-                                                            <a href="/danh-muc/mat-day-chuyen">Mặt
-                                                                dây chuyền</a></li>
-                                                        <li>
-                                                            <a href="/danh-muc/kieng">Kiềng</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/san-pham">Khác</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div><!-- /cbp-hrsub-inner -->
-                                        </div><!-- /cbp-hrsub -->
-                                    </li>
-                                    <li>
-                                        <a href="/bo-suu-tap">
-                                            Bộ sưu tập
-                                        </a>
-                                        <div class="cbp-hrsub">
-                                            <div class="cbp-hrsub-inner">
-                                                                                                                                        <div>
-                                                        <ul>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/dam-me">Đam mê</a>
-                                                    </li>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/sac-xuan">Sắc Xuân</a>
-                                                    </li>
-                                                                                                    </ul>
-                                                        </div>
-                                                                                                    <div>
-                                                        <ul>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/focus-on-me">Focus on Me</a>
-                                                    </li>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/family-love">Family Love</a>
-                                                    </li>
-                                                                                                    </ul>
-                                                        </div>
-                                                                                                    <div>
-                                                        <ul>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/shades-of-sapphire">Shades of Sapphire</a>
-                                                    </li>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/infinity-stones">Infinity Stones</a>
-                                                    </li>
-                                                                                                    </ul>
-                                                        </div>
-                                                                                                    <div>
-                                                        <ul>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/full-house">Full House</a>
-                                                    </li>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/sale">Sale</a>
-                                                    </li>
-                                                                                                    </ul>
-                                                        </div>
-                                                                                                    <div>
-                                                        <ul>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/than-tai">Thần tài</a>
-                                                    </li>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/bo-suu-tap-chearing">Bộ sưu tập Chearing</a>
-                                                    </li>
-                                                                                                    </ul>
-                                                        </div>
-                                                                                                    <div>
-                                                        <ul>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/bo-suu-tap-pertty">Bộ sưu tập Pertty</a>
-                                                    </li>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/bo-suu-tap-phong-thuy">Bộ sưu tập phong thủy</a>
-                                                    </li>
-                                                                                                    </ul>
-                                                        </div>
-                                                                                                    <div>
-                                                        <ul>
-                                                                                                <li class="col-md-6">
-                                                        <a href="/bo-suu-tap/rainbow">RAINBOW</a>
-                                                    </li>
-                                                                                        </div><!-- /cbp-hrsub-inner -->
-                                        </div><!-- /cbp-hrsub -->
-                                    </li>
-                                    <li>
-                                        <a href="/tin-tuc">
-                                            Tin tức
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/videos">
-                                            Video
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/bo-suu-tap/sale">
-                                            <img style="width: 30px;margin-top: -10px;" src="/images/top-seller-icon.jpg"/>
-                                            Sale
-                                        </a>
-                                    </li>
-                                   <li>
-                                        <a href="https://baotinmanhhai.vn/tuyen-dung" target="_blank">
-                                           <!--  <img style="width: 30px;margin-top: -10px;" src="/images/top-seller-icon.jpg"/> -->
-                                            Tuyển dụng
-                                        </a>
-                                    </li> 
-                                    <li>
-                                        <a href="/lien-he">
-                                            Liên hệ
-                                        </a>
-                                    </li>
-                                    
-                                  </ul>
-                            </div>
+                        <div>
+
+                        <hr>
+                        
+                        <div class="header-below-menu" id="myTopnav">
+                            <ul>
+                                <li><a href="#">Trang chủ</a></li>
+                                <li><a href="#">Giới thiệu</a></li>
+                                <li><a href="#">Sản phẩm</a></li>
+                                <li><a href="#">Bộ sưu tập</a></li>
+                                <li><a href="#">Tin tức</a></li>
+                                <li><a href="#">Video</a></li>
+                                <li><a href="#"><img src="./assets/images/top-seller-icon.jpg" style="width:30px;margin-top: -10px;">Sales</a></li>
+                                <li><a href="#">Tuyển dụng</a></li>
+                                <li><a href="#">Liên hệ</a></li>
+                                <a href="javascript:void(0);" id="icon" onclick="myFunction()">
+                                    <i class="fa fa-bars"></i>
+                                </a>
+                            </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
-        </div>
         </section>
-    </header>
+            
+        </header>
 
     <!-------------------- CAROUSEL --------------------->
     <section id="carousel">
@@ -339,7 +128,7 @@
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="./assets/images/bai-web (2).jpg" class="d-block w-100" alt="Chương trình ưu đãi">
+                <img src="./assets/images/banner (16).jpg" class="d-block w-100" alt="Chương trình ưu đãi">
                 <div class="carousel-caption d-none d-md-block">
                   
                 </div>
@@ -378,35 +167,36 @@
                 <div class="menu-category-top">
                     <ul>
                         <li>
-                            <a href="/7-trang-suc-vang">
+                            <a href="#">
                                 Trang sức vàng</a>
                         </li>
+                        
                         <li>
-                            <a href="/9-trang-suc-bac">
+                            <a href="#">
                                 Trang sức bạc</a>
                         </li>
                         <li>
-                            <a href="/8-trang-suc-cuoi">
+                            <a href="#">
                                 Trang sức cưới</a>
                         </li>
                         <li>
-                            <a href="/100-kim-cuong">
+                            <a href="#">
                                 Kim cương</a>
                         </li>
                         <li>
-                            <a href="/3-trang-suc-da-quy">
+                            <a href="#">
                                 Đá quý</a>
                         </li>
                         <li>
-                            <a href="/4-trang-suc-ngoc-trai">
+                            <a href="#">
                                 Ngọc trai</a>
                         </li>
                         <li>
-                            <a href="/101-qua-tang">
+                            <a href="#">
                                 Quà tặng</a>
                         </li>
-                        <li>
-                            <a href="/bo-suu-tap">
+                        <li> 
+                            <a href="#">
                                 Bộ sưu tập</a>
                         </li>
                     </ul>
@@ -414,7 +204,8 @@
             </div>
         </div>
 
-        <hr class="top__hr"/>
+        <hr class="menu-category-hr"/>
+
 <div class="menu-category-down">
     <div class="container-top-logo">
         <img style="height: 120px;" class="img-responsive" src="./assets/images/logo-head.png"/>
@@ -425,26 +216,26 @@
         <div class="container hidden-xs hidden-sm">
             <ul>
                 <li>
-                    <a href="/danh-muc/nhan">Nhẫn</a>
+                    <a href="#">Nhẫn</a>
                 </li>
                 <li>
-                    <a href="/danh-muc/bong-tai">Bông tai</a>
+                    <a href="#">Bông tai</a>
                 <li>
-                    <a href="/danh-muc/mat-day-chuyen">Mặt dây chuyền</a>
+                    <a href="#">Mặt dây chuyền</a>
                 <li>
-                    <a href="/danh-muc/day-chuyen">Dây chuyền</a>
+                    <a href="#">Dây chuyền</a>
                 </li>
                 <li>
-                    <a href="/danh-muc/kieng">Kiềng</a>
+                    <a href="#">Kiềng</a>
                 </li>
                 <li>
-                    <a href="/danh-muc/lac-tay">Lắc</a>
+                    <a href="#">Lắc</a>
                 </li>
                 <li>
-                    <a href="/danh-muc/vong-tay">Vòng tay</a>
+                    <a href="#">Vòng tay</a>
                 </li>
                 <li>
-                    <a href="/san-pham">Xem tất cả</a>
+                    <a href="#">Xem tất cả</a>
                 </li>
             </ul>
         </div>
@@ -453,95 +244,67 @@
     </section>
 
     <!-------------------- PRODUCT LIST  --------------------->
-    <section id="product-list">
+    <section id="product-list"> 
         <div class="container">
             <h1>Sản phẩm mới</h1>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="product-list-item">
-                        <a target="_blank"
-                            href="/san-pham/275-vong-tay-mat-sao-bien-da-emerald">
-                            <img class="img-responsive"
-                                src="https://baotinmanhhai.vn/web/uploads/lac_web_2.jpg"/>
-                        </a>
-
-                        <div target="_blank" class="product-list-item-name">
-                            <a href="/san-pham/275-vong-tay-mat-sao-bien-da-emerald">Vòng tay mặt sao biển đá Emerald MH2-V</a>
-                        </div>
-                        <div target="_blank" class="product-list-item-code">
-                            <span>Mã sản phẩm: MH2-V</span>
-                        </div>
-                        
-                        <div class="product-price">
-                            <a href="#" alt="Vòng tay mặt sao biển đá Emerald MH2-V">Liên hệ</a>
-                        </div>
-                    </div>
+        <div class="product-list-item">
+            <div class="product-item">
+                <img src="https://baotinmanhhai.vn/web/uploads/lac_web_2.jpg" class="card-img-top img-responsive" alt="Vòng tay mặt sao biển đá Emerald MH2-V">
+                <div class="product-item-body">
+                    <h5 class="product-item-title"><a href="#">Vòng tay mặt sao biển đá Emerald MH2-V</a></h5>
+                    <p class="product-item-text">Mã sản phẩm: MH2-V</p>
+                    <div class="product-item-link">
+                        <a href="#">Liên hệ</a>
+                    </div>                    
                 </div>
-
-                <div class="col-md-3">
-                    <div class="product-list-item">
-                        <a target="_blank"
-                            href="/san-pham/302-lac-bi-bac-tre-em-meo-kitty-xanh-la">
-                            <img class="img-responsive"
-                                src="https://baotinmanhhai.vn/web/uploads/product/Originals/bac/bac tre em/lac%20bi%20bac%20meo%20kitty%20xanh.jpg"/>
-                        </a>
-
-                        <div target="_blank" class="product-list-item-name">
-                            <a href="/san-pham/302-lac-bi-bac-tre-em-meo-kitty-xanh-la">Lắc bi bạc trẻ em mèo Kitty xanh lá MH2 - L180426013</a>
-                        </div>
-                        <div target="_blank" class="product-list-item-code">
-                            <span>Mã sản phẩm: MH2 - L180426013</span>
-                        </div>
-                        
-                        <div class="product-price">
-                            <a href="#" alt="Lắc bi bạc trẻ em mèo Kitty xanh lá MH2 - L180426013">Liên hệ</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="product-list-item">
-                        <a target="_blank"
-                            href="/san-pham/319-vong-tay-gan-da-citrine">
-                            <img class="img-responsive"
-                                src="https://baotinmanhhai.vn/web/uploads/product/Originals/vang tay 2018/lắc/day3-169.jpg"/>
-                        </a>
-
-                        <div target="_blank" class="product-list-item-name">
-                            <a href="/san-pham/319-vong-tay-gan-da-citrine">Vòng tay gắn đá Citrine MH1 - V</a>
-                        </div>
-                        <div target="_blank" class="product-list-item-code">
-                            <span>Mã sản phẩm: MH1 - V</span>
-                        </div>
-                        
-                        <div class="product-price">
-                            <a href="#" alt="Vòng tay gắn đá Citrine MH1 - V">Liên hệ</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="product-list-item">
-                        <a target="_blank"
-                            href="/san-pham/346-nhan-vang-ruby-nu-ket-kim-hinh-hoa">
-                            <img class="img-responsive"
-                                src="https://baotinmanhhai.vn/web/uploads/product/Originals/vang tay 2018/nhan/nu/ruby/nhan-vang-nu-ruby-hoa-ket-kim.jpg"/>
-                        </a>
-
-                        <div target="_blank" class="product-list-item-name">
-                            <a href="/san-pham/346-nhan-vang-ruby-nu-ket-kim-hinh-hoa">Nhẫn vàng ruby nữ kết kim hình hoa  MH2 - N171006054</a>
-                        </div>
-                        <div target="_blank" class="product-list-item-code">
-                            <span>Mã sản phẩm: MH2 - N171006054</span>
-                        </div>
-                        
-                        <div class="product-price">
-                            <a href="#" alt="Nhẫn vàng ruby nữ kết kim hình hoa  MH2 - N171006054">Liên hệ</a>
-                        </div>
+            </div>
+    
+            <div class="product-item">
+                <img src="https://baotinmanhhai.vn/web/uploads/product/Originals/bac/bac tre em/lac%20bi%20bac%20meo%20kitty%20xanh.jpg" class="card-img-top img-responsive" alt="Lắc bi bạc trẻ em mèo Kitty xanh lá MH2 - L180426013">
+                <div class="product-item-body">
+                    <h5 class="product-item-title"><a href="#">Lắc bi bạc trẻ em mèo Kitty xanh lá MH2 - L180426013</a></h5>
+                    <p class="product-item-text">Mã sản phẩm: MH2 - L180426013</p>
+                    <div class="product-item-link">
+                        <a href="#">Liên hệ</a>
                     </div>
                 </div>
             </div>
+
+            <div class="product-item">
+                <img src="https://baotinmanhhai.vn/web/uploads/product/Originals/vang tay 2018/lắc/day3-169.jpg" class="card-img-top img-responsive" alt="Vòng tay gắn đá Citrine MH1 - V">
+                <div class="product-item-body">
+                    <h5 class="product-item-title"><a href="#">Vòng tay gắn đá Citrine MH1 - V</a></h5>
+                    <p class="product-item-text">Mã sản phẩm: MH1 - V</p>
+                    <div class="product-item-link">
+                        <a href="#">Liên hệ</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <img src="https://baotinmanhhai.vn/web/uploads/product/Originals/vang tay 2018/nhan/nu/ruby/nhan-vang-nu-ruby-hoa-ket-kim.jpg" class="card-img-top img-responsive" alt="Nhẫn vàng ruby nữ kết kim hình hoa  MH2 - N171006054">
+                <div class="product-item-body">
+                    <h5 class="product-item-title"><a href="#">Nhẫn vàng ruby nữ kết kim hình hoa  MH2 - N171006054</a></h5>
+                    <p class="product-item-text">Mã sản phẩm: MH2 - N171006054</p>
+                    <div class="product-item-link">
+                        <a href="#">Liên hệ</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <img src="https://baotinmanhhai.vn/web/uploads/collection/Infinity Stones T5.2019/2%20%282%29.jpg" class="card-img-top img-responsive" alt="Dây chuyền vàng nữ 14k mặt đá Emerald D">
+                <div class="product-item-body">
+                    <h5 class="product-item-title"><a href="#">Dây chuyền vàng nữ 14k mặt đá Emerald D</a></h5>
+                    <p class="product-item-text">Mã sản phẩm: D</p>
+                    <div class="product-item-link">
+                        <a href="#">Liên hệ</a>
+                    </div>
+                </div>
+            </div>
+        </div>        
         </div>
+        
     </section>
 
     <!-------------------- HIGHLIGHT PRODUCT --------------------->
@@ -551,13 +314,15 @@
             <div class="row">
                 <div class="col-md-6">                    
                     <a href="https://www.baotinmanhhai.vn/bai-viet/mua-trang-suc-trung-vang-moi-tuan"> 
-                        <img src="assets/images/bai-web (2).jpg">
+                        <!-- <div class="img-1"></div>                         -->
+                        <img src="assets/images/bai-web.jpg" class="img-responsive"/>
                     </a>
                 </div>
 
                 <div class="col-md-6">                    
                     <a href="https://www.baotinmanhhai.vn/bai-viet/rainbow-tieng-goi-mua-he-ruc-ro-trong-bst-moi-cua-bao-tin-manh-hai"> 
-                        <img src="https://baotinmanhhai.vn/web/uploads/oanh/website%20%282%29.jpg">
+                        <!-- <div class="img-2"></div>  -->
+                        <img src="https://baotinmanhhai.vn/web/uploads/oanh/website%20%282%29.jpg" class="img-responsive"/>
                     </a>
                 </div>
             </div>
@@ -635,7 +400,7 @@
     <section id="about-us">
         <div class="container">
             <div class="row">
-                <div class="col-md-7 col-sm-12 col-xs-12">
+                <div class="col-md-7">
                     <div class="intro">
                         <h1>GIỚI THIỆU BẢO TÍN MẠNH HẢI</h1>
                         <div class="decorating-line">
@@ -652,9 +417,9 @@
                     </div>
                 </div>
 
-                <div class="col-md-5 col-sm-12 col-xs-12">
+                <div class="col-md-5">
                     <div class="short-video">
-                        <iframe width="100%" height="430" src="https://www.youtube.com/embed/rMUI2mj_2hM" frameborder="0"
+                        <iframe width="100%" height="437" src="https://www.youtube.com/embed/rMUI2mj_2hM" frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                     </div>
@@ -663,11 +428,12 @@
         </div>
     </section>
 
+    <!-------------------- SERVICES --------------------->
     <section id="services">
         <div class="container">
             <h1>Dịch vụ của chúng tôi</h1>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12">
                     <div class="service-box">
                         <img class="img-responsive"
                         src="https://baotinmanhhai.vn/web/uploads/xu-huong-nhan-cuoi-2017-1.jpg"/>
@@ -677,9 +443,237 @@
                             hiểu thêm</a>
                     </div>
                 </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="service-box">
+                        <img class="img-responsive"
+                        src="https://baotinmanhhai.vn/web/uploads/anh2_0.jpg"/>
+                        <h3>GIÁM ĐỊNH TUỔI VÀNG</h3>
+                        <p>Dịch vụ giám định tuổi vàng với máy móc hiện đại nhanh chóng và chính xác</p>
+                        <a href="/dich-vu/giam-dinh-tuoi-vang">Tìm
+                            hiểu thêm</a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                    <div class="service-box">
+                        <img class="img-responsive"
+                        src="https://baotinmanhhai.vn/web/uploads/gia-vang-hom-nay-29-7-2016.1.1.jpg"/>
+                        <h3>GIA CÔNG CHẾ TÁC</h3>
+                        <p>Dịch vụ gia công chế tác với chất lượng sản phẩm tinh xảo và giá cả hợp lý</p>
+                        <a href="/dich-vu/gia-cong-che-tac">Tìm
+                            hiểu thêm</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-------------------- WHY SHOULD YOU CHOOSE PRODUCT SECTION --------------------->
+    <section id="why-should-choose">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="why-should-choose-box">
+                        <div class="col-md-3">
+                            <img class="img-responsive" src="https://baotinmanhhai.vn/web/uploads/banner/diamond.png"/>
+                        </div>
+                        <div class="col-md-9">
+                            <h3>MIỄN PH&Iacute;</h3>
+        <p>L&Agrave;M SẠCH TRỌN ĐỜI</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="why-should-choose-box">
+                        <div class="col-md-3">
+                            <img class="img-responsive" src="https://baotinmanhhai.vn/web/uploads/banner/clipboard.png"/>
+                        </div>
+                        <div class="col-md-9">
+                            <h3>ĐẠT CHUẨN</h3>
+                            <p>KIỂM ĐỊNH QUỐC GIA G.I.V&nbsp;&amp; <strong><a href="/bai-viet/bao-tin-manh-hai-chinh-thuc-duoc-nha-nuoc-cap-phep-kinh-doanh-vang-mieng-tai-viet-nam">ĐƯỢC NH&Agrave; NƯỚC CẤP PH&Eacute;P MUA B&Aacute;N V&Agrave;NG MIẾNG</a></strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="why-should-choose-box">
+                        <div class="col-md-3">
+                            <img class="img-responsive" src="https://baotinmanhhai.vn/web/uploads/banner/star.png"/>
+                        </div>
+                        <div class="col-md-9">
+                            <h3>28 NĂM</h3>
+        <p>H&Igrave;NH TH&Agrave;NH V&Agrave; PH&Aacute;T TRIỂN</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="why-should-choose-box">
+                        <div class="col-md-3">
+                            <img class="img-responsive" src="https://baotinmanhhai.vn/web/uploads/banner/gold-medal.png"/>
+                        </div>
+                        <div class="col-md-9">
+                            <h3>TOP 10</h3>
+                            <p>THƯƠNG HIỆU, NH&Atilde;N HIỆU NỔI TIẾNG 2018</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-------------------- FOOTER  --------------------->
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer_left">
+                        <div class="col-md-offset-3 col-md-9 logo-bottom-mobile">
+                            <img class="img-responsive"
+                                src="./assets/images/logo.png"/>
+                            <h2>GIỮ TÍN NHIỆM HƠN GIỮ VÀNG</h2>
+                            <p>© 1992 - 2021 CÔNG TY TNHH BẢO TÍN MẠNH HẢI</p>
+                            <p>All Rights reserved</p>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="col-md-8 col-md">
+                        <div class="footer-right col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="footer-right-info">
+                                        <h3>CÔNG TY VÀNG BẠC ĐÁ QUÝ BẢO TÍN MẠNH HẢI</h3>
+                                        <p>Chi nhánh 1: 39 Nguyễn Trãi, Quận Thanh Xuân</p>
+                                        <p>Chi nhánh 2: 15 Quang Trung, Quận Hà Đông</p>
+                                        <p>Chi nhánh 3: 16 Trần Duy Hưng, Quận Cầu Giấy</p>
+                                        <p>Chi nhánh 4: 8 Hoàng Cầu, Quận Đống Đa, Hà Nội</p>
+                                        <p>Chi nhánh 5: 44 Cầu Gỗ, Quận Hoàn Kiếm, Hà Nội</p>
+                                        <p>Hotline: <a href="tel:02422339999 ">024 2233 9999</a></p>
+                                        <p>Email: contact@baotinmanhhai.vn</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xs-6 col-sm-6">
+                                    <a href='/site/online'><img class="img-responsive" alt='Verified Certification'
+                                        src='./assets/images/logoSaleNoti.png'/></a>
+                                </div>
+                            </div>
+
+                            <div class="clearfix help-block"></div>
+                            <div class="footer-right-network">
+                                <a href="https://www.facebook.com/baotinmanhhai.vn/">
+                                    <img class="img-responsive" src="./assets/images/facebook.png"/>
+                                </a>
+                                <a href="https://plus.google.com/u/0/102447910310088418364">
+                                    <img class="img-responsive" src="./assets/images/google-plus.png"/>
+                                </a>
+                                <a href="https://www.youtube.com/channel/UCahEVwbxmUHeP4V3ewSIZcA">
+                                    <img class="img-responsive" src="./assets/images/youtube.png"/>
+                                </a>
+                                <a href="https://shop.zalo.me/store/3500977240221853723?src=home">
+                                    <img class="img-responsive" src="./assets/images/zalo1.png"/>
+                                </a>
+                                <a href="https://www.instagram.com/baotinmanhhai.vn/">
+                                    <img class="img-responsive" src="./assets/images/Instagram.png"/>
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            
+                            <div class="footer-right-menu">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h3>Đăng ký thông tin</h3>
+                                            <div class="symbol"></div>
+                                            <p>Hãy để lại thông tin của bạn, chúng tôi sẽ sớm liên hệ để cung cấp 
+                                                thông tin chính xác sớm và phù hợp nhất.</p>
+                                            <div class="input-collection">
+                                                <input type="email" name="email" id="email" placeholder="Nhập email của bạn">
+                                                <button><img src="./assets/images/go.png"></button>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <h3>Bảo Tín Mạnh Hải</h3>
+                                            <div class="symbol"></div>
+                                                <a href="/">Trang chủ</a>
+                                                <a href="/gioi-thieu">Giới thiệu BTMH</a>
+                                                <a href="/san-pham">Sản phẩm</a>
+                                                <a href="/tin-tuc">Tin tức - Sự kiện</a>
+                                                <a href="/videos">Video</a>
+                                                <div style="padding-top: 5px;" class="gold-system">
+                                                    <a href="/he-thong-vang-bao-tin">Hệ thống vàng Bảo Tín</a>
+                                                </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <h3>Hỗ trợ mua hàng</h3>
+                                            <div class="symbol"></div> 
+                                            <a
+                                                href="/ho-tro-mua-hang/huong-dan-mua-hang">Hướng dẫn mua hàng
+                                            </a>
+
+                                            <a 
+                                                href="/ho-tro-mua-hang/huong-dan-thanh-toan">Hướng dẫn thanh toán
+                                            </a>
+
+                                            <a 
+                                                href="/ho-tro-mua-hang/phuong-thuc-van-chuyen">Phương thức vận chuyển
+                                            </a>
+                                            
+                                            <a 
+                                                href="/ho-tro-mua-hang/bao-hanh-thu-doi">Bảo hành thu đổi
+                                            </a>
+                                            
+                                            <a 
+                                                href="/ho-tro-mua-hang/do-size-trang-suc">Đo size trang sức
+                                            </a>
+
+                                            <a 
+                                                href="/ho-tro-mua-hang/cach-su-dung-trang-suc">Cách sử dụng trang sức
+                                            </a>
+                                                                    
+                                            <a 
+                                                href="/ho-tro-mua-hang/tra-cuu-don-hang">Tra cứu đơn hàng
+                                            </a>
+                                                                    
+                                            <a 
+                                                href="/ho-tro-mua-hang/chinh-sach-bao-ve-thong-tin-ca-nhan-cua-nguoi-tieu-dung">Chính sách bảo vệ thông tin cá nhân của người tiêu dùng
+                                            </a>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <h3>Cẩm nang sử dụng</h3>
+                                            <div class="symbol"></div>
+                                                <a 
+                                                href="/cam-nang-su-dung/trang-suc-theo-thang-sinh">Trang sức theo tháng sinh</a>
+                                                                                        <a 
+                                                href="/cam-nang-su-dung/trang-suc-theo-phong-thuy">Trang sức theo phong thủy</a>
+                                                                                        <a 
+                                                href="/cam-nang-su-dung/do-size-trang-suc">Đo size trang sức</a>
+                                                                                        <a 
+                                                href="/cam-nang-su-dung/cach-su-dung-trang-suc">Cách sử dụng trang sức</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+
+                            <hr>
+                            <div class="footer-contact">
+                                    <h6>CÔNG TY TNHH BẢO TÍN MẠNH HẢI</h6>
+                                    <p>Số 39, Nguyễn Trãi, Phường Khương Trung, Quận Thanh Xuân, Hà Nội - ĐT: 024 2233
+                                        9999 - Email: contact@baotinmanhhai.vn<br/>
+                                        Giấy chứng nhận đăng ký kinh doanh: 0100380838</p>
+                                </div>
+                            </div>
+                    </div>
+            </div>
+        </div>
+    </footer>
 
 
 
@@ -687,7 +681,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./assets/js/homepage.js"></script>
+    <script>
+      
+ 
+    </script>
 
 </body>
 </html>
