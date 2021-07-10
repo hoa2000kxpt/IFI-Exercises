@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Itim|Lobster|Montserrat:500|Noto+Serif|Nunito|Patrick+Hand|Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i|Roboto+Slab|Saira');
+
+    @font-face {
+        font-family: 'SVN Gotham';
+        src: url('../fonts/SVN-Gotham-Regular.otf'); 
+    }
+
+    body {
+        font-family: "Lato", sans-serif;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    p {
+        margin: 0 0 10px;
+    }
+
+    a {
+        color: #fff !important;
+    }
+
+    .tab-content .content img{
+        max-width: 100%;
+    }
+
+    .img-responsive {
+        /* display: block; */
+        max-width: 100%;
+        height: auto;
+    }
+
+    a:hover {
+        text-decoration: none !important;
+        color: #ffdf16 !important;
+        transition: 0.5s;
+    }
+
+    /*********** MENU CATEGORY ***********/
+/* #menu-category .menu-category-top {
+    border-bottom: 3px solid #F8C741; 
+    
+} */
+
+#menu-category .menu-category-top ul {
+    display: flex;  
+    text-align: center;
+    
+}
+
+#menu-category .menu-category-top li a{
+    color: #211F2C !important;
+    margin: 1em;
+    font-weight: 500;
+}
+
+#menu-category .menu-category-top li a:hover{
+    color: #ffdf16 !important;
+}
+
+#menu-category .menu-category-top ul {
+    padding: 2em 0em;
+    text-transform: uppercase;
+}
+
+#menu-category .menu-category-hr {
+    border-bottom: 3px solid #F8C741;
+    margin-top: -1.2rem;
+}
+
+#menu-category .menu-category-down {
+    background: url(https://baotinmanhhai.vn/web/uploads/slide/2568_2.jpg) center top #F6F6F8 no-repeat;
+}
+
+#menu-category .menu-category-down .container-top-logo {
+    text-align: center;
+}
+
+#menu-category .container-top-logo h1{
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #211F2C;
+    margin: 20px 0;
+}
+
+#menu-category .container-top-menu {
+    margin-top: 118px;
+    margin-bottom: 30px;
+    padding-bottom: 50px;
+}
+
+#menu-category .container-top-menu h2{
+    position: relative;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+#menu-category .container-top-menu h2::before{
+    content: url("../images/line-left.png");
+    margin-right: 20px;
+}
+
+#menu-category .container-top-menu h2::after{
+    content: url("../images/line-right.png");
+    margin-left: 20px;
+}
+
+#menu-category .container-top-menu ul li {
+    padding: 10px 11px;
+    display: inline;
+    float: none;
+    /* padding: 10px; */
+    text-align: center;
+}
+
+#menu-category .container-top-menu ul li a {
+    padding: 0 30px 0 10px;
+    color: #211F2C !important;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+}
+
+#menu-category .container-top-menu ul li a:hover {
+    color: #ffdf16 !important;
+}
+
+
+#menu-category .container-top-menu ul li::after {
+    content: '|';
+    top: 4px;
+}
+
+#menu-category .container-top-menu ul li:last-child::after{
+    content: '';
+}

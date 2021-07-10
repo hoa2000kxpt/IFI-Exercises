@@ -99,6 +99,54 @@
     background-color: #9E1B30;
 }
 
+#header-below .img-fluid {
+    max-width: calc(12vw - 10px) !important;
+}
+
+#header-below .header-below-menu {
+    margin:auto;
+    text-align: center;
+    /* overflow: hidden; */
+}
+
+.dropdown {
+    /* float: left;
+    overflow: hidden; */
+    position: inherit !important;
+}
+  
+  /* Dropdown button */
+.dropdown .drop_btn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; 
+    margin: 0; 
+    display: none;
+}
+
+.dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    height: 350px;
+    z-index: 999;
+    opacity: 0.7;
+}
+
+.dropdown:hover .dropdown_content {
+    display: block;
+
+}
+
+.menu-product-1, .menu-product-2{
+    display: block !important;
+}
+
 #header-below img {
     padding: 10px 0;
 }
@@ -112,11 +160,12 @@
 #header-below .header-below-button-group ul li {
     margin-right: 5rem;
     border: 1px solid #fff;
-    padding: 5px 10px;
+    padding: 8px 7px;
     margin: 5px 13px 12px 15px;
-    border-radius: 30px;
+    border-radius: 35px;
     /* text-align: center; */
     margin: auto;
+    font-size: 14px;
 }
 
 #header-below .header-below-button-group ul li input {
@@ -130,24 +179,28 @@
 
 #header-below hr {
     background-color: #fff;
+    margin-bottom: 2em;
 }
 
-/* #header-below .header-below-menu {
-    position: fixed;
-} */
 
 #header-below .header-below-menu ul {
     margin-top: -1rem;
+    /* display: flex; */
+    
 }
 
 #header-below .header-below-menu ul li {
     border: none;
     text-transform: uppercase;
+    margin-right: 1.2em;
+    display: inline-block;
 }
 
 
 #header-below .header-below-menu ul li a {
     color: #F8C741 !important;
+    font-size: 16px;
+    /* display: inline-flex; */
     
 }
 
@@ -161,9 +214,41 @@
     background-position: right;
 }
 
-#header-below .header-below-menu #icon {
+#header-below .header-below-menu .icon {
     display: none;
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    /* height: 80px; */
+    background-color: red;
+    margin: auto;
+}
+
+.sticky .col-md-10 .header-below-button-group {
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+.sticky .col-md-10 hr {
+    display: none;
+}
+
+.sticky .header-below-menu ul {
+    margin-top: auto !important;
+    padding-top: 20px;
+}
+
+.sticky .col-md-2 img {
+    height: 58px;
+}
+
+
+
+
 /* #header-below .header-below-search i {
     position: absolute;
 } */
@@ -328,6 +413,8 @@
 #product-list .slick-prev::before, #product-list .slick-next::before {
     background-color: #f1c40f;
     border-radius: 50%;
+    /* background-image: url('../images/prev-slide.png'); */
+
 }
 
 /*********** HIGHLIGHT PRODUCT ***********/
@@ -368,7 +455,7 @@
 
 
 
-/*********** HIGHLIGHT PRODUCT ***********/
+/*********** NEWS ***********/
 #news h1 {
     text-align: center;
     font-size: 25px;
@@ -587,7 +674,8 @@
 
 #why-should-choose .why-should-choose-box img {
     margin: auto;
-    height: 35px;
+    width: calc(5vw - 5px);
+    
 }
 
 #why-should-choose .why-should-choose-box h3 {
@@ -754,7 +842,21 @@ footer .footer-right .symbol {
 
 footer .footer-right .input-collection input {
     background-color: #951c30;
+    border-radius: 10px 0px 0px 10px;
+    width: 80%;
+    color: #fff;
+}
+
+footer .footer-right .input-collection button {
+    padding: 6px;
+    border: none;
+}
+
+footer .footer-right .gold-system {
     border-radius: 10px;
+    padding: 10px;
+    background-color: #9E1B30;
+    margin-top: 5px;
 }
 
 /* footer .footer-right .symbol:Before {
@@ -769,22 +871,67 @@ footer .footer-right .input-collection input {
 } */
 
 /********************** MEDIA QUERIES ****************/
-/* @media screen and (max-width: 1024px) { View up to 150% and down */
-    /* #header-top-menu {
-        display: none;
+@media screen and (max-width: 1024px) { /** View up to 150% and down **/
+    .header-below-menu ul li, .header-below-button-group, #header-below hr, #header-top-menu, .container-top-menu {
+        display: none !important;
     }
 
+    .header-below-menu a.icon {
+      float: right;
+      display: block !important;
+      padding-bottom: 10px;
+      border: 1px solid #fff;
+      padding: 3px 7px;
+      border-radius: 5px;
+      margin-top: -0.5em;
+    }
+
+    #header-below .header-below-menu ul {
+        display: block;
+        margin-top: 1.3em;
+        /* margin: auto; */
+    }
+  
     .header-below-menu.responsive {position: relative;}
-    .header-below-menu.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
+    .header-below-menu.responsive li a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .header-below-menu.responsive li {
+      float: none;
+      display: block !important;
+      text-align: left;
     }
 
-    .header-below-menu.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
+    #menu-category .menu-category-top {
+        margin: auto;
+    }
+
+    #menu-category .menu-category-top ul {
+        display: block;  
+        text-align: center;
+        padding: 0;
+    } 
+
+    #menu-category .menu-category-top ul li {
+        border-bottom: 1px solid #bdc3c7;
+        padding: 10px 0; 
+        /* width: 100%;
+        height: auto; */
+     }
+
+     /* #why-should-choose .why-should-choose-box img {
+         height: 100%;
+         width: 100%
+     } */
+    
+
+}
+
+/* @media screen and (min-width: 600px) {
+    #header-below .header-below-menu ul {
+        margin-right: 1em;
     }
 } */
 

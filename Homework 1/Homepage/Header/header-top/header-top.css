@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Itim|Lobster|Montserrat:500|Noto+Serif|Nunito|Patrick+Hand|Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i|Roboto+Slab|Saira');
+
+    @font-face {
+        font-family: 'SVN Gotham';
+        src: url('./fonts/SVN-Gotham-Regular.otf'); 
+    }
+
+    body {
+        font-family: "Lato", sans-serif;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    p {
+        margin: 0 0 10px;
+    }
+
+    a {
+        color: #fff !important;
+    }
+
+    .tab-content .content img{
+        max-width: 100%;
+    }
+
+    .img-responsive {
+        /* display: block; */
+        max-width: 100%;
+        height: auto;
+    }
+
+    a:hover {
+        text-decoration: none !important;
+        color: #ffdf16 !important;
+        transition: 0.5s;
+    }
+
+/*********** HEADER TOP ***********/ 
+#header-top-menu {
+    background-color: #211F2C;
+    border-bottom: 3px solid #F8C73F;
+    font-family: 'SVN Gotham' !important;
+    font-size: 11px;
+    padding: 5px 0;
+    /* display: flex;
+    text-align: center;
+    justify-content: space-between; */
+}
+
+#header-top-menu .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header-top-menu .header-top-menu-contact {
+    display: flex;
+    text-align: left;
+}
+
+#header-top-menu .header-top-menu-contact-phone li{
+    box-sizing: border-box;
+    float: left;
+    height: 30px;
+    padding: 0;
+    list-style: none;
+}
+
+#header-top-menu li {
+    padding-right: 1.5em;
+}
+
+#header-top-menu a:hover {
+    text-decoration: none;
+}
+
+#header-top-menu .header-top-menu-support {
+    display: flex;
+    text-align: right;
+}
+
+#header-top-menu .header-top-menu-support li {
+    border-right: 1px solid #fff;
+    margin-right: 1em;  
+}
+
+#header-top-menu .header-top-menu-support li:last-child {
+    border-right: none;
+}
