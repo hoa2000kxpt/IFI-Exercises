@@ -1,0 +1,44 @@
+#contact h1{
+    padding: 25px 5px;
+    font-size: calc(3vw);
+    border-bottom: 1px solid black;
+    color: #9E1B30;
+}
+
+#contact .company-info {
+    background-color: #f1f1f2;
+    padding: 10px;
+    border-bottom: 1px solid #F8C741;
+}
+
+#contact .company-info .company-address hr {
+    background-color: #F8C741 !important;
+}
+
+#contact .company-info .company-address .company-phone {
+    margin-top: 3em;
+}
+
+#contact .company-info .company-title h3 {
+    color: #9E1B30;
+}
+
+#contact .form-control {
+    border: 1px solid #000 !important;
+}
+
+#contact #chr-code {
+    font-family: 'Dancing Script', cursive;
+    color: blue;
+    margin-left: 1em;
+}
+
+#contact button {
+    margin-bottom: 30px;
+    width: 100%;
+    background-color: #9E1B30 !important;
+}
+
+#contact button:hover {
+    color: #F8C741 !important
+}

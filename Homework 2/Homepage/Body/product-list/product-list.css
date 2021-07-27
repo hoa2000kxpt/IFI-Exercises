@@ -1,0 +1,109 @@
+
+/*********** PRODUCT LIST ***********/
+#product-list h1 {
+    text-align: center;
+    padding-top: 20px;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 400;
+    color: var(--black);
+}
+
+#product-list main {
+    background-color: #f4f4f4;
+    padding: 4rem;
+}
+
+#product-list .slide-container {
+    max-width: 1175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#product-list .arrow {
+    /* width: 2rem; */
+    margin: 0 1rem;
+}
+
+#product-list #slider {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+/* #product-list #slider::-webkit-scrollbar {
+    height: 5px;
+    width: 2px;
+    border: 1px solid #d5d5d5;
+    background-color: #d5d5d5;
+} */
+
+/* #product-list #slider::-webkit-scrollbar-track { 
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3)
+} */
+
+/* #product-list #slider::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    outline: 1px solid #eee;
+} */
+
+#product-list #slider .thumbnail {
+    flex: 0 0 auto;
+    object-fit: cover;
+    cursor: pointer;
+    margin: 5px;
+    border: 1px solid var(--black);
+    border-radius: 3px;
+    overflow: hidden;
+    transform: scale(.95);
+    transition: all .3s;
+}
+
+#product-list #slider .thumbnail img {
+    max-height: 250px;
+    padding: 10px;
+    object-fit: cover;
+}
+
+#product-list #slider .thumbnail:hover {
+    transform: scale(1);
+}
+
+#product-list .product-details {
+    text-align:center;
+    padding-bottom: 2rem;
+    background-color: #fff;
+}
+
+#product-list .product-details h2 {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+#product-list .product-details p {
+    font-size: 1em;
+    padding-bottom: 1rem;
+}
+
+#product-list .product-details a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--red) !important;
+    color: #fff;
+    padding: 7px 10px;
+    transition: all .3s;
+}
+
+#product-list .product-details a:hover {
+    color: var(--yellow) !important;
+}
+
+
+
+

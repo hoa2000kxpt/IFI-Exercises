@@ -1,0 +1,193 @@
+@font-face {
+    font-family: 'SVN Gotham';
+    src: url(/Products/Body/302-lac-bi-bac-tre-em-meo-kitty-xanh-la/fonts/SVN-Gotham-Book.otf);
+}
+
+/* body {
+    font-family: 'SVN Gotham';
+} */
+
+.view-category-top {
+    border-bottom: 1px solid #ccc;
+}
+
+.view-category-top ul {
+    display: flex;
+    margin-top: 1em;
+}
+
+.view-category-top ul li a {
+    color: #211F2C !important; 
+    /* background-color: aqua; */
+    margin-right: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.product-view {
+    padding-top: 45px;
+}
+
+
+
+.product-view .product-infor h1 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #58595b;
+}
+
+.product-view .product-infor #product-code {
+    font-size: 15px;
+    color: #8e8d8d !important;
+}
+
+.product-view .product-infor a {
+    font-size: 20px;
+    color: #EC4B45 !important;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.product-view .product-infor span {
+    color: green;
+}
+
+.product-view .product-infor #span-text {
+    color: #333;
+    font-style: italic;
+}
+
+.product-view .product-infor #product-viewer {
+    border-bottom: 1px solid #ccc;
+}
+
+.product-block .product-status {
+    padding: 10px 0;
+}
+
+.product-block .product-quantity input {
+    width: 10%;
+    border: none;
+    outline:none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+    text-align: center;
+}
+
+.product-block .product-quantity #add {
+    border-radius: 10px;
+    border: none;
+    background-color: #27ae60;
+    color: #fff;
+}
+
+.product-block .product-quantity #minus {
+    border-radius: 10px;
+    border: none;
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.product-view .guide {
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+
+.product-view .guide ul li {
+    padding-bottom: 10px;
+}
+
+.product-view .guide ul li a {
+    color: #58595b !important;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+}
+.product-view .guide ul li {
+    height: 18;
+}
+
+.product-view .guide ul li a:hover {
+    color: #F8C741 !important;
+} 
+
+.product-view a.buy-item {
+    background-color: #9E1B30 !important;
+    text-transform: uppercase;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.product-view a.hotline img {
+    height: 40;
+}
+
+.product-view a.hotline {
+    background-color: #1787C6 !important;
+    text-transform: uppercase;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.product-view .product-view-shopping {
+    margin-top: 30px;
+    padding-bottom: 15px;
+}
+
+.product-view .product-view-shopping img {
+    height: 18;
+}
+
+.product-view .product-view-shopping a {
+    color: #8c8c8c !important;
+}
+
+.product-view .product-view-shopping a:hover {
+    color: #F8C741 !important;
+}
+
+.product-view .product-view-advisory {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.product-view .product-view-advisory .red-text {
+    color: red;
+}
+
+.product-view .product-social {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 15px;
+}
+
+.product-view .product-social .product-social-icon {
+    width: 100px;
+}
+
+.tabbable-line {
+    margin-top: 70px;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #ccc;
+}
+
+/* .product-block .product-quantity input:hover, .product-block .product-quantity input:focus {
+    background: red;
+    color: #fff;
+}  */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+

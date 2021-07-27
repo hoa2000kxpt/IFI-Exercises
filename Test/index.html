@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo" ng-controller="AppCtrl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Starters</title>
+</head>
+<body>
+    <input type="" name="" ng-model="name">
+    <h1>Hi {{  name | uppercase}}</h1>
+    <h1>Money: {{ money | currency:"":0}} VNĐ</h1>
+    <h1>Date: {{ my_date | date:"dd/MM/yyyy" }}</h1>
+    <button type="button" ng-click="demo_click()" >Click me</button>
+    <input type="" ng-model="searching">
+
+    <ul>
+        <li ng-repeat="item in items | filter:{name:searching}"> {{item.name}}</li>
+    </ul>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>
+
+<!-- Đưa chuột vào nháy chuột ra ngoài mới có hiệu ứng -->
+<!-- Angular Format/Filter -->

@@ -1,0 +1,66 @@
+
+.payment-process {
+    margin: 2em 0;
+}
+
+.payment-process img {
+    height: 90px !important;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.table td:last-child {
+    cursor: pointer;
+}
+
+.discount label {
+    margin-top: 6px;
+    padding-right: 5px;
+}
+
+.payment-functions {
+    display: flex;
+    padding-right: 1em;
+    margin-bottom: 2em;;
+    
+}
+
+#btn-coupon {
+    background: #dddddd;
+    padding: 5px 20px;
+    /* float: right; */
+    border: 0;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.cart-total {
+    text-align: center;
+    background: #f2f2f2;
+    line-height: 30px;
+    margin-left: 80px;
+    margin-right: 120px;
+    padding: 5px;
+}
+.button-function {
+    float: right;
+}
+
+.button-function a {
+    color: var(--black) !important;
+}
+
+.button-function a:hover {
+    color: var(--yellow) !important;
+}
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}

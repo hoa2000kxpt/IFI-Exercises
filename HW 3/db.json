@@ -1,0 +1,124 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "image": "https://baotinmanhhai.vn/web/uploads/lac_web_2.jpg",
+      "title": "Vòng tay mặt sao biển đá Emerald MH2-V",
+      "code": "Mã sản phẩm: MH2-V",
+      "link": "#/productdetails/1",
+      "type": "Vòng",
+      "gender": "Female",
+      "views": "1,510",
+      "category":"Trang sức vàng ta ",
+      "price": 200000
+    },
+    {
+      "id": 2,
+      "image": "https://baotinmanhhai.vn/web/uploads/product/Originals/bac/bac tre em/lac%20bi%20bac%20meo%20kitty%20xanh.jpg",
+      "title": "Lắc bi bạc trẻ em mèo Kitty xanh lá MH2 - L180426013",
+      "code": "Mã sản phẩm: MH2 - L180426013",
+      "link": "#/productdetails/2",
+      "type": "Lắc",
+      "gender": "Children",
+      "views": "1,451",
+      "category":"Trang sức ngọc",
+      "price": 50000
+    },
+    {
+      "id": 3,
+      "image": "https://baotinmanhhai.vn/web/uploads/product/Originals/vang tay 2018/lắc/day3-169.jpg",
+      "title": "Vòng tay gắn đá Citrine MH1 - V",
+      "code": "Mã sản phẩm: MH1 - V",
+      "link": "#/productdetails/3",
+      "type": "bracelets",
+      "gender": "Female",
+      "views": "1,567",
+      "category":"Trang sức ngọc trai",
+      "price": 175000
+    },
+    {
+      "id": 4,
+      "image": "https://baotinmanhhai.vn/web/uploads/product/Originals/vang tay 2018/nhan/nu/ruby/nhan-vang-nu-ruby-hoa-ket-kim.jpg",
+      "title": "Nhẫn vàng ruby nữ kết kim hình hoa  MH2 - N171006054",
+      "code": "Mã sản phẩm: MH4-V",
+      "link": "#/productdetails/4",
+      "type": "rings",
+      "gender": "female",
+      "views": "1,523",
+      "category":"Trang sức vàng",
+      "price": 300000
+    },
+    {
+      "id": 5,
+      "image": "https://baotinmanhhai.vn/web/uploads/collection/BST-Full-House/day-chuyen-vang-nu-emerald.jpg",
+      "title": "Dây chuyền vàng trắng nữ 14k Emerald D",
+      "code": "Mã sản phẩm: D",
+      "link": "#/productdetails/5",
+      "type": "Vòng",
+      "gender": "Female",
+      "views": "628",
+      "category":"Trang sức vàng",
+      "price": 200000
+    },
+    {
+      "id": 6,
+      "image": "https://baotinmanhhai.vn/web/uploads/716.jpg",
+      "title": "Bông tai Ngọc trai vàng kiểu rơi B170825087",
+      "code": "Mã sản phẩm: B170825087",
+      "link": "#/productdetails/6",
+      "type": "Khác",
+      "gender": "male",
+      "views": "1,053",
+      "category":"Trang sức ngọc trai",
+      "price": 300000
+    },
+    {
+      "id": 7,
+      "image": "https://baotinmanhhai.vn/uploads/product/Originals/2017/10/day5-620.jpg",
+      "title": "Bông tai gắn đá grannat kiểu hoa mặt trời 0",
+      "code": "Mã sản phẩm: 0",
+      "link": "#/productdetails/7",
+      "type": "Khác",
+      "gender": "Male",
+      "views": "741",
+      "category":"Trang sức phong thuỷ",
+      "price": 300000
+    },
+    {
+      "id": 8,
+      "image": "https://baotinmanhhai.vn/uploads/product/Originals/2017/10/day4-554.jpg",
+      "title": "vòng gắn trai 2 bên kết 5 lá vàng đính kim V170810042",
+      "code": "Mã sản phẩm: MH4-V",
+      "link": "#/productdetails/8",
+      "type": "Vòng",
+      "gender": "Male",
+      "views": "1,031",
+      "category":"Trang sức phong thuỷ",
+      "price": 300000
+    },
+    {
+      "id": 9,
+      "image": "https://baotinmanhhai.vn/web/uploads/product/Originals/vang-ta/charm vàng 24k/%C4%91%E1%BB%93ng%20xu.jpg",
+      "title": "Charm Đồng xu may mắn MH2 - H170906027",
+      "code": "Mã sản phẩm: MH2 - H170906027",
+      "link": "#/productdetails/9",
+      "type": "Khác",
+      "gender": "Unisex",
+      "views": "1,031",
+      "category":"Trang sức phong thuỷ",
+      "price": 100000
+    },
+    {
+      "id": 10,
+      "image": "https://baotinmanhhai.vn/web/uploads/product/Originals/nhan cuoi/nhan%20cuoi%202a.jpg",
+      "title": "Nhẫn cưới Se duyên MH2- N",
+      "code": "Mã sản phẩm: MH2- N",
+      "link": "#/productdetails/10",
+      "type": "Nhẫn",
+      "gender": "Unisex",
+      "views": "1,278",
+      "category":"Quà tặng",
+      "price": 200000
+    }
+  ]
+}

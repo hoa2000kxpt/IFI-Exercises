@@ -1,0 +1,51 @@
+
+    /*********** WHY SHOULD YOU CHOOSE PRODUCT SECTION ***********/
+#why-should-choose {
+    display: flex;
+    margin: 0 -15px;
+    padding-top: 30px;
+    overflow: hidden;
+}
+
+#why-should-choose .why-should-choose-box {
+    border: 1px solid #ccc;
+    display: flex;
+    margin-bottom: 30px;
+    padding: 23px 0;
+    border-radius: 5px;
+    height: 120px;
+}
+
+#why-should-choose .why-should-choose-box img {
+    margin: auto;
+    width: calc(5vw - 5px);
+    
+}
+
+#why-should-choose .why-should-choose-box h3 {
+    color: #6E6E6E;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#why-should-choose .why-should-choose-box p {
+    font-size: 11px;
+    font-weight: 500;
+    color: #6E6E6E;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+#why-should-choose .why-should-choose-box a {
+    color: #337ab7 !important;
+    text-decoration: none;
+}
+
+#why-should-choose .why-should-choose-box a:hover {
+    color: #ffdf16 !important;
+}

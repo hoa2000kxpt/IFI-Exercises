@@ -1,0 +1,123 @@
+
+    /*********** MENU CATEGORY ***********/
+/* #menu-category .menu-category-top {
+    border-bottom: 3px solid #F8C741; 
+    
+} */
+/* #menu-category {
+    display: none;
+} */
+
+#menu-category .menu-category-top ul {
+    display: flex;  
+    text-align: center;
+    
+}
+
+#menu-category .menu-category-top li a{
+    color: #211F2C !important;
+    margin: 1em;
+    font-weight: 500;
+}
+
+#menu-category .menu-category-top li a:hover{
+    color: #ffdf16 !important;
+}
+
+#menu-category .menu-category-top ul {
+    padding: 2em 0em;
+    text-transform: uppercase;
+}
+
+#menu-category .menu-category-hr {
+    border-bottom: 3px solid #F8C741;
+    margin-top: -1.2rem;
+}
+
+#menu-category .menu-category-down {
+    background: url(https://baotinmanhhai.vn/web/uploads/slide/2568_2.jpg) center top #F6F6F8 no-repeat;
+}
+
+#menu-category .menu-category-down .container-top-logo {
+    text-align: center;
+}
+
+#menu-category .container-top-logo h1{
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #211F2C;
+    margin: 20px 0;
+}
+
+#menu-category .container-top-menu {
+    margin-top: 118px;
+    margin-bottom: 30px;
+    padding-bottom: 50px;
+}
+
+#menu-category .container-top-menu h2{
+    position: relative;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+#menu-category .container-top-menu h2::before{
+    content: url("../images/line-left.png");
+    margin-right: 20px;
+}
+
+#menu-category .container-top-menu h2::after{
+    content: url("../images/line-right.png");
+    margin-left: 20px;
+}
+
+#menu-category .container-top-menu ul li {
+    padding: 10px 11px;
+    display: inline;
+    float: none;
+    /* padding: 10px; */
+    text-align: center;
+}
+
+#menu-category .container-top-menu ul li a {
+    padding: 0 30px 0 10px;
+    color: #211F2C !important;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+}
+
+#menu-category .container-top-menu ul li a:hover {
+    color: #ffdf16 !important;
+}
+
+
+#menu-category .container-top-menu ul li::after {
+    content: '|';
+    top: 4px;
+}
+
+#menu-category .container-top-menu ul li:last-child::after{
+    content: '';
+}
+
+@media screen and (max-width: 991px) { /** View up to 150% and down **/
+    #menu-category .menu-category-top {
+        margin: auto;
+    }
+
+    #menu-category .menu-category-top ul {
+        display: block;  
+        text-align: center;
+        padding: 0;
+    } 
+
+    #menu-category .menu-category-top ul li {
+        border-bottom: 1px solid #bdc3c7;
+        padding: 10px 0; 
+        /* width: 100%;
+        height: auto; */
+     }
+}

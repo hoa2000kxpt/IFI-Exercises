@@ -1,0 +1,177 @@
+
+<section id="menu-products-items" ng-controller="productMenuController">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+
+                <div class="product-sidebar">
+                    <div class="col-md-12">
+                        <div class="product-filter-category">
+
+                            <div class="product-filter-category-heading">
+                                <h3>Tìm kiếm theo danh mục
+                                    <span class="plus_minus">
+                                        <img src="http://baotinmanhhai.vn/img/ico-top.png" id="topDownCategory">
+                                        <!-- <img src="http://baotinmanhhai.vn/img/ico-bottom.png" id="imageCategoryDown" style="display: none;"> -->
+                                    </span>
+                                </h3>
+                            </div>
+
+                            
+
+                            <div class="product-filter-category-body">
+                                <h4>TRANG SỨC BẢO TÍN MẠNH HẢI</h4>
+                                <li ng-repeat="category in categories">
+                                    <img src="https://www.baotinmanhhai.vn/img/icon-diamond.png" />
+                                    <a ng-click="setCategoryFilter(category)">{{ category }}</a>
+                                </li>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <form method="POST" id="product-selection">
+                        <div class="col-md-12">
+                            <div class="product-filter-type">
+                                <div class="product-filter-types-heading">
+                                    <h3>Chủng loại
+                                        <span id="plus_minus">
+                                            <img src="http://baotinmanhhai.vn/img/ico-top.png" id="topDownType">
+                                        </span>
+                                    </h3>
+                                </div>
+
+                                <div class="product-filter-types-body" ng-repeat="type in types">
+
+                                    <li>
+                                        <label class="container">
+                                            <input type="checkbox" ng-click="setTypeFilter(type)">
+                                            {{ type }}
+                                        </label>
+                                    </li>
+                                    <!-- <li>
+                                        <label class="container"> <input class="kind_of" id="kind_of"
+                                                type="checkbox" name="kind_of" value="2">
+                                            Nhẫn
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="container"> <input class="kind_of" id="kind_of" type="checkbox"
+                                                name="kind_of" value="3">
+                                            Lắc
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="container"> <input class="kind_of" id="kind_of"
+                                                type="checkbox" name="kind_of" value="4">
+                                                Vòng
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="container"> <input class="kind_of" id="kind_of"
+                                                type="checkbox" name="kind_of" value="5">
+                                                Dây chuyền
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="container"><input class="kind_of" id="kind_of"
+                                                type="checkbox" name="kind_of" value="6">
+                                                Kiềng
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="container"> <input class="kind_of" id="kind_of"
+                                                type="checkbox" name="kind_of" value="7">
+                                                Khác
+                                        </label>
+                                    </li> -->
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="col-md-12">
+                            <div class="product-filter-category">
+                                <div class="product-filter-genders-heading">
+                                    <h3>Giới tính
+                                        <span class="plus_minus">
+                                            <img src="http://baotinmanhhai.vn/img/ico-top.png" id="topDownGender">
+                                        </span>
+                                    </h3>
+                                </div>
+
+                                <div class="product-filter-genders-body" ng-repeat="gender in genders | filter:filterByGender">
+                                    <li>
+                                        <label class="container">
+                                            <input type="checkbox" ng-click="setGenderFilter(gender)">
+                                            {{ gender }}
+                                        </label>
+                                    </li>
+                                    <!-- <li>
+                                        <label class="container"> <input id="gender" type="checkbox" name="gender"
+                                                value="2" ng-model="filter['female']">
+                                                Nữ
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="container"> <input id="gender" type="checkbox" name="gender"
+                                                value="3" ng-model="filter['male']">
+                                                Nam
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="container"><input id="gender" type="checkbox" name="gender"
+                                                value="4" ng-model="filter['unisex']">
+                                                Unisex
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="container"> <input id="gender" type="checkbox" name="gender"
+                                                value="5" ng-model="filter['children']">
+                                                Trẻ em
+                                        </label>
+                                    </li> -->
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+
+
+
+
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="col-md-9">
+                <div class="all-products" >
+                    <h1 class="all-products-heading">Tất cả sản phẩm Nhẫn, 0 - 300.000.000, </h1>
+
+                    <div class="all-products-body">
+                        <div class="thumbnail" ng-repeat="item in resultedProduct">
+                            <img ng-src="{{ item.image }}" class="img-responsive">
+                            <div class="product-details">
+                                <h2>{{ item.title }}</h2>
+                                <p>{{ item.code }}</p>
+                                <a href="{{ item.link }}">Liên hệ</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div ng-controller="PaginationDemoCtrl">
+                    <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

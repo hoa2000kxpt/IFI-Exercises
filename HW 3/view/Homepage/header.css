@@ -1,0 +1,565 @@
+
+/*********** HEADER TOP ***********/ 
+#header-top-menu {
+    background-color: #211F2C;
+    border-bottom: 3px solid #F8C73F;
+    font-family: 'SVN Gotham' !important;
+    font-size: 11px;
+    padding: 5px 50px;
+    /* display: flex;
+    text-align: center;
+    justify-content: space-between; */
+}
+
+#header-top-menu .container-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header-top-menu .header-top-menu-contact {
+    display: flex;
+    text-align: left;
+}
+
+#header-top-menu .header-top-menu-contact-phone li{
+    box-sizing: border-box;
+    float: left;
+    height: 30px;
+    padding: 0;
+    list-style: none;
+}
+
+#header-top-menu li {
+    padding-right: 1.5em;
+}
+
+#header-top-menu a:hover {
+    text-decoration: none;
+}
+
+#header-top-menu .header-top-menu-support {
+    display: flex;
+    text-align: right;
+}
+
+#header-top-menu .header-top-menu-support li {
+    border-right: 1px solid #fff;
+    margin-right: 1em;  
+}
+
+#header-top-menu .header-top-menu-support li:last-child {
+    border-right: none;
+}
+
+.login-group label,  .signup-group label {
+    font-size: 14px;
+    margin-bottom: 0.7em;
+}
+
+.login-group button, .signup-group button {
+    color: #fff;
+    background-color: #d21d2a;
+    border: none;
+    padding: 6px;
+    width: 85%;
+}
+
+.login-group .form-group{
+    text-align: right;
+}
+
+.login-media {
+    border-left: 1px dashed #ccc;
+    height: 100%;
+    right: 0;
+    padding: 0 15px 60px;
+}
+
+.login-media h6 {
+    color: #333333;
+    line-height: 22.4px;
+    padding: 0px 0px 3px;
+    border-bottom: 1px solid #CAD5E2;
+}
+
+.login-media ul {
+    color:#333333;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    
+}
+
+.login-media ul li:first-child, .login-media ul li:nth-child(2){
+    color: #333333;
+    font-family: "SVN Gotham";
+    font-size: 14px;
+    line-height: 20px;
+    margin: 15px 0px 0px;
+    text-align: center;
+}
+
+.login-media ul li:first-child a {
+    background-image: url("https://www.baotinmanhhai.vn/images/ico-login-fb.jpg");
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    border: #4b64a4 solid 1.5px;
+    color:#4b64a4 !important;
+    display: inline-block;
+    font-family: "SVN Gotham";
+    font-size: 14px;
+    line-height: 25px;
+    padding: 0px 15px 0px 45px;
+    text-align: left;
+}
+
+.login-media ul li:nth-child(2) a {
+    background-image: url("https://www.baotinmanhhai.vn/images/ico-login-gg.jpg");
+    background-repeat: no-repeat;
+    background-position: 0% 50%;
+    border: #ff0c15 solid 1.5px;
+    color:#ff0c15 !important;
+    display: inline-block;
+    font-family: "SVN Gotham";
+    font-size: 14px;
+    line-height: 25px;
+    padding: 0px 25px 0px 55px;
+    text-align: left;
+}
+
+.login-media li:nth-child(1) a:hover {
+    color: #fff !important;
+    background-color: #4b64a4;
+}
+
+.login-media li:nth-child(2) a:hover {
+    color: #fff !important;
+    background-color: #ff0c15
+}
+
+.login-media .login-icon {
+    margin: auto;
+    margin-left: 3em;
+    margin-top: -0.7em;
+}
+
+
+
+.login-media img { 
+    width: 32px !important;
+    height: 32px !important;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.login-media {
+    text-align: left;
+}
+
+/* .login-media ul li a {
+    display: inline-block;
+    width: 132px;
+    height: 32px;
+    line-height: 25px;
+    text-align: left;
+    padding-left: 45px;
+    transition: ease 0.2s;
+} */
+
+
+
+/* .login-media li:nth-child(1) {
+    border: 2px solid #4b64a4;
+    margin-bottom: 5px;
+} */
+
+/* .login-media li:nth-child(1) a:hover {
+    color: #fff !important;
+} */
+
+.signup-group {
+    padding: 0px 15px;
+}
+
+
+
+
+.signup-group select {
+    /* margin-top: 0.1em; */
+    width: 63%;
+    /* border: none; */
+    padding: 5px 0;
+}
+
+
+/* Thiết Lập Modal Background */
+.modal, .modal-2 {
+  display: none; /* Ẩn Mặc Định */
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 100px; /* Vị trí của modal */
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; /* thiết lập scroll khi cần thiết */
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+
+/* Nội Dung Modal */
+.modal-content-login, .modal-content-signup {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50% !important;
+  /* box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+              0 2px 2px rgba(0,0,0,0.12), 
+              0 4px 4px rgba(0,0,0,0.12), 
+              0 8px 8px rgba(0,0,0,0.12),
+              0 16px 16px rgba(0,0,0,0.12); */
+  padding: 60px 30px;
+  /* z-index: 999; */
+}
+
+
+
+/* Nút Đóng Modal */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.close-2 {
+    color: #aaaaaa;
+    font-size: 6vh;
+    width: 2vh;
+    height: 2vh;
+    font-weight: bold;
+    position: absolute;
+    top: 100px;
+    float: right;
+    margin-left: 45%;
+}
+
+
+.close:hover,
+.close:focus, .close-2:hover, .close-2:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#myModal-2 input, #myModal input {
+    margin-bottom: 1em;
+    /* width: auto; */
+    line-height: 20px;
+    font-size: 14px;
+    padding: 6px 12px;
+}
+
+#myModal-2 .btn-signup, #myModal .btn-signin {
+    margin-top: 2em;
+    width: 100%;
+    line-height: 20px;
+}
+
+
+/*********** HEADER BELOW ***********/
+#header-below {
+    background-color: #9E1B30;
+}
+
+#header-below .img-fluid{
+    width:14vw;
+}
+
+#header-below .header-below-button-group li:last-child {
+    width: 35%;
+}
+
+#header-below .header-below-button-group .menu-top-search {
+    position: relative ;
+}
+
+#header-below .header-below-button-group button {
+    position: absolute;
+    right: 2.5em;
+    top: 0px;
+    background-color: transparent;
+}
+
+#header-below .header-below-menu {
+    margin:auto;
+    text-align: center;
+    /* overflow: hidden; */
+}
+
+.dropdown {
+    /* float: left;
+    overflow: hidden; */
+    position: relative !important;
+    display: inline-block;
+}
+
+  
+  
+.dropdown .drop_btn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit; 
+    margin: 0; 
+    /* display: none; */
+}
+
+.dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 999;
+    opacity: 0.7;
+    
+}
+
+.dropdown:hover .dropdown_content {
+    display: flex;
+    min-width: 400px;
+    justify-content: space-between;
+}
+
+.menu-product-1 li, .menu-product-2 li {
+    display: block !important;
+    margin-top: 1em;
+    text-align: left;
+    padding: 5px 15px;
+    color: #999 !important;
+}
+
+.menu-product-1, .menu-product-2{
+    display: block !important;
+}
+
+
+.dropdown-2 {
+    /* float: left;
+    overflow: hidden; */
+    position: relative !important;
+    display: inline-block;
+}
+  
+  
+.dropdown-2 .drop_btn_2 {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit; 
+    margin: 0; 
+    /* display: none; */
+}
+
+.dropdown_content_2 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 999;
+    opacity: 0.7;
+    
+}
+
+.dropdown-2:hover .dropdown_content_2 {
+    display: flex;
+    min-width: 400px;
+    justify-content: space-between;
+}
+
+
+
+.menu-product-3 li, .menu-product-4 li {
+    display: block !important;
+    margin-top: 1em;
+    text-align: left;
+    padding: 5px 15px;
+    color: #999 !important;
+}
+
+
+.menu-product-3, .menu-product-4{
+    display: block !important;
+}
+
+
+
+
+#header-below img {
+    padding: 10px 0;
+}
+
+#header-below .header-below-button-group ul {
+    display: flex;
+    text-align: center; 
+    margin-bottom: -0.7rem;    
+}
+
+#header-below .header-below-button-group ul li {
+    margin-right: 5rem;
+    border: 1px solid #fff;
+    padding: 8px 7px;
+    margin: 5px 13px 12px 15px;
+    border-radius: 35px;
+    /* text-align: center; */
+    margin: auto;
+    font-size: 14px;
+}
+
+#header-below .header-below-button-group ul li input {
+    border-radius: 30px;
+    border: none;   
+}
+
+#header-below .header-below-button-group ul li:last-child {
+    border: none;
+}
+
+#header-below hr {
+    background-color: #fff;
+    margin-bottom: 2em;
+}
+
+
+#header-below .header-below-menu ul {
+    margin-top: -1rem;
+    /* display: flex; */
+    
+}
+
+#header-below .header-below-menu ul li {
+    border: none;
+    text-transform: uppercase;
+    margin-right: 1.1em;
+    display: inline-block;
+}
+
+
+#header-below .header-below-menu ul li a {
+    color: #F8C741 !important;
+    font-size: 15px;
+    /* display: inline-flex; */    
+}
+
+
+#header-below .header-below-menu ul li a:hover {
+    color: yellow !important;
+}
+
+#header-below .menu-product-1 li a#menu-product-1-list, #header-below .menu-product-2 li a#menu-product-2-list,
+#header-below .menu-product-3 li a#menu-product-3-list, #header-below .menu-product-4 li a#menu-product-4-list {
+    color: #000 !important;
+}
+
+
+#header-below .menu-product-1 li a#menu-product-1-list:hover, #header-below .menu-product-2 li a#menu-product-2-list:hover,
+#header-below .menu-product-3 li a#menu-product-3-list:hover, #header-below .menu-product-4 li a#menu-product-4-list:hover {
+    color: red !important;
+}
+
+#header-below .header-below-button-group input {
+    background-image: url('../images/ic-search.png');
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+#header-below .header-below-menu .icon {
+    display: none;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    /* height: 80px; */
+    background-color: red;
+    margin: auto;
+    overflow: hidden;
+}
+
+.sticky .col-md-10 .header-below-button-group {
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+.sticky .col-md-10 hr, .sticky .col-md-10 button {
+    display: none;
+}
+
+.sticky .header-below-menu ul {
+    margin-top: auto !important;
+    padding-top: 20px;
+}
+
+.sticky .col-md-2 img {
+    width: 6vw !important;
+}
+
+
+
+
+/* #header-below .header-below-search i {
+    position: absolute;
+} */
+
+/********************** MEDIA QUERIES ****************/
+@media screen and (max-width: 991px) { /** View up to 150% and down **/
+    .header-below-menu ul li, .header-below-button-group, #header-below hr, #header-top-menu, .container-top-menu {
+        display: none !important;
+    }
+
+    .header-below-menu a.icon {
+      float: right;
+      display: block !important;
+      padding-bottom: 10px;
+      border: 1px solid #fff;
+      padding: 3px 7px;
+      border-radius: 5px;
+      margin-top: -0.5em;
+    }
+
+    #header-below .header-below-menu ul {
+        display: block;
+        margin-top: 1.3em;
+        /* margin: auto; */
+    }
+  
+    .header-below-menu.responsive {position: relative;}
+    .header-below-menu.responsive li a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .header-below-menu.responsive li {
+      float: none;
+      display: block !important;
+      text-align: left;
+    }
+}
+
+
+
+
+
+
+

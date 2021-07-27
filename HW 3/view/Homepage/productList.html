@@ -1,0 +1,31 @@
+<!-------------------- PRODUCT LIST  --------------------->
+<section id="product-list" ng-controller="carouselController">
+    <h1>Sản phẩm mới</h1>
+    <main>
+        <div class="slide-container">
+            <section class="container" id="slider">
+
+                <slick ng-if="dataLoaded" init-onload="false" data="dataLoaded" slides-to-show="4" dots="true">
+                    <div ng-repeat="item in items">
+                        <div class="thumbnail">
+                            <img ng-src="{{ item.image }}" class="img-responsive">
+                            <div class="product-details">
+                                <h2>{{ item.title }}</h2>
+                                <p>{{ item.code }}</p>
+                                <a ng-href="{{ item.link }}">Liên hệ</a>
+                            </div>
+                        </div>
+                    </div>
+                </slick>
+                
+
+
+
+            </section>
+
+        </div>
+    </main>
+</section>
+
+
+

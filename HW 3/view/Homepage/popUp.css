@@ -1,0 +1,52 @@
+.pop-up {
+    position: fixed;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(156, 145, 145, 0.7);
+    margin: auto;
+    /* animation: drop 0.5s ease forwards; */
+    
+    /* top: -400px; */
+    /* transform: translate(0, -100%); */
+    /* transform: translateY(-100px); */
+}
+
+/* @keyframes drop {
+    0%{}
+    70%{transition: translateY(700px)}
+    100%{transition: translateY(650px)}
+} */
+@keyframes topToBottom {
+    0% {
+      margin-top: -23%;
+    }
+    100% {
+      margin-top: 0%;
+    }
+  }
+
+.pop-up img {
+    position: fixed;
+    display: block;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 9%;
+    animation: topToBottom ease 0.5s;
+}
+
+.pop-up .pop-up-close {
+    position: fixed;
+    background-color: #E9E9E9;
+    border-radius: 50%;
+    width: 4vh;
+    font-size: 3vh;
+    height: 4vh;
+    text-align: center;
+    margin-left: 74%;
+    margin-top: 8.5%;
+    z-index: 4;
+    cursor: pointer;
+    color: #000;
+    /* text-align: center; */
+}

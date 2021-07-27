@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Itim|Lobster|Montserrat:500|Noto+Serif|Nunito|Patrick+Hand|Roboto+Mono:100,100i,300,300i,400,400i,500,500i,700,700i|Roboto+Slab|Saira');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+    @font-face {
+        font-family: 'SVN Gotham';
+        src: url('/Contact/Body/fonts/SVN-Gotham-Book.otf'); 
+    }
+
+    body {
+        font-family: 'SVN Gotham' !important;
+        font-weight: 200;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    p {
+        margin: 0 0 10px;
+    }
+
+    a {
+        color: #fff !important;
+    }
+
+    .tab-content .content img{
+        max-width: 100%;
+    }
+
+    .img-responsive {
+        /* display: block; */
+        max-width: 100%;
+        height: auto;
+    }
+
+    a:hover {
+        text-decoration: none !important;
+        color: #ffdf16 !important;
+        transition: 0.5s;
+    }
+
+
+/*********** CONTACT ***********/
+#contact h1{
+    padding: 25px 5px;
+    font-size: calc(3vw);
+    border-bottom: 1px solid black;
+    color: #9E1B30;
+}
+
+#contact .company-info {
+    background-color: #f1f1f2;
+    padding: 10px;
+    border-bottom: 1px solid #F8C741;
+}
+
+#contact .company-info .company-address hr {
+    background-color: #F8C741 !important;
+}
+
+#contact .company-info .company-address .company-phone {
+    margin-top: 3em;
+}
+
+#contact .company-info .company-title h3 {
+    color: #9E1B30;
+}
+
+#contact .form-control {
+    border: 1px solid #000 !important;
+}
+
+#contact #chr-code {
+    font-family: 'Dancing Script', cursive;
+    color: blue;
+    margin-left: 1em;
+}
+
+#contact button {
+    margin-bottom: 30px;
+    width: 100%;
+    background-color: #9E1B30 !important;
+}
+
+#contact button:hover {
+    color: #F8C741 !important
+}
+
+/*********** FOOTER ***********/
+footer {
+    font-style: normal;
+    border-top: 5px solid #F8C73F;
+    background-color: #9E1B30;
+    display: flex
+}
+
+footer .col-md-4 {
+    padding: 0;
+}
+
+footer .footer_left {
+    text-align: center;
+    background-color: #9E1B30;
+    display: flex;
+    height: 493px;
+    padding-top: 126px;
+}
+
+footer .footer_left h2 {
+    font-size: 18px;
+    /* font-weight: bold; */
+    color: #F8C741;
+    /* font-family: "Times New Roman"; */
+    font-weight: 400;
+    margin: 20px 0px 10px 0px;
+}
+
+footer .footer_left p {
+    color: #fff;
+    font-size: 12px;
+}
+
+footer .footer_left img {
+    height: 120px;
+    margin: auto;
+}
+
+footer .col-md-8 {
+    padding: 0;
+    background-color: #272535;
+}
+
+footer .footer-right {
+    display: inline-block;
+    padding: 26px 30px;
+}
+
+footer .footer-right .footer-right-info {
+    color: #F8C741;
+}
+
+footer .footer-right .footer-right-info h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+footer .footer-right .footer-right-info p {
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+footer .footer-right .footer-right-info p:last-child {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+footer .footer-right .footer-right-info a {
+    color: #F8C741 !important;
+}
+
+footer .footer-right .footer-right-network img {
+    float: left;
+    margin-right: 20px;
+}
+
+footer .footer-right .footer-right-menu {
+    color: #fff;
+}
+
+footer .footer-right .footer-right-menu .input-collection{
+    display: flex;
+}
+
+footer .footer-right .footer-right-menu h3 {
+    font-size: 15px;
+    margin-top: 25px;
+}
+
+footer .footer-right .footer-right-menu
+
+
+footer .footer-right .footer-right-menu input {
+    border-radius: 10px;
+    background-color: #951c30;
+    padding: 7px 10px;
+    border-radius: 10px 0px 0px 10px;
+    width: 70%;
+    padding-right: 2px; 
+    color: #fff;
+    border: none;
+}
+
+footer .footer-right .footer-right-menu button {
+    background-color: #951c30;
+    padding: 6px 6px;
+    margin-top: -4px;
+    border-radius: 0px 10px 10px 0px;
+    margin-left: -2px;
+}
+
+footer .footer-right .footer-right-menu a {
+    display: block;
+}
+
+footer .footer-right hr {
+    background-color: #fff;
+}
+
+footer .footer-right .footer-contact {
+    color: #fff;
+    padding: 0px 0 10px 0;
+    line-height: 23px;
+    font-size: 13px;
+}
+
+footer .footer-right .symbol {
+    border-top: 1px solid #F8C741;
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+footer .footer-right .input-collection input {
+    background-color: #951c30;
+    border-radius: 10px 0px 0px 10px;
+    width: 80%;
+    color: #fff;
+}
+
+footer .footer-right .input-collection button {
+    padding: 6px;
+    border: none;
+}
+
+footer .footer-right .gold-system {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #9E1B30;
+    margin-top: 5px;
+}
+
+/* footer .footer-right .symbol:Before {
+    content: '';
+    height: 7px;
+    width: 7px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #F8C741 !important;
+    position: absolute;
+    
+} */
+
+/********************** MEDIA QUERIES ****************/
+@media screen and (max-width: 1024px) { /** View up to 150% and down **/
+    .header-below-menu ul li, .header-below-button-group, #header-below hr, #header-top-menu, .container-top-menu {
+        display: none !important;
+    }
+
+    .header-below-menu a.icon {
+      float: right;
+      display: block !important;
+      padding-bottom: 10px;
+      border: 1px solid #fff;
+      padding: 3px 7px;
+      border-radius: 5px;
+      margin-top: -0.5em;
+    }
+
+    #header-below .header-below-menu ul {
+        display: block;
+        margin-top: 1.3em;
+        /* margin: auto; */
+    }
+  
+    .header-below-menu.responsive {position: relative;}
+    .header-below-menu.responsive li a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .header-below-menu.responsive li {
+      float: none;
+      display: block !important;
+      text-align: left;
+    }
+
+    #menu-category .menu-category-top {
+        margin: auto;
+    }
+
+    #menu-category .menu-category-top ul {
+        display: block;  
+        text-align: center;
+        padding: 0;
+    } 
+
+    #menu-category .menu-category-top ul li {
+        border-bottom: 1px solid #bdc3c7;
+        padding: 10px 0; 
+        /* width: 100%;
+        height: auto; */
+     }
+    
+
+}
+
+
+    

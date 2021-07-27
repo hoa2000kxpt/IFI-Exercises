@@ -1,0 +1,279 @@
+<div>
+    <!-------------- BODY -------------->
+    <!-- <div id="body" style="display: none;"> -->
+    <div class="view-category-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <ul>
+                        <li>
+                            <a href="#">Nhẫn</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Bông tai</a>
+                        <li>
+
+                        <li>
+                            <a href="#">Mặt dây chuyền</a>
+                        <li>
+
+                        <li>
+                            <a href="#">Dây chuyền</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Kiềng</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Lắc</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Vòng tay</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Xem tất cả</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="product-view">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="product-image">
+                        <img ng-src="{{ item.image}}">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="product-infor">
+                        <h1>{{ item.title}}</h1>
+                        <p id="product-code">{{ item.code}}</p>
+                        <a href="#">Gía: Liên hệ</a>
+                        <p id="product-viewer"><span>{{ item.views}}</span> <span id="span-text">Lượt xem</span></p>
+                    </div>
+
+                    <div class="product-block">
+                        <div class="product-status"><strong>Tình trạng: </strong>Còn hàng </div>
+                        <div class="product-quantity"><strong>Số lượng đặt mua: </strong>
+                            <span id="box">
+                                <button id="minus" ng-click="quantity=quantity-1">-</button>
+                                <input type="number" min=1 value="{{quantity}}">
+                                <button id="add" ng-click="quantity=quantity+1">+</button>
+                            </span>
+                        </div>
+
+                        <div class="guide">
+                            <ul>
+                                <li><a href="http://baotinmanhhai.vn/ho-tro-mua-hang/do-size-trang-suc">
+                                        <img src="/common/images/hd-1.png" />
+                                        &nbsp;&nbsp;Hướng dẫn chọn và đo size trang sức</a></li>
+                                <li>
+                                    <a href="/ho-tro-mua-hang/huong-dan-mua-hang">
+                                        <img src="/common/images/hd-2.png" />
+                                        &nbsp;&nbsp;Lưu ý khi mua hàng</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="dialog-demo-content">
+                                    <a class="buy-item" id="add-cart-btn" ng-click="selectMe(item)">Thêm vào giỏ
+                                        hàng</a>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="Product-modal">
+                                    <div class="modal-dialog modal-lg">
+
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+
+                                            <div class="container">
+                                                <div class="row">
+                                                    <button type="button" class="close"
+                                                        data-dismiss="modal">&times;</button>
+
+                                                    <div class="col-md-7 col-xs-12">
+                                                        
+                                                            <h3><img class="modal-cart-icon"
+                                                                    src="https://www.baotinmanhhai.vn/images/check.png">
+                                                                {{ quantity }} sản phẩm mới đã được thêm vào giỏ hàng
+                                                                của
+                                                                bạn
+                                                            </h3>
+
+                                                            <div class="row" style="display: flex;" ng-repeat="cart in carts"
+                                                            ng-init = "setTotal(cart)">
+                                                                <div>
+                                                                    
+                                                                </div>
+                                                                <div class="col-md-4 col-xs-3">
+                                                                    <img class="img-responsive"
+                                                                        ng-src="{{ cart.image }}">
+                                                                </div>
+                                                                <div class="col-md-8 col-xs-9">
+                                                                    <div class="title-product-popup">
+                                                                        {{ cart.title }}
+                                                                    </div>
+                                                                    <div class="product-details-price"></div>
+                                                                    <div class="product-details-popup-number">
+                                                                        <label for="cartSidebar_qty">Số lượng: {{
+                                                                            cart.quantity }}</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        
+
+
+                                                    </div>
+
+                                                    <div class="col-md-5 col-xs-12">
+                                                        <h3><img class="modal-cart-icon"
+                                                                src="https://baotinmanhhai.vn/images/icon-cart.png"> Giỏ
+                                                            hàng (1 sản phẩm)</h3>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Tạm tính</td>
+                                                                    <td>{{ item.price | currency:"":0 }} VND</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Phí vận chuyển</td>
+                                                                    <td>{{ transactionFee | currency:"":0 }} VND</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Giảm giá</td>
+                                                                    <td>0đ</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <hr>
+                                                        <table>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><b>Thành tiền (Đã bao gồm VAT):</b></td>
+                                                                    <td>{{ totalPrice | currency:"":0 }} VND</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="option">
+                                                            <a class="buy-continue"
+                                                                href="#/productmenu">Tiếp tục mua
+                                                                hàng</a>
+                                                            <a class="cust-pay" href="#/productPayment">Thanh toán</a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <div class="col-md-6">
+                                <a class="hotline" href="tel:024 22 33 9999">
+                                    <img src="/common/images/icon-phone-buy.png">
+                                    Hotline
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="product-view-shopping">
+                            <a href="#"><img src="/common/images/icon-maps.png" />
+                                Xem cửa hàng gần bạn nhất</a>
+                        </div>
+                        <div class="product-view-advisory">
+                            <img src="/common/images/icon-phone1.png" />
+                            Tư vấn đặt hàng: <span class="red-text">(024) 2233 9999 </span>
+                        </div>
+
+                        <div class="product-social">
+                            <div class="product-social-icon">
+                                <a href="https://www.facebook.com/baotinmanhhai.vn/">
+                                    <img src="/common/images/icon-fb.png" />
+                                </a>
+                            </div>
+                            <div class="product-social-icon">
+                                <a href="https://plus.google.com/u/0/102447910310088418364">
+                                    <img src="/common/images/icon-gplus.png" />
+                                </a>
+                            </div>
+                            <div class="product-social-icon">
+                                <a href="https://www.youtube.com/channel/UCahEVwbxmUHeP4V3ewSIZcA">
+                                    <img src="/common/images/icon-youtube.png" />
+                                </a>
+                            </div>
+                            <div class="product-social-icon">
+                                <a href="https://shop.zalo.me/store/3500977240221853723?src=home">
+                                    <img src="/common/images/icon-zalo.png" />
+                                </a>
+                            </div>
+                            <div class="product-social-icon">
+                                <a href="https://www.instagram.com/baotinmanhhai.vn/">
+                                    <img src="/common/images/icon-intagram.png" />
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabbable-line">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#tab_default_1" data-toggle="tab">
+                            Chi tiết sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="#tab_default_2" data-toggle="tab">
+                            Tại sao mua?</a>
+                    </li>
+                    <li>
+                        <a href="#tab_default_3" data-toggle="tab">
+                            Chính sách vận chuyển</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_default_1">
+                        <div class="content">
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_default_2">
+                        <div class="content">
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_default_3">
+                        <div class="content">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</div>

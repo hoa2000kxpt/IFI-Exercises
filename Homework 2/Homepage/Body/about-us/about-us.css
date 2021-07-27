@@ -1,0 +1,49 @@
+
+/*********** ABOUT US ***********/
+#about-us .intro {
+    background-color: #9E1B30;
+    padding-left: 100px;
+    padding-right: 60px;
+    color: #fff;
+    /* height: 430px; */
+    display: table-cell;
+}
+
+#about-us .intro h1 {
+    margin-top: 0;
+    padding: 40px 0 0px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
+
+#about-us .intro img {
+    margin-top: -1.5em;
+}
+
+#about-us .intro .view-more a {
+    padding: 8px 35px;
+    background-color: #fff;
+    display: inline-block;
+    margin: 18px 0 23px;
+    border-radius: 40px;
+    color: #9E1B30 !important;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: capitalize;
+} 
+
+#about-us .intro .view-more a:hover {
+    color: #ffdf16 !important;
+}
+
+#about-us .intro p {
+    font-size: 13px;
+    line-height: 20px;
+
+}
+
+#about-us .short-video {
+    margin-left: -2em;
+}

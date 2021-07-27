@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công ty Bảo Tín Mạnh Hải - Trang sức vàng bạc đá quý cao cấp</title>
+    <style>
+        .back-to-top {
+            position: fixed;
+            bottom: 110px;
+            right: 50px;
+            width: 50px;
+            height: 10px;
+            z-index: 9999;
+            cursor: pointer;
+            text-decoration: none;
+            transition: opacity 0.2s ease-out;
+            background-image: url('/Homepage/top.jpg');
+        }
+
+        .back-to-top img {
+            width: 100%;
+        }
+
+        .back-to-top:hover{
+            opacity: 0.7;
+        }
+        
+        *, body {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            position: relative;
+        }
+       
+    </style>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="/Homepage/style.css"/>
+</head>
+
+<body>
+    <div id="web_body" style="display: none;">
+        <div id="pop-up"></div>
+        <!-------------- HEADER -------------->
+        <div id="header-top"></div>
+
+        <div id="header-down"></div>
+
+        <!-------------- BODY -------------->
+        <div id="carosel"></div>
+
+        <div id="menu-category"></div>
+
+        <div id="product-list"></div>
+
+        <div id="highlight-product"></div>
+
+        <div id="news"></div>
+
+        <div id="about-us"></div>
+
+        <div id="reason-to-choose"></div>
+
+        <!-------------- FOOTER -------------->
+        <div id="footer"></div>
+
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top">
+            <img src="/Homepage/top.jpg">
+        </a>
+
+    </div>
+
+        
+   
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script> 
+        $(function(){
+
+            $("#pop-up").load("/Homepage/Body/pop-up/pop-up.html");
+            $("#header-top").load("./Header/header-top/header-top.html"); 
+            $("#header-down").load("./Header/header-below/header-below.html"); 
+            $("#carosel").load("./Body/carousel/carousel.html");
+            $("#menu-category").load("./Body/menu-category/menu-category.html");
+            $("#product-list").load("/Homepage/Body/product-list/product-list.html");
+            $("#highlight-product").load("/Homepage/Body/highlight-product/highlight-product.html");
+            $("#news").load("/Homepage/Body/news/news.html");
+            $("#about-us").load("/Homepage/Body/about-us/about-us.html");
+            $("#reason-to-choose").load("/Homepage/Body/reason-to-choose/reason-to-choose.html");
+            $("#footer").load("/Homepage/Footer/footer.html");
+            
+        });
+
+        $(document).ready(function(){
+ 
+            //Check to see if the window is top if not then display button
+            $(window).scroll(function(){
+
+            // Show button after 100px
+            let showAfter = 100;
+            if ( $(this).scrollTop() > showAfter) { 
+                $('.back-to-top').fadeIn();
+            } else { 
+                $('.back-to-top').fadeOut();
+            }
+            });
+            
+            //Click event to scroll to top
+            $('.back-to-top').click(function(){
+                $('html, body').animate({scrollTop : 0}, 800);
+                return false;
+            });
+        
+        });
+    </script> 
+    <script>
+
+        window.addEventListener("load", function() {
+            $("#web_body").show();
+        })
+           
+    </script>
+    
+</body>
+
+</html>

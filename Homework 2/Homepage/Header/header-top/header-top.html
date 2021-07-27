@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công ty Bảo Tín Mạnh Hải - Trang sức vàng bạc đá quý cao cấp</title>
+    <link rel="stylesheet" href="/Homepage/Header/header-top/header-top.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+</head>
+
+<body>
+
+    <!-------------------- HEADER TOP --------------------->
+    <section id="header-top-menu" class="hidden-xs hidden-sm">
+        <div class="container-menu">
+
+            <div class="header-top-menu-contact">
+                <li class="header-top-menu-contact-phone">
+                    <a class="header-top-menu-contact-phone-a" href="tel:024 22 33 9999">
+                        <i class="fa fa-phone" aria-hidden="true"></i> 024 22 33 9999</a>
+                </li>
+
+                <li class="header-top-menu-contact-email">
+                    <a class="header-top-menu-contact-email-a" href="/lien-he">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i> Contact@baotinmanhhai.vn
+                    </a>
+                </li>
+            </div>
+
+            <div class="header-top-menu-support">
+
+                <li class="header-top-menu-support">
+                    <a class="header-top-menu-support-a" href="/ho-tro-mua-hang/huong-dan-mua-hang">
+                        Hướng dẫn mua hàng
+                    </a>
+                </li>
+
+                <li class="header-top-menu-login">
+                    <a id="login" class="header-top-menu-login-a">
+                        Đăng nhập
+                    </a>
+                </li>
+
+                <li class="header-top-menu-register">
+                    <a class="header-top-menu-register-a" id="sign-up">
+                        Đăng ký
+                    </a>
+                </li>
+
+            </div>
+        </div>
+
+
+    </section>
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+
+            <span class="close"></span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="login-group">
+                            <form class="form-signin" method="POST">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="email"><strong>Email</strong></label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password"><strong>Password</strong></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <input type="email" class="form-control" id="email_signin" name="email_signin">
+                                        
+
+                                        <input type="password" class="form-control" id="password_signin" name="password_signin">
+                                        
+                                        <div class="btn-signin">
+                                            <button>Đăng nhập</button>
+                                        </div>
+
+                                        <p class="hide hide-email-signin"></p>
+                                        <p class="hide hide-password-signin"></p>
+
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="login-media">
+                            <h6>Đăng nhập bằng</h6>
+                            <ul class="login-icon">
+                                <li><a href="#">Facebook</a></li>
+
+                                <li><a href="#">Google</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="myModal-2" class="modal-2">
+        <!-- Modal content -->
+        <div class="modal-content-2">
+            <span class="close-2"></span>
+            <form class="form-signup" method="POST">
+            <div class="container">
+                <div class="row">
+                    
+                        <div class="col-md-8">
+                            <div class="signup-group">
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="full-name"><strong>Họ tên</strong></label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="email"><strong>Email</strong></label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password"><strong>Password</strong></label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="genders"><strong>Giới tính</strong></label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="fullname_signup" name="fullname_signup">
+                                        <input type="email" class="form-control" id="email_signup" name="email_signup">
+                                        <input type="password" class="form-control" id="password_signup" name="password_signup">
+                                        <select name="genders" id="genders">
+                                            <option value="male">Nam</option>
+                                            <option value="female">Nữ</option>
+                                        </select>
+                                        <div class="btn-signup">
+                                            <button>Đăng ký</button>
+                                        </div>
+
+                                        <p class="hide hide-fullname-signup"></p>
+                                        <p class="hide hide-email-signup"></p>
+                                        <p class="hide hide-password-signup"></p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                        <div class="col-md-4">
+                            <div class="login-media">
+                                <h6>Đăng nhập bằng</h6>
+                                <ul class="login-icon">
+                                    <li><a href="#">Facebook</a></li>
+
+                                    <li><a href="#">Google</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="/Homepage/Header/header-top/header-top.js"></script>
+
+</body>
+
+</html>

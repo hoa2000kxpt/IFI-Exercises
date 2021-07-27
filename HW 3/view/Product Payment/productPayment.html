@@ -1,0 +1,53 @@
+<div class="payment-view" ng-controller="productPaymentController"> 
+    <div class="container">
+        <div class="payment-process">
+            <img src="https://www.baotinmanhhai.vn//images/step1.png" class="img-responsive">
+        </div>
+
+        <div class="payment-table">
+            <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Hình sản phẩm</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Đơn giá</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Tổng giá</th>
+                    <th scope="col">Xóa</th>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="cart in carts">
+                  <tr>
+                    <th><img ng-src="{{ cart.image }}" style="width: 100px;"></th>
+                    <td>{{ cart.title }}</td>
+                    <td>{{ cart.price | currency:"":0 }} VND</td>
+                    <td>{{ cart.quantity }}</td>
+                    <td>{{ cart.price * cart.quantity | currency:"":0}} VND</td>
+                    <td><i class="fa fa-times" aria-hidden="true" ng-click="removeItem($index)"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+        <div class="payment-functions">
+            <div class="discount">
+                <label><strong>MÃ GIẢM GIÁ</strong></label>
+                <input type="text" name="coupon-code" id="coupon-code">
+                <button id="btn-coupon">SỬ DỤNG</button>
+            </div>
+
+            <div class="cart-total">
+                Tổng tiền: {{ totalCart | currency:"":0 }} VND
+            </div>
+
+            <div class="button-function">
+                <a class="btn btn btn-default" href=""><span class="fa fa-refresh"></span>
+                    Cập nhật
+                </a>
+
+                <a class="btn btn-default" ng-click=removeAll()><span class="fa fa-trash-o"></span> Xóa
+                    tất cả</a>
+            </div>
+        </div>
+    </div>
+</div>
