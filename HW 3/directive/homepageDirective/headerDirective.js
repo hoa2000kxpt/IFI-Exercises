@@ -25,7 +25,7 @@ myWebApp.directive("headerTopDown", function (cssInjector) {
                 } else {
                     x.className = "header-below-menu";
                 }
-            }) 
+            })
 
 
 
@@ -94,144 +94,65 @@ myWebApp.directive("headerTopDown", function (cssInjector) {
             btn_2.addEventListener("click", function () {
                 modal_2.style.display = "block";
                 body.style.overflow = "hidden";
-            })
-
-            // span_2.addEventListener('click', () => {
-            //  modal_2.style.display = "none";
-            //  body.style.overflow = "scroll";
-            // })
+            });
 
 
-            // $(function () {
-            //     var users = [
-            //         {
-            //             "email": "hoa2000kxpt@gmail.com",
-            //             "pass": "123456"
-            //         },
-            //         {
-            //             "email": "longvu2000@gmail.com",
-            //             "pass": "longvudeptrai"
-            //         }
-            //     ];
-            //     $(".form-signin").submit(function (e) {
-            //         e.preventDefault();
-            //         let email_signIn = $("[name='email_signin']").val();
-            //         let pass_signIn = $("[name='password_signin']").val();
-            //         let hasError = false;
-            //         // console.log(users);
+                // $(function () {
+                //     $(".form-signup").submit(function (e) {
+                //         let email_signUp = $("[name='email']").val();
+                //     let pass_signUp = $("[name='password']").val();
+                //     let hasError = false;
 
-            //         if (!$(".hide-email-signin").hasClass('hide')) {
-            //             $(".hide-email-signin").addClass('hide');
-            //         }
+                //     if (!$(".hide-email").hasClass('hide')) {
+                //         $(".hide-email").addClass('hide');
+                //     }
 
-            //         if (!$(".hide-password-signin").hasClass('hide')) {
-            //             $(".hide-password-signin").addClass('hide');
-            //         }
+                //     if (!$(".hide-pass").hasClass('hide')) {
+                //         $(".hide-pass").addClass('hide');
+                //     }
 
-            //         if (email_signIn === "") {
-            //             e.preventDefault();
-            //             $(".hide-email-signin").text('Email không được để trống!');
-            //             $(".hide-email-signin").css(
-            //                 {
-            //                     "color": "red",
-            //                     "font-weight": "bold",
-            //                     "font-size": 12
-            //                 });
-            //             $(".hide-email-signin").removeClass('hide');
-            //             $("[name='email_signin']").focus();
-            //             hasError = true;
-            //         }
+                //     if (email_signUp === "") {
+                //         e.preventDefault();
+                //         $(".hide-email-signup").text('Email không được để trống');
+                //         $(".hide-email-signup").css(
+                //             {
+                //                 "color": "red",
+                //                 "font-weight": "bold",
+                //                 "font-size": 12
+                //             });
+                //         $(".hide-email").removeClass('hide');
+                //         $("[name='email']").focus();
+                //         hasError = true;
+                //     }
 
-            //         if (pass_signIn === "") {
-            //             e.preventDefault();
-            //             $(".hide-password-signin").text('Mật khẩu không được để trống!');
-            //             $(".hide-password-signin").css(
-            //                 {
-            //                     "color": "red",
-            //                     "font-weight": "bold",
-            //                     "font-size": 12
-            //                 });
-            //             $(".hide-password-signin").removeClass('hide');
-            //             $("[name='password_signin']").focus();
-            //             hasError = true;
-            //         }
+                //     if (pass_signUp === "") {
+                //         e.preventDefault();
+                //         $(".hide-pass").text('Mật khẩu không được để trống');
+                //         $(".hide-pass").css(
+                //             {
+                //                 "color": "red",
+                //                 "font-weight": "bold",
+                //                 "font-size": 12
+                //             });
+                //         $(".hide-pass").removeClass('hide');
+                //         $("[name='password']").focus();
+                //         hasError = true;
+                //     }
+                //     }
+                // }
 
-            //         for (let i = 0; i < users.length; i++) {
-            //             if (!hasError && email_signIn == users[i].email && pass_signIn == users[i].pass) {
-            //                 alert("Đăng nhập thành công!");
-            //                 $(location).attr('href', 'http://127.0.0.1:5500/Homepage/index.html');
-            //                 break;
-            //             } else {
-            //                 alert("Email hoặc mật khẩu không chính xác!");
-            //                 break;
-            //             }
+                    // e.preventDefault();
+                    
+                
+            
+        }
+    }
+})
 
-            //         }
 
-            //     });
+                
+            
 
-            //     $(".form-signup").submit(function (e) {
-            //         e.preventDefault();
-            //         let email_signUp = $("[name='email_signup']").val();
-            //         let pass_signUp = $("[name='password_signup']").val();
-            //         let fullname_signUp = $("[name='fullname_signup']").val();
-            //         let hasError = false;
-
-            //         if (!$(".hide-fullname-signup").hasClass('hide')) {
-            //             $(".hide-fullname-signup").addClass('hide');
-            //         }
-
-            //         if (!$(".hide-email-signup").hasClass('hide')) {
-            //             $(".hide-email-signup").addClass('hide');
-            //         }
-
-            //         if (!$(".hide-password-signup").hasClass('hide')) {
-            //             $(".hide-password-signup").addClass('hide');
-            //         }
-
-            //         if (fullname_signUp === "") {
-            //             e.preventDefault();
-            //             $(".hide-fullname-signup").text('Họ tên không được để trống');
-            //             $(".hide-fullname-signup").css(
-            //                 {
-            //                     "color": "red",
-            //                     "font-weight": "bold",
-            //                     "font-size": 12
-            //                 });
-            //             $(".hide-fullname-signup").removeClass('hide');
-            //             $("[name='fullname_signup']").focus();
-            //             hasError = true;
-            //         }
-
-            //         if (email_signUp === "") {
-            //             e.preventDefault();
-            //             $(".hide-email-signup").text('Email không được để trống');
-            //             $(".hide-email-signup").css(
-            //                 {
-            //                     "color": "red",
-            //                     "font-weight": "bold",
-            //                     "font-size": 12
-            //                 });
-            //             $(".hide-email-signup").removeClass('hide');
-            //             $("[name='email_signup']").focus();
-            //             hasError = true;
-            //         }
-
-            //         if (pass_signUp === "") {
-            //             e.preventDefault();
-            //             $(".hide-password-signup").text('Mật khẩu không được để trống');
-            //             $(".hide-password-signup").css(
-            //                 {
-            //                     "color": "red",
-            //                     "font-weight": "bold",
-            //                     "font-size": 12
-            //                 });
-            //             $(".hide-password-signup").removeClass('hide');
-            //             $("[name='password_signup']").focus();
-            //             hasError = true;
-            //         }
-
-                   
 
             //         for (let i = 0; i < users.length; i++) {
             //             if (email_signUp == users[i].email) {
@@ -251,10 +172,4 @@ myWebApp.directive("headerTopDown", function (cssInjector) {
             //     });
             // });
 
-        }
-        // compile: function MyCtrl($scope, cssInjector)
-        // {
-        //    
-        // }
-    };
-});
+    

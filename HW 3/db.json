@@ -9,7 +9,7 @@
       "type": "Vòng",
       "gender": "Female",
       "views": "1,510",
-      "category":"Trang sức vàng ta ",
+      "category": "Trang sức vàng ta ",
       "price": 200000
     },
     {
@@ -21,7 +21,7 @@
       "type": "Lắc",
       "gender": "Children",
       "views": "1,451",
-      "category":"Trang sức ngọc",
+      "category": "Trang sức ngọc",
       "price": 50000
     },
     {
@@ -33,7 +33,7 @@
       "type": "bracelets",
       "gender": "Female",
       "views": "1,567",
-      "category":"Trang sức ngọc trai",
+      "category": "Trang sức ngọc trai",
       "price": 175000
     },
     {
@@ -45,7 +45,7 @@
       "type": "rings",
       "gender": "female",
       "views": "1,523",
-      "category":"Trang sức vàng",
+      "category": "Trang sức vàng",
       "price": 300000
     },
     {
@@ -57,7 +57,7 @@
       "type": "Vòng",
       "gender": "Female",
       "views": "628",
-      "category":"Trang sức vàng",
+      "category": "Trang sức vàng",
       "price": 200000
     },
     {
@@ -69,7 +69,7 @@
       "type": "Khác",
       "gender": "male",
       "views": "1,053",
-      "category":"Trang sức ngọc trai",
+      "category": "Trang sức ngọc trai",
       "price": 300000
     },
     {
@@ -81,7 +81,7 @@
       "type": "Khác",
       "gender": "Male",
       "views": "741",
-      "category":"Trang sức phong thuỷ",
+      "category": "Trang sức phong thuỷ",
       "price": 300000
     },
     {
@@ -93,7 +93,7 @@
       "type": "Vòng",
       "gender": "Male",
       "views": "1,031",
-      "category":"Trang sức phong thuỷ",
+      "category": "Trang sức phong thuỷ",
       "price": 300000
     },
     {
@@ -105,7 +105,7 @@
       "type": "Khác",
       "gender": "Unisex",
       "views": "1,031",
-      "category":"Trang sức phong thuỷ",
+      "category": "Trang sức phong thuỷ",
       "price": 100000
     },
     {
@@ -117,8 +117,74 @@
       "type": "Nhẫn",
       "gender": "Unisex",
       "views": "1,278",
-      "category":"Quà tặng",
+      "category": "Quà tặng",
       "price": 200000
+    }
+  ],
+  "GoldRateInfo": [
+    {
+      "id": 1,
+      "types": "Vàng Miếng VRTL",
+      "content": "999.9",
+      "buy": 5151,
+      "sell": 5221,
+      "status": "https://btmc.vn/Content/Home/images/up_arrow.png"
+    },
+    {
+      "id": 2,
+      "types": "Nhẫn tròn trơn",
+      "content": "999.9",
+      "buy": 5151,
+      "sell": 5221,
+      "status": "https://btmc.vn/Content/Home/images/up_arrow.png"
+    },
+    {
+      "id": 3,
+      "types": "Vàng trang sức; Bản vị; Thỏi; Nén",
+      "content": "999.9",
+      "buy": 5085,
+      "sell": 5195,
+      "status": "https://btmc.vn/Content/Home/images/up_arrow.png"
+    },
+    {
+      "id": 4,
+      "types": "Quà mừng bản vị vàng",
+      "content": "999.9",
+      "buy": 5151,
+      "sell": 5221,
+      "status": "https://btmc.vn/Content/Home/images/up_arrow.png"
+    },
+    {
+      "id": 5,
+      "types": "Vàng trang sức",
+      "content": "999.9",
+      "buy": 5075,
+      "sell": 5185,
+      "status": "https://btmc.vn/Content/Home/images/up_arrow.png"
+    },
+    {
+      "id": 6,
+      "types": "Vàng HTBT",
+      "content": "999.9",
+      "buy": 5075,
+      "sell": 5050,
+      "status": "/common/images/down_arrow.png"
+    },
+    {
+      "id": 7,
+      "types": "Vàng miếng SJC",
+      "content": "999.9",
+      "buy": 5690,
+      "sell": 5752,
+      "status": "https://btmc.vn/Content/Home/images/up_arrow.png"
+    },
+    {
+      "id": 8,
+      "types": "Vàng nguyên liệu",
+      "content": "999.9",
+      "buy": 5025,
+      "sell": 5000,
+      "status": "/common/images/down_arrow.png"
     }
   ]
 }

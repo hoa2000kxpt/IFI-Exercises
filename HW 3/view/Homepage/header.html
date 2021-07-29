@@ -41,7 +41,7 @@
                 </li>
 
                 <li class="header-top-menu-logout" style="display: none;">
-                    <a>Đăng xuất</a>
+                    <a ng-click="logout()">Đăng xuất</a>
                 </li>
 
 
@@ -115,7 +115,7 @@
             <!-- Modal content -->
             <div class="modal-content-signup">
                 <span class="close-2"></span>
-                <form class="form-signup" method="POST">
+                <form class="form-signup" name="form-signup" method="POST" novalidate>
                     <div class="container">
                         <div class="row">
 
@@ -125,15 +125,15 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="fullname"><strong>Họ tên</strong></label>
+                                                <label for="fullname"><strong>Họ tên<span style="color: red;">(*)</span></strong></label>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="email"><strong>Email</strong></label>
+                                                <label for="email"><strong>Email<span style="color: red;">(*)</span></strong></label>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="password"><strong>Password</strong></label>
+                                                <label for="password"><strong>Password<span style="color: red;">(*)</span></strong></label>
                                             </div>
 
                                             <div class="form-group">
@@ -143,18 +143,32 @@
                                         </div>
 
                                         <div class="col-md-8">
+                                            
                                             <input type="text" class="form-control" id="fullname" name="fullname"
-                                                ng-model="user.fullname" required>
+                                                ng-model="user.fullname">
+                                            <div ng-show="form-signup.fullname.$touched && form-signup.fullname.$empty">
+                                                <small style="color: red; display: block !important; text-align: center;">Username không hợp lệ</small>
+                                            </div>
+                                            
                                             <input type="email" class="form-control" id="email" name="email"
                                                 ng-model="user.email" required>
+                                            <div ng-show="form-signup.email.$touched && form-signup.email.$invalid">
+                                                <small style="color: red; display: block !important; text-align: center;">Email không hợp lệ</small>
+                                            </div>
                                             <input type="password" class="form-control" id="password" name="password"
                                                 ng-model="user.password" required>
+                                                <div ng-show="form-signup.password.$touched && form-signup.password.$invalid">
+                                                    <small style="color: red; display: block !important; text-align: center;">Password không hợp lệ</small>
+                                                </div>
                                             <select name="genders" id="genders" ng-model="user.genders">
                                                 <option value="Male" selected>Nam</option>
                                                 <option value="Female">Nữ</option>
                                             </select>
                                             <div class="btn-signup">
-                                                <button type="button" ng-click="signUp()">Đăng ký</button>
+                                                <button type="button" ng-click="signUp()" ng-disabled="form-signup.$invalid">Đăng ký</button>
+                                                <p class="hide hide-email"></p>
+                                                <p class="hide hide-pass"></p>
+                                                <!-- <span ng-show="form-signup.$invalid" style="color:red">Not :(</span> -->
                                             </div>
 
 
@@ -213,8 +227,9 @@
                             </li>
 
                             <li ng-controller="cartHeaderController">
-                                <a ng-click="cartRedirectPage()"><i class="fa fa-shopping-cart" aria-hidden="true"
-                                        style="margin-right: 10px;"></i>Giỏ hàng (<span id="cart-header">{{ cart_nums}}</span>)</a>
+                                <a ng-click="cartRedirectPage()" ng-href="#/productPayment"><i class="fa fa-shopping-cart" aria-hidden="true"
+                                        style="margin-right: 10px;"></i>Giỏ hàng (<span id="cart-header">{{
+                                        cart_nums}}</span>)</a>
                             </li>
 
                             <li>

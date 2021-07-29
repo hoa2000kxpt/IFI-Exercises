@@ -1,20 +1,21 @@
-myWebApp.controller("productController", ['$scope', '$routeParams','productService', function ($scope, $routeParams,productService) {
+myWebApp.controller("productController", ['$scope', '$routeParams', 'productService', function ($scope, $routeParams, productService) {
     $scope.id = $routeParams.id;
     $scope.quantity = 1;
-    $scope.transactionFee = 15000;
+    $scope.transportFee = 15000;
     $scope.totalPrice = 0;
     $scope.carts = [];
     $scope.item = [];
-    console.log($scope.id);
+    // console.log($scope.id);
+    $("#pop-up").remove()
 
-    $scope.$watch("quantity", function() {
+    $scope.$watch("quantity", function () {
         console.log($scope.quantity);
     })
 
 
     productService.getSingleProduct($scope.id).then(
-        function(data) {
-            
+        function (data) {
+
             $scope.item = data;
             console.log($scope.item);
         })
@@ -32,24 +33,59 @@ myWebApp.controller("productController", ['$scope', '$routeParams','productServi
             for (var i = 0; i < $scope.carts.length; i++) {
                 if ($scope.carts[i].id == item.id) {
                     $scope.carts[i].quantity += $scope.quantity;
-                    console.log($scope.carts[i].quantity);
+                    // console.log($scope.carts[i].quantity);
                     isDuplicated = true;
-                } 
+                }
             }
             if (!isDuplicated) {
-                
-                $scope.carts.push({ id: item.id, image: item.image, title: item.title, code: item.code,
-                     link: item.link, price: item.price, quantity: $scope.quantity});
-                     console.log($scope.carts);
+
+                $scope.carts.push({
+                    id: item.id, image: item.image, title: item.title, code: item.code,
+                    link: item.link, price: item.price, quantity: $scope.quantity
+                });
+                // console.log($scope.carts);
+
             }
             // console.log($scope.carts);
             localStorage.setItem('buy-cart', JSON.stringify($scope.carts));
-            $scope.totalPrice = $scope.transactionFee + (item.price * $scope.quantity); 
+            $scope.totalPrice = $scope.transportFee + (item.price * $scope.quantity);
 
             // Problems: Save the data in the localStorage, Duplicated problems
-
         }
+        $scope.cartNums = $scope.carts.length;
+        // console.log($scope.cartNums);
+
+        $scope.getTotalCartWithoutTransportFee = function () {
+            let total = 0;
+            for (var i = 0; i < $scope.carts.length; i++) {
+                total += ($scope.carts[i].price * $scope.carts[i].quantity);
+                // console.log($scope.totalCart);
+            }
+            return total;
+        }
+
+        $scope.getTransportFee = function() {
+            let transportFee = 0;
+            transportFee = $scope.transportFee * $scope.carts.length;
+            return transportFee;
+        }
+
+        $scope.getTotalCart = function () {
+            let total = 0;
+            for (var i = 0; i < $scope.carts.length; i++) {
+                total += ($scope.carts[i].price * $scope.carts[i].quantity);
+                // console.log($scope.totalCart);
+            }
+            return total + $scope.transportFee * $scope.carts.length;
+        }
+
     };
+
+    $scope.removeSingleItem = function (id) {
+        // console.log(id);
+        $scope.carts.splice(id, 1);
+        localStorage.setItem('buy-cart', JSON.stringify($scope.carts));
+    }
 
 
 }])

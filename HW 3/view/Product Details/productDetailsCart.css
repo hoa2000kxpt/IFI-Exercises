@@ -220,7 +220,6 @@ input[type=number] {
     font-size: 16px;
     color: #333;
     margin-bottom: 10px;
-    margin-top: 20px;
 }
 
 #Product-modal .modal-content table td {
@@ -264,5 +263,10 @@ input[type=number] {
     line-height: 15px;
     height: 35px;
     font-size: 13px;
+}
+
+#Product-modal .cart-details {
+    overflow-y: scroll;
+    height: 350px;
 }
 

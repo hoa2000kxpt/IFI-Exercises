@@ -1,0 +1,8 @@
+.back-to-top {
+    display: none;
+}
+
+#pop-up {
+    display: none !important;
+    overflow: scroll !important;
+}

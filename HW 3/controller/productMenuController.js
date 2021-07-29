@@ -15,6 +15,9 @@ myWebApp.controller('productMenuController', ['$scope', 'productService', functi
     gender: []
   };
   $scope.resultedProduct = [];
+  $('body').removeClass('modal-open');
+  $('.modal-backdrop').remove();
+  $('body').css('overflow-x', 'scroll');
 
 
   $scope.setCategoryFilter = function (category) {

@@ -1,12 +1,32 @@
-<div ng-controller="goldRatePriceController">
-    <div class="container">
+<div ng-controller="goldRatePriceController" style="margin-top: 25px;" ng-init="init()">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
-                <canvas id="myChart"></canvas>
+            <div class="col-md-7">
+                <div id="linechart_material" style="width: 900px; height: 500px"></div>
             </div>
 
-            <div class="col-md-6">
-
+            <div class="col-md-5">
+                <table class="table table-striped">
+                    <thead class="bg-danger" style="color: #fff; text-align: center; margin: auto;">
+                      <tr>
+                        <th scope="col">Loại vàng (types of gold)</th>
+                        <th scope="col">Hàm lượng (content)</th>
+                        <th scope="col">Mua vào (buy)</th>
+                        <th scope="col">Bán ra (sell)</th>
+                        <th scope="col">Trạng thái (status)</th>
+                      </tr>
+                    </thead>
+                    <tbody ng-repeat="gold in goldInfo">
+                      <tr  style="text-align: center;"> 
+                        <th scope="row"> {{ gold.types }}</th>
+                        <td>{{ gold.content }}</td>
+                        <td>{{ gold.buy }}</td>
+                        <td>{{ gold.sell }}</td>
+                        <td><img ng-src="{{ gold.status }}" 
+                          style="width: 25px;"></td>
+                      </tr>
+                    </tbody>
+                  </table>
             </div>
 
         </div>

@@ -64,3 +64,47 @@
     background-color: #fff;
     border-color: #ccc;
 }
+
+.btn-direction {
+    margin-bottom: 50px;
+}
+
+.btn-back {
+    border-radius: 0!important;
+    height: 32px;
+    background-color: #8a8a8a !important;
+    color: #fff;
+    line-height: 20px;
+    
+}
+
+.btn-payment {
+    min-width: 280px;
+    background-color: #9e1b30 !important;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 0;
+    height: 32px;
+    float: right;
+}
+
+#pop-up {
+    display: none !important;
+    overflow: scroll !important;
+}
+
+.back-to-top {
+    display: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

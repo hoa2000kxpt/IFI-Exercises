@@ -18,12 +18,13 @@ myWebApp.config(function ($routeProvider, $locationProvider) {
 
     .when('/productmenu', {
         templateUrl: '/view/Product Menu/productMenu.html',
-        controller: 'productMenuController'
+        controller: 'productMenuController',
+        css: '/view/Product Menu/productMenu.css'
     })
 
     .when('/contact', {
-        templateUrl: '/view/Contact/contact.html'
-        // css: '/view/Contact/contact.css'
+        templateUrl: '/view/Contact/contact.html',
+        css: '/view/Contact/contact.css'
     })
 
     .when('/emptycart', {

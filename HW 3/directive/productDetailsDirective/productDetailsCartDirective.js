@@ -29,7 +29,7 @@ myWebApp.directive("productDetailsCart", function (cssInjector) {
                     $('input[type="number"]').val(num);
                 });
 
-              
+                
             });
         }
     }

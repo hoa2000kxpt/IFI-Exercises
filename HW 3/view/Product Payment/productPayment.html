@@ -21,8 +21,12 @@
                     <th><img ng-src="{{ cart.image }}" style="width: 100px;"></th>
                     <td>{{ cart.title }}</td>
                     <td>{{ cart.price | currency:"":0 }} VND</td>
-                    <td>{{ cart.quantity }}</td>
-                    <td>{{ cart.price * cart.quantity | currency:"":0}} VND</td>
+                    <td>
+                        <i class="fa fa-minus" aria-hidden="true" style="cursor: pointer;" ng-click="minusItem($index)"></i>
+                          <input type="number" style="width: 30%; text-align: center;" value="{{ cart.quantity }}" min=1>
+                        <i class="fa fa-plus" aria-hidden="true" style="cursor: pointer;" ng-click="plusItem($index)"></i>
+                    </td>
+                    <td>{{ cart.price * cart.quantity + transportFee | currency:"":0}} VND</td>
                     <td><i class="fa fa-times" aria-hidden="true" ng-click="removeItem($index)"></i></td>
                   </tr>
                 </tbody>
@@ -37,7 +41,7 @@
             </div>
 
             <div class="cart-total">
-                Tổng tiền: {{ totalCart | currency:"":0 }} VND
+                Tổng tiền: {{ getTotalPrice() | currency:"":0 }} VND
             </div>
 
             <div class="button-function">
@@ -48,6 +52,14 @@
                 <a class="btn btn-default" ng-click=removeAll()><span class="fa fa-trash-o"></span> Xóa
                     tất cả</a>
             </div>
+        </div>
+        
+        <div class="btn-direction">
+          <a class="btn btn-default btn-back" href="#/productmenu">
+              <span class="fa fa-reply"></span> Tiếp tục mua hàng
+          </a>
+
+          <a class="btn btn-next btn-payment" ng-click="exportData()">Thanh toán</a>
         </div>
     </div>
 </div>

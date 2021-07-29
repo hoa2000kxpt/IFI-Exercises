@@ -515,6 +515,19 @@
     width: 6vw !important;
 }
 
+input.ng-invalid.ng-touched, input.ng-empty.ng-touched#fullname {
+    border: 2px solid red;
+}
+
+/* input.ng-valid.ng-touched {
+    border: 2px solid green;
+} */
+
+button[disabled="disabled"] {
+    opacity: 0.4;
+    cursor: not-allowed !important;
+}
+
 
 
 

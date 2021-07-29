@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="product-image">
-                        <img ng-src="{{ item.image}}">
+                        <img ng-src="{{ item.image}}" class="img-responsive">
                     </div>
                 </div>
 
@@ -67,7 +67,7 @@
                         <div class="product-quantity"><strong>Số lượng đặt mua: </strong>
                             <span id="box">
                                 <button id="minus" ng-click="quantity=quantity-1">-</button>
-                                <input type="number" min=1 value="{{quantity}}">
+                                <input type="number" min=1 id="num_carts" value="{{quantity}}"> 
                                 <button id="add" ng-click="quantity=quantity+1">+</button>
                             </span>
                         </div>
@@ -94,47 +94,58 @@
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="Product-modal">
-                                    <div class="modal-dialog modal-lg">
+                                    <div class="modal-dialog modal-xl">
 
                                         <!-- Modal content-->
                                         <div class="modal-content">
 
                                             <div class="container">
                                                 <div class="row">
-                                                    <button type="button" class="close"
-                                                        data-dismiss="modal">&times;</button>
+                                                    <!-- <button type="button" class="close" id="close_modal"
+                                                        data-dismiss="modal">&times;</button> -->
 
                                                     <div class="col-md-7 col-xs-12">
-                                                        
-                                                            <h3><img class="modal-cart-icon"
-                                                                    src="https://www.baotinmanhhai.vn/images/check.png">
-                                                                {{ quantity }} sản phẩm mới đã được thêm vào giỏ hàng
-                                                                của
-                                                                bạn
-                                                            </h3>
 
-                                                            <div class="row" style="display: flex;" ng-repeat="cart in carts"
-                                                            ng-init = "setTotal(cart)">
-                                                                <div>
-                                                                    
-                                                                </div>
-                                                                <div class="col-md-4 col-xs-3">
-                                                                    <img class="img-responsive"
-                                                                        ng-src="{{ cart.image }}">
-                                                                </div>
-                                                                <div class="col-md-8 col-xs-9">
-                                                                    <div class="title-product-popup">
-                                                                        {{ cart.title }}
+                                                        <h3><img class="modal-cart-icon"
+                                                                src="https://www.baotinmanhhai.vn/images/check.png">
+                                                            {{ cartNums }} sản phẩm mới đã được thêm vào giỏ hàng
+                                                            của
+                                                            bạn
+                                                        </h3>
+
+                                                        <div class="cart-details">
+                                                            <div class="row" ng-repeat="cart in carts"
+                                                                ng-init="setTotal(cart)" style="margin-bottom: 1em;">
+
+                                                                <div class="container" style="display: flex;">
+                                                                    <div class="col-md-4">
+                                                                        <img class="img-responsive"
+                                                                            ng-src="{{ cart.image }}">
                                                                     </div>
-                                                                    <div class="product-details-price"></div>
-                                                                    <div class="product-details-popup-number">
-                                                                        <label for="cartSidebar_qty">Số lượng: {{
-                                                                            cart.quantity }}</label>
+
+                                                                    <div class="col-md-8">
+                                                                        <a href="" ng-click="removeSingleItem($index)">
+                                                                            <i class="fa fa-times" aria-hidden="true"
+                                                                                style="float: right; color: black !important;"></i>
+                                                                        </a>
+                                                                        <div class="title-product-popup">
+                                                                            {{ cart.title }}
+                                                                        </div>
+
+                                                                        <div class="product-details-price"></div>
+                                                                        <div class="product-details-popup-number">
+                                                                            <label for="cartSidebar_qty"><b>Số
+                                                                                    lượng:</b> {{
+                                                                                cart.quantity }}</label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
+
                                                             </div>
 
-                                                        
+                                                        </div>
+
+
 
 
                                                     </div>
@@ -142,16 +153,16 @@
                                                     <div class="col-md-5 col-xs-12">
                                                         <h3><img class="modal-cart-icon"
                                                                 src="https://baotinmanhhai.vn/images/icon-cart.png"> Giỏ
-                                                            hàng (1 sản phẩm)</h3>
+                                                            hàng ({{ cartNums }} sản phẩm)</h3>
                                                         <table>
                                                             <tbody>
                                                                 <tr>
                                                                     <td>Tạm tính</td>
-                                                                    <td>{{ item.price | currency:"":0 }} VND</td>
+                                                                    <td>{{ getTotalCartWithoutTransportFee() | currency:"":0 }} VND</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Phí vận chuyển</td>
-                                                                    <td>{{ transactionFee | currency:"":0 }} VND</td>
+                                                                    <td>{{ getTransportFee() | currency:"":0 }} VND</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Giảm giá</td>
@@ -164,13 +175,12 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td><b>Thành tiền (Đã bao gồm VAT):</b></td>
-                                                                    <td>{{ totalPrice | currency:"":0 }} VND</td>
+                                                                    <td>{{ getTotalCart() | currency:"":0 }} VND</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
                                                         <div class="option">
-                                                            <a class="buy-continue"
-                                                                href="#/productmenu">Tiếp tục mua
+                                                            <a class="buy-continue" href="#/productmenu">Tiếp tục mua
                                                                 hàng</a>
                                                             <a class="cust-pay" href="#/productPayment">Thanh toán</a>
                                                         </div>
