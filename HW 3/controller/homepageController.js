@@ -1,6 +1,7 @@
 
 myWebApp.controller('carouselController', ['$scope', '$timeout', 'productService', '$q', function ($scope, $timeout, productService, $q) {
     $scope.items = [];
+    
     productService.getAllProducts().then(
         function (data) {
             // console.log(data);
@@ -30,10 +31,11 @@ myWebApp.controller("signInSignUpController", function ($scope) {
         let fullname = document.getElementById("fullname").value;
         let email = document.getElementById("email").value;
         let password = document.getElementById("password").value;
+        // let isValid = true;
         console.log(fullname);
         if (fullname == "" || email == "" || password == "") {
-            alert("Các trường bắt buộc không được để trống!")
-            return; 
+            alert("Các trường bắt buộc không được để trống!");
+            return false; 
         }
         $scope.accounts.push($scope.user);
         // $scope.user = null;
@@ -56,7 +58,7 @@ myWebApp.controller("signInSignUpController", function ($scope) {
             })
     }
 
-    console.log($scope.accounts);
+    // console.log($scope.accounts);
     $scope.login = function () {
         // console.log($scope.email_signin);
         // console.log($scope.password_signin);
@@ -78,8 +80,8 @@ myWebApp.controller("signInSignUpController", function ($scope) {
                     if (true) {
                         // window.location.href = "https://www.google.com/";
                         $scope.isLogin = true;
-                        $scope.info = user;
-                        $('#myModal').modal('hide');
+                        $scope.info = $scope.user;
+                        $('#myModal').hide();
                     }
                 })
             $(".header-top-menu-instruction").hide();

@@ -6,3 +6,7 @@
     display: none !important;
     overflow: scroll;
 }
+
+input[type=radio] {
+    margin: 0 5px;
+}

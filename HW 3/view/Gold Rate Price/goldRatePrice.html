@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-7">
-                <div id="linechart_material" style="width: 900px; height: 500px"></div>
+                <div id="linechart_material" style="width: 900px; height: 500px"></div> 
             </div>
 
             <div class="col-md-5">
@@ -20,7 +20,7 @@
                       <tr  style="text-align: center;"> 
                         <th scope="row"> {{ gold.types }}</th>
                         <td>{{ gold.content }}</td>
-                        <td>{{ gold.buy }}</td>
+                        <td>{{ goldBuy() }}</td>
                         <td>{{ gold.sell }}</td>
                         <td><img ng-src="{{ gold.status }}" 
                           style="width: 25px;"></td>
@@ -28,6 +28,18 @@
                     </tbody>
                   </table>
             </div>
+
+            <div class="col-md-12">
+                <div class="radio-group">
+                  <input type="radio" name="gold-chart" id="day" ng-click="getDayGoldInfo()" checked/><label for="day">1 ngày</label>
+                  <input type="radio" name="gold-chart" id="week" ng-click="getWeekGoldInfo()"/><label for="week">1 tuần</label>
+                  <input type="radio" name="gold-chart" id="month"  ng-click="getMonthGoldInfo()"/><label for="month">1 tháng</label>
+                  <input type="radio" name="gold-chart" id="quarter" ng-click="getQuarterGoldInfo()"/><label for="quarter">1 quý</label>
+                  <input type="radio" name="gold-chart" id="year" ng-click="getYearGoldInfo()"/><label for="year">1 năm</label>
+                </div>
+                
+            </div>
+            
 
         </div>
     </div>

@@ -146,20 +146,20 @@
                                             
                                             <input type="text" class="form-control" id="fullname" name="fullname"
                                                 ng-model="user.fullname">
-                                            <div ng-show="form-signup.fullname.$touched && form-signup.fullname.$empty">
+                                            <!-- <div ng-show="form-signup.fullname.$touched && form-signup.fullname.$empty">
                                                 <small style="color: red; display: block !important; text-align: center;">Username không hợp lệ</small>
-                                            </div>
+                                            </div> -->
                                             
                                             <input type="email" class="form-control" id="email" name="email"
                                                 ng-model="user.email" required>
-                                            <div ng-show="form-signup.email.$touched && form-signup.email.$invalid">
+                                            <!-- <div ng-show="form-signup.email.$touched && form-signup.email.$invalid">
                                                 <small style="color: red; display: block !important; text-align: center;">Email không hợp lệ</small>
-                                            </div>
+                                            </div> -->
                                             <input type="password" class="form-control" id="password" name="password"
                                                 ng-model="user.password" required>
-                                                <div ng-show="form-signup.password.$touched && form-signup.password.$invalid">
+                                                <!-- <div ng-show="form-signup.password.$touched && form-signup.password.$invalid">
                                                     <small style="color: red; display: block !important; text-align: center;">Password không hợp lệ</small>
-                                                </div>
+                                                </div> -->
                                             <select name="genders" id="genders" ng-model="user.genders">
                                                 <option value="Male" selected>Nam</option>
                                                 <option value="Female">Nữ</option>
