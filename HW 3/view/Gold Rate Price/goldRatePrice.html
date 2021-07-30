@@ -6,7 +6,7 @@
             </div>
 
             <div class="col-md-5">
-                <table class="table table-striped">
+                <table class="table table-striped" id="goldRateTable">
                     <thead class="bg-danger" style="color: #fff; text-align: center; margin: auto;">
                       <tr>
                         <th scope="col">Loại vàng (types of gold)</th>
@@ -21,8 +21,8 @@
                         <th scope="row"> {{ gold.types }}</th>
                         <td>{{ gold.content }}</td>
                         <td>{{ goldBuy() }}</td>
-                        <td>{{ gold.sell }}</td>
-                        <td><img ng-src="{{ gold.status }}" 
+                        <td>{{ GoldSell() }}</td>
+                        <td><img ng-src="{{ goldStatus(imgRandom) }}" 
                           style="width: 25px;"></td>
                       </tr>
                     </tbody>

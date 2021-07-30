@@ -1,19 +1,35 @@
 myWebApp.controller('goldRatePriceController', ['$scope', '$interval', 'goldService', function ($scope, $interval, goldService) {
   $scope.goldInfo = [];
-  function getRandomArbitrary(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+  $scope.imgRandom = [
+    "https://btmc.vn/Content/Home/images/up_arrow.png",
+    "/common/images/down_arrow.png"
+  ];
+
+
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  $scope.goldBuy = function () {
-    
-    let randomNum = getRandomArbitrary(5063, 5782);
-    // return setInterval(function(){
-    //   $scope.$apply(randomNum);
-    // }, 2000)
-    // return $interval(randomNum,1000);
-    // console.log($interval(randomNum,1000));
-      return randomNum;
-  }
+  let getGoldBuy = $interval(function () {
+
+    $scope.goldBuy = function () { return getRandomInt(5063, 5782) };
+
+  }, 2000);
+
+  let getGoldSell = $interval(function () {
+
+    $scope.GoldSell = function () { return getRandomInt(5063, 5782) };
+
+  }, 2000);
+
+  $interval(function() {
+    $scope.goldStatus = function(imgRandom) {return imgRandom[Math.floor(Math.random() * imgRandom.length)]};
+  }, 2000)
+
+  // console.log(getGoldBuy);
+  // console.log(getGoldSell);
 
   goldService.getAllGoldRateInfo().then(
     function (data) {
@@ -21,11 +37,7 @@ myWebApp.controller('goldRatePriceController', ['$scope', '$interval', 'goldServ
       // console.log($scope.goldInfo);
     }
   )
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+
 
   $scope.init = function () {
     google.charts.load('current', { 'packages': ['line'] });

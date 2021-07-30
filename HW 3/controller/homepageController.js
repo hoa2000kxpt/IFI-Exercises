@@ -18,6 +18,14 @@ myWebApp.controller('carouselController', ['$scope', '$timeout', 'productService
 myWebApp.controller("signInSignUpController", function ($scope) {
     $scope.isLogin = false;
     $scope.accounts = [];
+    $scope.userSignup = {
+        fullname: "",
+        email: "",
+        password: "",
+        genders: ""
+
+    };
+
     // $scope.user.password = "";
     if (localStorage.getItem('user-list')) {
         $scope.accounts = angular.fromJson(localStorage.getItem('user-list'));
@@ -37,7 +45,7 @@ myWebApp.controller("signInSignUpController", function ($scope) {
             alert("Các trường bắt buộc không được để trống!");
             return false; 
         }
-        $scope.accounts.push($scope.user);
+        $scope.accounts.push($scope.userSignup);
         // $scope.user = null;
         localStorage.setItem('user-list', angular.toJson($scope.accounts));
         // console.log($scope.accounts);

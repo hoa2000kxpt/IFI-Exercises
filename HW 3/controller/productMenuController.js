@@ -1,6 +1,6 @@
 // CONTROLLERS
 myWebApp.controller('productMenuController', ['$scope', 'productService', function ($scope, productService) {
-
+  
   $scope.items = [];
   $scope.categories = ["Trang sức vàng ta", " Trang sức đá quý",
     "Trang sức ngọc trai", "Trang sức ngọc",
@@ -98,6 +98,22 @@ myWebApp.controller('productMenuController', ['$scope', 'productService', functi
     }
   )
 
+  $scope.productsOfCurrentPage = [];
+  $scope.currentPage = 1;
+  $scope.itemsPerPage = 5;
+  $scope.maxSize = 5;
+
+  $scope.$watch('currentPage', function() {
+    var begin = (($scope.currentPage - 1) * $scope.itemsPerPage)
+    , end = begin + $scope.itemsPerPage;
+
+    // $scope.productsOfCurrentPage = $scope.resultedProduct.slice(begin, end)
+    $scope.resultedProduct = $scope.items.slice(begin, end);
+    
+  });
+
+ 
+
 
 
 
@@ -105,20 +121,6 @@ myWebApp.controller('productMenuController', ['$scope', 'productService', functi
 
 }]);
 
-myWebApp.controller('PaginationDemoCtrl', function ($scope, $log) {
-  $scope.totalItems = 10;
-  $scope.currentPage = 4;
 
-  $scope.setPage = function (pageNo) {
-    $scope.currentPage = pageNo;
-  };
 
-  $scope.pageChanged = function () {
-    $log.log('Page changed to: ' + $scope.currentPage);
-  };
-
-  $scope.maxSize = 5;
-  $scope.bigTotalItems = 175;
-  $scope.bigCurrentPage = 1;
-});
 

@@ -99,6 +99,11 @@
     transform: scale(.95);
     transition: all .3s;
     cursor: pointer;
+    border: 1px solid #636e72;
+}
+
+.all-products .all-products-body .thumbnail:hover {
+    transform: scale(1.02);
 }
 
 
@@ -110,7 +115,7 @@
     text-transform: uppercase;
     font-weight: 400;
     color: var(--black);
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 
@@ -160,21 +165,21 @@
 } */
 
 
-/* #menu-products-items .all-products .all-products-heading {
+#menu-products-items .all-products .all-products-heading {
     font-weight: 400;
-    font-size: 2rem !important;
+    font-size: 1.7rem !important;
     text-transform: uppercase;
     margin-bottom: 12px;
     margin-right: 5em;
     margin-top: 1em;
-} */
+}
 
 .pagination {
     float: right;
 
 }
-
-.pagination li:first-child, .pagination li:nth-child(2),  .pagination li:last-child {
+ 
+.pagination li {
     padding-right: 1.5rem;
     border: 1px solid gray;
     text-align: center;
@@ -182,20 +187,20 @@
     color: var(--black);
 } 
 
-.pagination li:nth-child(2) {
-    background-color: #9E1B30;
-    color: white;
+
+
+.pagination li.active {
+    /* color: white !important; */
+    background-color: #9E1B30; 
+}  
+
+.pagination li.active a {
+    color: #fff !important; 
 }
 
 
-
-.pagination li:first-child a, .pagination li:nth-child(2) a,  .pagination li:last-child a{
+.pagination li a {
     color: var(--black) !important;
-}
-
-.pagination li:nth-child(2) a {
-    color: white !important;
-    /* background-color: #9E1B30; */
 }
 
 

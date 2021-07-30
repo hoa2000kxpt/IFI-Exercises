@@ -29,28 +29,37 @@
 
                     Chúng tôi sẽ xem xét và gửi phản hồi sớm nhất</p>
 
-                <form>
+                <form class="contactSubmit" name="contactSubmit" method="POST" novalidate>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="full-name" name="full-name"
-                            placeholder="Họ tên">
+                        <input type="text" class="form-control" id="fullName" name="fullName"
+                            placeholder="Họ tên" ng-model="fullName">
+                        <div ng-show="contactSubmit.fullName.$touched && contactSubmit.fullName.$empty">
+                            <small style="color: red; display: block !important; text-align: center;">Username không hợp lệ</small>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="email">
+                        <div ng-show="contactSubmit.email.$touched && contactSubmit.email.$empty">
+                            <small style="color: red; display: block !important; text-align: center;">Email không hợp lệ</small>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <textarea class="form-control" id="content" name="content" placeholder="content"></textarea>
+                        <textarea class="form-control" id="content" name="content" placeholder="Nội dung" ng-model="content"></textarea>
+                        <div ng-show="contactSubmit.content.$touched && contactSubmit.content.$empty">
+                            <small style="color: red; display: block !important; text-align: center;">Nội dung không hợp lệ</small>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="code">Mã bảo vệ<span id="chr-code">TSFGHIP</span></label>
                         <input type="text" class="form-control" id="code" name="code"
-                            placeholder="Họ tên">
+                            placeholder="Mã bảo vệ">
                     </div>
 
 
-                    <button type="submit" class="btn btn-danger">Gửi liên hệ</button>
+                    <button type="button" class="btn btn-danger" ng-click="submitContact()" ng-disabled="form-signup.$invalid">Gửi liên hệ</button>
                 </form>
             </div>
 
