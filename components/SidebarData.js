@@ -19,7 +19,7 @@ export const SidebarData = [
     },
     {
         title: "Log out",
-        path: '/pages/api/auth/Login.tsx',
+        path: '/login',
         icon: <RiIcons.RiLogoutBoxLine />,
         cName: "nav-text"
     }

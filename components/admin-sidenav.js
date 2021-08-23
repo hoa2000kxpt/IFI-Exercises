@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
-// import styles from './admin-sidebar.module.css'; // CSS Modules
-import { IconContext } from 'react-icons'
+import styles from './admin-sidebar.module.css'; // CSS Modules
+import { IconContext } from 'react-icons';
+import { useSession, signOut } from 'next-auth/client';
+import { Button } from 'react-bootstrap';
 
 function AdminSidenav() {
-    const [sidebar, setSidebar] = useState(false)
+    const [sidebar, setSidebar] = useState(false);
 
-    const showSidebar = () => setSidebar(!sidebar)
+    const showSidebar = () => setSidebar(!sidebar);
+
+    function logoutHandler() {
+        // window.location.href = "http://localhost:3000";
+
+        signOut();
+    }
 
     return (
         <>
@@ -21,6 +29,12 @@ function AdminSidenav() {
                         display: flex;
                         justify-content: start;
                         align-items: center;
+                    }
+
+                    .logout {
+                        color: #fff;
+                        padding: 10px;
+                        margin-left: 30px;
                     }
                     
                     .menu-bars {
@@ -107,6 +121,7 @@ function AdminSidenav() {
                         <FaIcons.FaBars onClick={showSidebar} />
                     </Link>
                     <h3 className="navbar-heading">Admin Page</h3>
+                    <Button variant="danger" onClick={logoutHandler} className="logout">Log Out</Button>
                 </div>
 
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -119,10 +134,10 @@ function AdminSidenav() {
                         {SidebarData.map((item, index) => {
                             return (
                                 <li key={index} className={item.cName}>
-                                    <Link to={item.path}>
+                                    <NavLink to={item.path} activeClassName={styles.active}>
                                         {item.icon}
                                         <span>{item.title}</span>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                             )
                         })}

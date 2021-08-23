@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { Table } from 'react-bootstrap';
 import MaterialTable from "material-table";
 import { forwardRef } from 'react';
-
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
 import Check from '@material-ui/icons/Check';
@@ -19,91 +18,150 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import Moment from 'react-moment';
+import dbConnect from "../../../utils/dbConnect";
+// import { connectToDatabase } from '../../../lib/db';
+
+
+
+async function createUser(email, password, fullname, phoneNumber, gender, dob, status, role) {
+    const response = fetch('/pages/api/auth/creatUser.js', {
+        method: 'POST',
+        body: JSON.stringify({ email, password, fullname, phoneNumber, gender, dob, status, role }),
+        headers: {
+            'Content-Type': "application/json"
+        }
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong!');
+    }
+
+    return data;
+}
+
+
+
+// async function getStaticProps() {
+//     const res = await fetch("http://localhost:3000/api/users");
+//     const data = await res.json();
+//     console.log(data[0]);
+//     // for (let i = 0; i < data.length; i++) {
+
+//     // }
+//     return data;
+
+// }
 
 
 
 
 const AdminTable = () => {
-    const [tableData, setTableData] = useState([
-        {
-            "username": "Hoa Prox",
-            "email": "hoa2000kxpt@gmail.com",
-            "fullname": "Do Van Hoa",
-            "phoneNumber": "11111",
-            "gender": "1",
-            "password": "123456",
-            "role": "admin",
-            "status": "activated",
-            "dob": "2000-09-26",
-            "id": 1
-        },
-        {
-            "username": "Hoang Hieu",
-            "email": "hieu4c18@gmail.com",
-            "fullname": "Hoang Trung Hieu",
-            "phoneNumber": "0111222333",
-            "gender": 1,
-            "password": "333333",
-            "role": "user",
-            "status": "deactivated",
-            "dob": "Fri Aug 03 2021 09:30:00",
-            "id": 3
-        },
-        {
-            "username": "test",
-            "email": "test@gmail.com",
-            "fullname": "Test",
-            "phoneNumber": "555555",
-            "gender": "1",
-            "password": "123456",
-            "role": "user",
-            "status": "activated",
-            "dob": "2000-09-26",
-            "id": 4
-        },
-        {
-            "username": "Hoa PROC",
-            "email": "4343@gmail.com",
-            "fullname": "sfsfsfd",
-            "phoneNumber": "555555",
-            "gender": "1",
-            "password": "123456789",
-            "role": null,
-            "status": "activated",
-            "dob": "2000-09-26",
-            "id": 5
-        }
-    ])
+
+    const [tableData, setTableData] = useState(
+
+        //    [
+        //     {
+        //         "username": "Hoa Prox",
+        //         "email": "hoa2000kxpt@gmail.com",
+        //         "fullname": "Do Van Hoa",
+        //         "phoneNumber": "11111",
+        //         "gender": "1",
+        //         "password": "123456",
+        //         "role": "admin",
+        //         "status": "activated",
+        //         "dob": "2000-09-26",
+        //         "id": 1
+        //     },
+        //     {
+        //         "username": "Hoang Hieu",
+        //         "email": "hieu4c18@gmail.com",
+        //         "fullname": "Hoang Trung Hieu",
+        //         "phoneNumber": "0111222333",
+        //         "gender": "1",
+        //         "password": "333333",
+        //         "role": "user",
+        //         "status": "deactivated",
+        //         "dob": "Fri Aug 03 2021 09:30:00",
+        //         "id": 3
+        //     },
+        //     {
+        //         "username": "test",
+        //         "email": "test@gmail.com",
+        //         "fullname": "Test",
+        //         "phoneNumber": "555555",
+        //         "gender": "1",
+        //         "password": "123456",
+        //         "role": "user",
+        //         "status": "activated",
+        //         "dob": "2000-09-26",
+        //         "id": 4
+        //     },
+        //     {
+        //         "username": "Hoa PROC",
+        //         "email": "4343@gmail.com",
+        //         "fullname": "sfsfsfd",
+        //         "phoneNumber": "555555",
+        //         "gender": "1",
+        //         "password": "123456789",
+        //         "role": null,
+        //         "status": "activated",
+        //         "dob": "2000-09-26",
+        //         "id": 5
+        //     }
+        //    ]
+    )
+
+
 
     const columns = [
         {
-            title: "ID", field: "id", type: "numeric"   
+            title: "ID", field: "id", type: "numeric",
+            validate: rowData => rowData.id === undefined || rowData.id === "" ? "Required" : true,
+            emptyValue: () => <em>null</em>
         },
         {
-            title: "Username", field: "username"
+            title: "Username", field: "username",
+            validate: rowData => rowData.username === undefined || rowData.username === "" ? "Required" : true,
+            emptyValue: () => <em>null</em>
         },
         {
-            title: "Gender", field: "gender", lookup: { 0: "Female", 1: "Male", 2: "Other" }
+            title: "Gender", field: "gender", lookup: { 0: "Female", 1: "Male", 2: "Other" },
+            validate: rowData => rowData.gender === undefined || rowData.gender === "" ? "Required" : true,
+            emptyValue: () => <em>null</em>
         },
         {
-            title: "Email", field: "email"
+            title: "Email", field: "email",
+            validate: rowData => rowData.email === undefined || rowData.email === "" ? "Required" : true,
+            emptyValue: () => <em>null</em>
         },
         {
-            title: "Fullname", field: "fullname"
+            title: "Full name", field: "fullname",
+            validate: rowData => rowData.fullname === undefined || rowData.fullname === "" ? "Required" : true,
+            emptyValue: () => <em>null</em>
         },
         {
-            title: "Phone Number", field: "phoneNumber", type: "numeric"
+            title: "Phone Number", field: "phoneNumber", type: "numeric",
+            validate: rowData => rowData.phoneNumber === undefined || rowData.phoneNumber === "" ? "Required" : true,
+            emptyValue: () => <em>null</em>
         },
         {
             title: "Date of Birth", field: "dob", type: "date",
-            render: (rowData) => <Moment format="DD/MM/YYYY">{rowData.dob}</Moment>
+            render: (rowData) => <Moment format="DD/MM/YYYY">{rowData.dob}</Moment>,
+            validate: rowData => rowData.dob === undefined || rowData.dob === "" ? "Required" : true
+            , emptyValue: () => <em>null</em>
         },
         {
-            title: "Role", field: "role", lookup: { admin: "Admin", user: "User" } ,emptyValue: () => <em>null</em>
+            title: "Role", field: "role", lookup: { admin: "Admin", user: "User" },
+            validate: rowData => rowData.role === undefined || rowData.role === "" ? "Required" : true,
+            emptyValue: () => <em>null</em>
         },
         {
             title: "Status", field: "status", lookup: { activated: "Activated", deactivated: "Deactivated" },
-            render: (rowData) => <div style={{ 'font-weight': "bold", color: rowData.status == "activated" ? "green" : "red" }}> {rowData.status}</div>
+            render: (rowData) => <div style={{ 'font-weight': "bold", color: rowData.status == "activated" ? "green" : "red" }}> {rowData.status}</div>,
+            validate: rowData => rowData.status === undefined || rowData.status === "" ? "Required" : true,
+            emptyValue: () => <em>null</em>
 
         }
     ]
@@ -128,7 +186,11 @@ const AdminTable = () => {
         ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
     };
 
-
+    useEffect(() => {
+        fetch("http://localhost:3000/api/users")
+            .then(res => res.json())
+            .then(res => setTableData(res.data))
+    }, [])
 
     return (
         <div>
@@ -137,71 +199,103 @@ const AdminTable = () => {
                 columns={columns}
                 icons={tableIcons}
                 editable={{
-                    onRowAdd: (newRow) => new Promise((resolve, reject) => {
+                    onRowAdd: (newRow) => new Promise(async (resolve, reject) => {
+                        const response = await fetch('api/users', {
+                            method: 'POST',
+                            body: JSON.stringify(newRow),
+                            headers: {
+                                'Content-Type': "application/json"
+                            }
+                        });
+
+                        const users = await response.json();
+
+                        if (!response.ok) {
+                            // throw new Error(data.message || 'Something went wrong!');
+                            console.log(response);
+                        }
+
                         console.log(newRow);
                         setTableData([...tableData, newRow]);
                         setTimeout(() => resolve(), 500);
+                        return users;
+
                     }),
 
-                    onRowUpdate: (newRow, oldRow) => new Promise((resolve, reject) => {
+                    onRowUpdate: (newRow, oldRow) => new Promise(async (resolve, reject) => {
+                        const response = await fetch('api/users/' + oldRow._id, {
+                            method: 'PUT',
+                            body: JSON.stringify(newRow),
+                            headers: {
+                                'Content-Type': "application/json"
+                            }
+                        });
+
+                        const users = await response.json();
+
+                        if (!response.ok) {
+                            // throw new Error(data.message || 'Something went wrong!');
+                            console.log(response);
+                        }
                         const updatedData = [...tableData];
                         updatedData[oldRow.tableData.id] = newRow;
                         setTableData(updatedData);
                         setTimeout(() => resolve(), 500);
+                        return users;
                     }),
 
-                    onRowDelete: (selectedRow) => new Promise((resolve, reject) => {
+                    onRowDelete: (selectedRow) => new Promise(async (resolve, reject) => {
+                        const response = await fetch('api/users/' + selectedRow._id, {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-Type': "application/json"
+                            }
+                        });
+
+                        const users = await response.json();
+
+                        if (!response.ok) {
+                            // throw new Error(data.message || 'Something went wrong!');
+                            console.log(response);
+                        }
                         const updatedData = [...tableData];
                         updatedData.splice(selectedRow.tableData.id, 1);
                         setTableData(updatedData);
                         // console.log(selectedRow);
                         setTimeout(() => resolve(), 500);
+                        return users;
                     })
 
                 }}
                 options={{
                     // filtering: true,
-                    headerStyle: {'font-weight': "bold"},
+                    headerStyle: { 'font-weight': "bold" },
                     exportButton: true,
                     addRowPosition: "first",
                     actionsColumnIndex: -1,
-                    pageSizeOptions: [2,5,10,25,50],
+                    pageSizeOptions: [2, 5, 10, 25, 50],
                     paginationType: "stepped",
                     grouping: true,
                     columnsButton: true,
-                    rowStyle:(data, index) => index % 2 == 0 ? {background:"#f5f5f5"} : {background:"fff"}
-                    
+                    rowStyle: (data, index) => index % 2 == 0 ? { background: "#f5f5f5" } : { background: "fff" }
+
                 }}
             />
 
-
-
-
-            {/* <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th scope="col">No.</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Phone Number</th>
-                        <th scope="col">Date of Birth</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-            </Table> */}
         </div>
     );
 }
 
-export default AdminTable
+export async function getServerSideProps(context) {
+    const res = await fetch("http://localhost:3000/api/users");
+    const json = await res.json();
+    return {
+        props: {
+            users: json,
+        },
+    };
+}
+
+
+
+export default AdminTable;

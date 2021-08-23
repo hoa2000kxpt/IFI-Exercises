@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm, Controller, control } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, Container, Form, Row, Col, Alert } from "react-bootstrap";
 import * as BsIcons from "react-icons/bs";
 import clsx from 'clsx';
@@ -24,6 +24,11 @@ const useStyles = makeStyles({
     },
 });
 
+// const Inputs = {
+//     email: string,
+//     password: string,
+// };
+
 
 const ButtonArea = () => {
     {/* FORM CONFIGURATION */ }
@@ -31,15 +36,30 @@ const ButtonArea = () => {
         mode: 'onChange', //used to check error in realtime
         shouldFocusError: true, // focus input field after submit if it is not following required rule of input field
     });
-    const onSubmit = data => console.log(data);
-
-    const [value, setValue] = React.useState('female');
-
-    // const handleChange = (event) => {
-    //     setValue(event.target.value);
-    // };
 
 
+    const onSubmit = async (data) => {
+        console.log(data);
+        const response = await fetch('api/users', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': "application/json"
+            }
+        });
+
+        const users = await response.json();
+
+        if (!response.ok) {
+            // throw new Error(data.message || 'Something went wrong!');
+            console.log(response);
+        }
+
+        return users;
+        // console.log(result)
+    }
+
+    
     {/* USER REGISTRATION SIDENAV */ }
     const classes = useStyles();
     const [state, setState] = React.useState({
@@ -170,12 +190,21 @@ const ButtonArea = () => {
                     </Form.Group> */}
 
                     <Form.Group className="mb-3">
-                        <Form.Label>Status</Form.Label>
+                        <Form.Label>Gender</Form.Label>
                         <Form.Select aria-label="Default select example" {...register("gender")}>
                             <option disabled>Choose gender</option>
                             <option value="male" selected>Male</option>
                             <option value="female" >Female</option>
                             <option value="other" >Other</option>
+                        </Form.Select>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3">
+                        <Form.Label>Role</Form.Label>
+                        <Form.Select aria-label="Default select example" {...register("role")}>
+                            <option disabled>Choose role</option>
+                            <option value="admin" selected>Admin</option>
+                            <option value="user">User</option>
                         </Form.Select>
                     </Form.Group>
 

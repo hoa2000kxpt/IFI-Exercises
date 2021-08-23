@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Login from './api/auth/Login'
+import Login from './Login'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const Home: NextPage = () => {

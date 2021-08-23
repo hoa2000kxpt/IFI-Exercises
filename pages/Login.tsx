@@ -1,6 +1,8 @@
+import { signIn } from "next-auth/client";
 import React from "react";
 import { Button, Container, Form, Row, Col, Alert } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
+import Swal from 'sweetalert2';
 
 
 type Inputs = {
@@ -13,20 +15,75 @@ const adminAccount = {
     password: "123456"
 }
 
+const userAccount = {
+    email: "haha@gmail.com",
+    password: "999999"
+}
+
 const Login = () => {
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
 
-    const onSubmit: SubmitHandler<Inputs> = data => fetch('http://localhost:3000', { method: 'POST', redirect: 'follow' })
-        .then(res => {
-            if (adminAccount.email === data.email && adminAccount.password === data.password) {
-                localStorage.setItem('current-user', JSON.stringify(data))
-                window.location.href = "http://localhost:3000/admin";
-            } else {
-                alert("Email or password is not correct!")
-            }
-            
+    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        const result = await signIn('credentials', {
+            redirect: false,
+            email: data.email,
+            password: data.password
+        });
+        console.log(result);
 
-        })
+        if (adminAccount.email === data.email && adminAccount.password === data.password) {
+            localStorage.setItem('current-user', JSON.stringify(data))
+            Swal.fire({
+                title: 'Login successfully!',
+                // text: 'Email or password is not correct!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            })
+            window.location.href = "http://localhost:3000/admin";
+        } else if (userAccount.email === data.email && userAccount.password === data.password) {
+            localStorage.setItem('current-user', JSON.stringify(data))
+            Swal.fire({
+                title: 'Login successfully!',
+                // text: 'Email or password is not correct!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            })
+            window.location.href = "http://localhost:3000/products";
+
+        } else {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Email or password is not correct!',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            })
+            // alert("Email or password is not correct!")
+        }
+    }
+    // fetch('http://localhost:3000', { method: 'POST', redirect: 'follow' })
+    // .then(res => {
+    //     if (adminAccount.email === data.email && adminAccount.password === data.password) {
+    //         localStorage.setItem('current-user', JSON.stringify(data))
+    //         Swal.fire({
+    //             title: 'Login successfully!',
+    //             // text: 'Email or password is not correct!',
+    //             icon: 'success',
+    //             confirmButtonText: 'OK'
+    //         })
+    //         window.location.href = "http://localhost:3000/admin";
+    //     } else {
+    //         Swal.fire({
+    //             title: 'Error!',
+    //             text: 'Email or password is not correct!',
+    //             icon: 'error',
+    //             confirmButtonText: 'OK'
+    //         })
+    //         // alert("Email or password is not correct!")
+    //     }
+
+
+    // })
     // fetch(''{})
 
     // console.log(watch("email")) // watch input value by passing the name of it

@@ -49,7 +49,7 @@
     padding: 0 16px;
 }
 
-.nav-text a:hover {
+.nav-text a:hover, .nav-text a.active, .nav-text a:active {
     background-color: #1a83ff;
 }
 
