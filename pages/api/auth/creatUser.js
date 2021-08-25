@@ -1,5 +1,5 @@
-import dbConnect from "../../../utils/dbConnect";
-// import { hashPassword } from "../../../lib/auth;"
+import { connectToDatabase } from "../../../lib/db";
+import { hashPassword } from "../../../lib/auth";
 
 
 async function handler(req, res) {
@@ -9,9 +9,10 @@ async function handler(req, res) {
 
     const data = req.body;
 
-    const { email, password, fullname, phoneNumber, gender, dob, status, role } = data;
+    const { id, email, password, username, fullname, phoneNumber, gender, dob, status, role } = data;
 
     if (
+        !id ||
         !email ||
         !email.includes('@') ||
         !password ||
@@ -30,15 +31,25 @@ async function handler(req, res) {
         return;
     }
 
-    const client = await dbConnect();
+    const client = await connectToDatabase();
 
-    const db = client.db();
+    const db = client.db('accounts');
 
-    const hashedPassword = hashPassword(password);
+    const existingUser = await db.collection('users').findOne({ email: email });
 
-    const result = db.collection('users').insertOne({
+    if (existingUser) {
+        res.status(422).json({ message: 'User exists already!' });
+        client.close();
+        return;
+    }
+
+    const hashedPassword = await hashPassword(password);
+
+    const result = await db.collection('users').insertOne({
+        id: id,
         email: email,
         password: hashedPassword,
+        username: username,
         fullname: fullname,
         phoneNumber: phoneNumber,
         gender: gender,
@@ -48,22 +59,9 @@ async function handler(req, res) {
     });
 
     res.status(201).json({ message: "Created User!" })
+    client.close()
 }
 
-// export async function getAllUsers() {
-//     const { db } = await dbConnect();
-//     const users = await db
-//         .collection("users")
-//         .find({})
-//         .sort({ metacritic: -1 })
-//         .limit(1000)
-//         .toArray();
-//     return {
-//         props: {
-//             users: JSON.parse(JSON.stringify(users)),
-//         },
-//     };
-// }
 
 
 export default handler;

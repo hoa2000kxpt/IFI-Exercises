@@ -1,0 +1,18 @@
+.loginPage {
+    position: relative;
+    top: 150px;
+    left: 400px;
+    /* border: 1px solid black; */
+}
+
+.formInput {
+    width: 30% !important;
+}
+
+.alertDanger {
+    width: 30%;
+}
+
+.btnPrimary {
+    width: 30%;
+}

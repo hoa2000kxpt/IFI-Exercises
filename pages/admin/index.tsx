@@ -10,61 +10,61 @@ import { getSession, session } from 'next-auth/client';
 import { useEffect, useState } from 'react';
 
 const Admin = () => {
-    // const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
-    // useEffect(() => {
-    //     getSession().then((session) => {
-    //         if (!session) {
-    //             window.location.href = "/"
-    //         } else {
-    //             setIsLoading(false);
-    //         }
-    //     });
-    // }, []);
+  // useEffect(() => {
+  //     getSession().then((session) => {
+  //         if (!session) {
+  //             window.location.href = "/"
+  //         } else {
+  //             setIsLoading(false);
+  //         }
+  //     });
+  // }, []);
 
-    // if (isLoading) {
-    //     return <p>Loading...</p>;
-    // }
+  // if (isLoading) {
+  //     return <p>Loading...</p>;
+  // }
 
-    return (
-        <>
-            <Header />
-            <Router>
-                <AdminSidenav />
-                <Switch>
-                    <Route path='/' />
-                    <Route path='/' />
-                    <Route exact path='/login'>
-                        {/* <Login /> */}
-                    </Route>
-                </Switch>
-            </Router>
+  return (
+    <>
+      <Header />
+      <Router>
+        <AdminSidenav />
+        <Switch>
+          <Route path='/' />
+          <Route path='/' />
+          <Route exact path='/login'>
+            {/* <Login /> */}
+          </Route>
+        </Switch>
+      </Router>
 
-            <ButtonArea />
-            {/* <TemporaryDrawer /> */}
+      <ButtonArea />
+      {/* <TemporaryDrawer /> */}
 
 
-            <AdminTable />
+      <AdminTable />
 
-        </>
-    );
+    </>
+  );
 }
 
 export async function getServerSideProps(context: any) {
-    const session = await getSession({ req: context.req });
-  
-    if (!session) {
-      return {
-        redirect: {
-          destination: '/',
-          permanent: false,
-        },
-      };
-    }
-  
+  const session = await getSession({ req: context.req });
+
+  if (!session) {
     return {
-      props: { session },
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
     };
   }
+
+  return {
+    props: { session },
+  };
+}
 
 export default Admin

@@ -23,10 +23,10 @@ import dbConnect from "../../../utils/dbConnect";
 
 
 
-async function createUser(email, password, fullname, phoneNumber, gender, dob, status, role) {
-    const response = fetch('/pages/api/auth/creatUser.js', {
+async function createUser(id, email, password, username, fullname, phoneNumber, gender, dob, status, role) {
+    const response = await fetch('/api/auth/creatUser', {
         method: 'POST',
-        body: JSON.stringify({ email, password, fullname, phoneNumber, gender, dob, status, role }),
+        body: JSON.stringify({ id, email, password, username, fullname, phoneNumber, gender, dob, status, role }),
         headers: {
             'Content-Type': "application/json"
         }
@@ -40,22 +40,6 @@ async function createUser(email, password, fullname, phoneNumber, gender, dob, s
 
     return data;
 }
-
-
-
-// async function getStaticProps() {
-//     const res = await fetch("http://localhost:3000/api/users");
-//     const data = await res.json();
-//     console.log(data[0]);
-//     // for (let i = 0; i < data.length; i++) {
-
-//     // }
-//     return data;
-
-// }
-
-
-
 
 const AdminTable = () => {
 
@@ -133,7 +117,43 @@ const AdminTable = () => {
         },
         {
             title: "Email", field: "email",
-            validate: rowData => rowData.email === undefined || rowData.email === "" ? "Required" : true,
+            validate:  (rowData) => {
+                // const response = await fetch('http://localhost:3000/api/auth/email/' + rowData.email, {
+                //     method: 'GET',
+                //     headers: {
+                //         'Content-Type': "application/json"
+                //     }
+                // })
+
+                // const result = await response.json() // Error Message
+                // // const isEmailDuplicate = 
+                // console.log(result)
+
+                // // return result;
+                // if (rowData.email ) {
+
+                // }
+
+                if (rowData.email === undefined || rowData.email === "") {
+                    return "Required";
+                } else if (!rowData.email.includes('@' && '.')) {
+                    return "Please enter valid email!";
+                }
+                return true;
+            },
+            emptyValue: () => <em>null</em>
+        },
+        {
+            title: "Password", field: "password",
+            validate: rowData => {
+                if (rowData.password === undefined || rowData.password === "") {
+                    return "Required";
+                } else if (rowData.password.length < 6) {
+                    return "Password must be at least 6 characters long!"
+                }
+                return true;
+            },
+            render: rowData => <p>{rowData.password.split('').map(() => '*')}</p>,
             emptyValue: () => <em>null</em>
         },
         {
@@ -142,8 +162,17 @@ const AdminTable = () => {
             emptyValue: () => <em>null</em>
         },
         {
-            title: "Phone Number", field: "phoneNumber", type: "numeric",
-            validate: rowData => rowData.phoneNumber === undefined || rowData.phoneNumber === "" ? "Required" : true,
+            title: "Phone Number", field: "phoneNumber",
+            validate: rowData => {
+                if (rowData.phoneNumber === undefined || rowData.phoneNumber === "") {
+                    return "Required";
+                } else if (rowData.phoneNumber.length < 10) {
+                    return "Phone Number must be at least 10 characters long!"
+                } else if (isNaN(rowData.phoneNumber)) {
+                    return "It must be a number!"
+                }
+                return true;
+            },
             emptyValue: () => <em>null</em>
         },
         {
@@ -200,25 +229,31 @@ const AdminTable = () => {
                 icons={tableIcons}
                 editable={{
                     onRowAdd: (newRow) => new Promise(async (resolve, reject) => {
-                        const response = await fetch('api/users', {
-                            method: 'POST',
-                            body: JSON.stringify(newRow),
-                            headers: {
-                                'Content-Type': "application/json"
-                            }
-                        });
-
-                        const users = await response.json();
-
-                        if (!response.ok) {
-                            // throw new Error(data.message || 'Something went wrong!');
-                            console.log(response);
+                        try {
+                            const result = await createUser(newRow.id, newRow.email, newRow.password, newRow.username, newRow.fullname, newRow.phoneNumber, newRow.gender, newRow.dob, newRow.status, newRow.role)
+                            console.log(result);
+                            // const users = await result.json();
+                            setTableData([...tableData, newRow]);
+                            setTimeout(() => resolve(), 500);
+                        } catch (error) {
+                            console.log(error);
                         }
+                        // const response = await fetch('api/auth/createUser', {
+                        //     method: 'POST',
+                        //     body: JSON.stringify(newRow),
+                        //     headers: {
+                        //         'Content-Type': "application/json"
+                        //     }
+                        // });
 
-                        console.log(newRow);
-                        setTableData([...tableData, newRow]);
-                        setTimeout(() => resolve(), 500);
-                        return users;
+
+                        // if (!response.ok) {
+                        //     // throw new Error(data.message || 'Something went wrong!');
+                        //     console.log(response);
+                        // }
+
+                        // console.log(newRow);
+
 
                     }),
 

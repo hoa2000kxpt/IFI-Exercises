@@ -1,17 +1,104 @@
-import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom'
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import { SidebarData } from "./SidebarData";
-import styles from './admin-sidebar.module.css'; // CSS Modules
-import { IconContext } from 'react-icons';
-import { useSession, signOut } from 'next-auth/client';
-import { Button } from 'react-bootstrap';
+import React from 'react';
+import clsx from 'clsx';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+import GroupIcon from '@material-ui/icons/Group';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import {Button} from 'react-bootstrap';
+import styles from './admin-sidebar.module.css';
+import { signOut } from 'next-auth/client';
+
+
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+    },
+    appBar: {
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+    },
+    appBarShift: {
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: drawerWidth,
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    hide: {
+        display: 'none',
+    },
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+    },
+    drawerPaper: {
+        width: drawerWidth,
+        background: '#060b26',
+        color: '#fff'
+    },
+    drawerHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: theme.spacing(0, 1),
+        // necessary for content to be below app bar
+        ...theme.mixins.toolbar,
+        justifyContent: 'flex-end',
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        marginLeft: -drawerWidth,
+    },
+    contentShift: {
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+        marginLeft: 0,
+    },
+}));
+
 
 function AdminSidenav() {
-    const [sidebar, setSidebar] = useState(false);
+    const classes = useStyles();
+    const theme = useTheme();
+    const [open, setOpen] = React.useState(false);
 
-    const showSidebar = () => setSidebar(!sidebar);
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
 
     function logoutHandler() {
         // window.location.href = "http://localhost:3000";
@@ -20,132 +107,66 @@ function AdminSidenav() {
     }
 
     return (
-        <>
-            <style type="text/css">
-                {`
-                    .navbar {
-                        background: #060b26;
-                        height: 80px;
-                        display: flex;
-                        justify-content: start;
-                        align-items: center;
-                    }
-
-                    .logout {
-                        color: #fff;
-                        padding: 10px;
-                        margin-left: 30px;
-                    }
-                    
-                    .menu-bars {
-                        margin-left: 2rem;
-                        font-size: 2rem;
-                        background: none;
-                        color: #fff;
-                    }
-
-                    .menu-bars:hover {
-                        color: #1a83ff;
-                    }
-                    
-                    .nav-menu {
-                        background: #060b26;
-                        width: 250px;
-                        height: 100vh;
-                        display: flex;
-                        justify-content: center;
-                        position: fixed;
-                        top: 0;
-                        left: -100%;
-                        transition: 850ms;
-                        z-index: 999;
-                    }
-                    
-                    .nav-menu.active {
-                        left: 0;
-                        transition: 350ms;
-                    }
-                    
-                    .nav-text {
-                        display: flex;
-                        justify-content: start;
-                        align-items: center;
-                        padding: 8px 8px 8px 16px;
-                        list-style: none;
-                        height: 60px;
-                    }
-                    
-                    .nav-text a {
-                        text-decoration: none;
-                        color: #f5f5f5;
-                        font-size: 18px;
-                        width: 95%;
-                        height: 100%;
-                        display: flex;
-                        align-items: center;
-                        padding: 0 16px;
-                    }
-                    
-                    .nav-text a:hover {
-                        background-color: #1a83ff;
-                    }
-                    
-                    .nav-menu-items {
-                        width: 100%;
-                    }
-                    
-                    .navbar-toggle {
-                        background: #060b26;
-                        width: 100%;
-                        display: flex;
-                        justify-content: start;
-                        align-items: center;
-                    }
-                    
-                    .nav-menu-items span {
-                        margin-left: 16px;
-                    }
-
-                    .navbar-heading {
-                        color: #fff;
-                        margin-left: 2em;
-                        margin-top: 0.5em;
-                    }
-                `}
-
-            </style>
-
-            <IconContext.Provider value={{ color: '#fff' }}>
-                <div className="navbar">
-                    <Link to="#" className="menu-bars">
-                        <FaIcons.FaBars onClick={showSidebar} />
-                    </Link>
-                    <h3 className="navbar-heading">Admin Page</h3>
-                    <Button variant="danger" onClick={logoutHandler} className="logout">Log Out</Button>
+        <div className={classes.root}>
+            <CssBaseline />
+            <AppBar
+                position="fixed"
+                className={clsx(classes.appBar, {
+                    [classes.appBarShift]: open,
+                })}
+                style={{  background: '#060b26' }}
+            >
+                <Toolbar>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={handleDrawerOpen}
+                        edge="start"
+                        className={clsx(classes.menuButton, open && classes.hide)}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" noWrap>
+                        User Management
+                    </Typography>
+                    <Button variant="danger" className={styles.logoutBtn} onClick={logoutHandler}>Log out</Button>
+                </Toolbar>
+            </AppBar>
+            <Drawer
+                className={classes.drawer}
+                variant="persistent"
+                anchor="left"
+                open={open}
+                classes={{
+                    paper: classes.drawerPaper,
+                }}
+                style={{  background: '#060b26' }}
+            >
+                <div className={classes.drawerHeader}>
+                    <IconButton onClick={handleDrawerClose}>
+                        {theme.direction === 'ltr' ? <ChevronLeftIcon style={{  color: '#fff' }}/> : <ChevronRightIcon />}
+                    </IconButton>
                 </div>
-
-                <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                    <ul className='nav-menu-items' onClick={showSidebar}>
-                        <li className="navbar-toggle">
-                            <Link to="#" className="menu-bars">
-                                <AiIcons.AiOutlineClose />
-                            </Link>
-                        </li>
-                        {SidebarData.map((item, index) => {
-                            return (
-                                <li key={index} className={item.cName}>
-                                    <NavLink to={item.path} activeClassName={styles.active}>
-                                        {item.icon}
-                                        <span>{item.title}</span>
-                                    </NavLink>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </nav>
-            </IconContext.Provider>
-
-        </>
+                <Divider />
+                <List>
+                    {['User Management'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon><GroupIcon style={{  color: '#fff' }}/></ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+                <Divider />
+                <List>
+                    {['Log out'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon><ExitToAppIcon style={{  color: '#fff' }}/></ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+            </Drawer>
+        </div>
     );
 }
 

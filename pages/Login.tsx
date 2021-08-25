@@ -3,6 +3,7 @@ import React from "react";
 import { Button, Container, Form, Row, Col, Alert } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Swal from 'sweetalert2';
+import styles from '../styles/Login.module.css';
 
 
 type Inputs = {
@@ -93,37 +94,9 @@ const Login = () => {
 
     return (
         <>
-            <style type="text/css">
-                {`
-        .login-page {
-            position: relative;
-            top: 150px;
-            left: 400px;
-            /* border: 1px solid black; */
-        }
 
-        .login-page input {
-            width: 30%;
-        }
-        
-        .login-page i {
-            position: absolute;
-            background-color: brown;
-        }
-        
-        .alert-danger {
-            width: 30%;
-        }
-        
-        .btn-primary {
-            width: 30%;
-        }
-        
-        }
-        `}
-            </style>
 
-            <div className="login-page">
+            <div className={styles.loginPage}>
                 <Container fluid="md">
                     <Row>
                         <Col md={12}>
@@ -132,10 +105,10 @@ const Login = () => {
                                 <h3>Login Page</h3>
                                 <Form.Group className="mb-3">
                                     <Form.Label>Email address</Form.Label>
-                                    <Form.Control {...register('email', { required: true, pattern: "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" })} type="email" placeholder="Enter email" name="email" id="email" />
+                                    <Form.Control {...register('email', { required: true, pattern: "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" })} type="email" placeholder="Enter email" name="email" id="email" className={styles.formInput}/>
                                     {errors?.email &&
                                         // if errors then display alert
-                                        <Alert variant="danger">
+                                        <Alert variant="danger" className={styles.alertDanger}>
                                             {errors.email?.type === "required" && <p>Email is required!</p>}
                                             {errors.email?.type === "pattern" && <p>Email is invalid!</p>}
                                         </Alert>
@@ -144,17 +117,17 @@ const Login = () => {
 
                                 <Form.Group className="mb-3">
                                     <Form.Label>Password</Form.Label>
-                                    <Form.Control {...register('password', { required: true, minLength: 6 })} type="password" placeholder="Password" name="password" id="password" />
+                                    <Form.Control {...register('password', { required: true, minLength: 6 })} type="password" placeholder="Password" name="password" id="password" className={styles.formInput}/>
                                     {errors?.password &&
                                         // if errors then display alert
-                                        <Alert variant="danger">
+                                        <Alert variant="danger" className={styles.alertDanger}>
                                             {errors.password?.type === "required" && <p>Password is required!</p>}
                                             {errors.password?.type === "minLength" && <p>Password must be at least 6 characters long!</p>}
                                         </Alert>
                                     }
                                 </Form.Group>
 
-                                <Button variant="primary" type="submit">
+                                <Button variant="primary" type="submit" className={styles.btnPrimary}>
                                     Submit
                                 </Button>
                             </Form>
