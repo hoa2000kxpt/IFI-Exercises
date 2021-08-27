@@ -10,4 +10,15 @@ module.exports = {
 
 }
 
+// const withImages = require("next-images");
+
+// module.exports = withImages({
+//   images: {
+//     domains: ['localhost:3000']
+//   },
+//   webpack(config, options) {
+//     return config;
+//   }
+// });
+
 

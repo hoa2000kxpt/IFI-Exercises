@@ -16,7 +16,7 @@ async function handler(req, res) {
         !email ||
         !email.includes('@') ||
         !password ||
-        password.trim().length < 7 ||
+        password.trim().length < 6 ||
         !fullname ||
         !phoneNumber ||
         !gender ||
@@ -26,7 +26,7 @@ async function handler(req, res) {
     ) {
         res.status(422).json({
             message:
-                'Invalid input - password should also be at least 7 characters long.',
+                'Invalid input - password should also be at least 6 characters long.',
         });
         return;
     }

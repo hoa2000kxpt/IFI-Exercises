@@ -124,22 +124,21 @@ const AdminTable = () => {
                 //         'Content-Type': "application/json"
                 //     }
                 // })
-
-                // const result = await response.json() // Error Message
-                // // const isEmailDuplicate = 
-                // console.log(result)
+                // console.log(rowData.email);
+                
+        
 
                 // // return result;
-                // if (rowData.email ) {
-
+                // if (response != "{}") {
+                //     return "duplicated data"
                 // }
 
-                if (rowData.email === undefined || rowData.email === "") {
-                    return "Required";
-                } else if (!rowData.email.includes('@' && '.')) {
-                    return "Please enter valid email!";
-                }
-                return true;
+                // if (rowData.email === undefined || rowData.email === "") {
+                //     return "Required";
+                // } else if (!rowData.email.includes('@' && '.')) {
+                //     return "Please enter valid email!";
+                // }
+                // return true;
             },
             emptyValue: () => <em>null</em>
         },

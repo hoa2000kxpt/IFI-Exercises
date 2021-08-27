@@ -100,7 +100,7 @@ const ProductHeaderSidebar = () => {
         <div className={classes.root}>
             <CssBaseline />
             <AppBar
-                position="fixed"
+                position="sticky"
                 className={clsx(classes.appBar, {
                     [classes.appBarShift]: open,
                 })}

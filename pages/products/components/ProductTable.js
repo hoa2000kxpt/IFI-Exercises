@@ -18,64 +18,97 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import Moment from 'react-moment';
+import { createTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import Link from 'next/link';
+import { useRouter } from 'next/router'
+
+
+
+
 
 const ProductTable = () => {
-    const [tableData, setTableData] = useState(
-    //     [
-    //     {
-    //         "name": "Bàn phím chơi game giả cơ E-DRA EK503",
-    //         "keyNo": 104,
-    //         "description": "phân khúc giá dưới 300 ngàn",
-    //         "price": "269000",
-    //         "image": "http://edravn.com/media/product/344_z2611444876451_c32d22d534df416029532d5c50d53abb.jpg",
-    //         "id": 1
-    //     },
-    //     {
-    //         "id": 2,
-    //         "name": "Bàn phím chơi game cơ E-DRA EK389v2",
-    //         "keyNo": 90,
-    //         "price": "659000",
-    //         "description": "phân khúc giá dưới 600 ngàn - 800 ngàn",
-    //         "image": "http://edravn.com/media/product/342_1.jpg"
-    //     },
-    //     {
-    //         "id": 3,
-    //         "name": "Bàn phím chơi game cơ E-DRA EK3104 Optical",
-    //         "keyNo": 104,
-    //         "price": "990000",
-    //         "description": "phân khúc giá dưới 800 ngàn - 1 triệu",
-    //         "image": "http://edravn.com/media/product/325_w4.jpg"
-    //     },
-    //     {
-    //         "name": "Bàn phím chơi game cơ E-DRA EK387w RGB TKL",
-    //         "keyNo": 87,
-    //         "description": "phân khúc giá trên 1 triệu",
-    //         "price": 1290000,
-    //         "image": "http://edravn.com/media/product/324_w2.jpg",
-    //         "id": 4
-    //     }
-    // ]
-    )
+    const [tableData, setTableData] = useState()
+    const [preferDarkMode, setPreferDarkMode] = useState(() => {
+        if (process.browser) {
+            const mode = localStorage.getItem("tableDarkMode")
+            return mode === "true" || false
+        }
+
+    });
 
     const columns = [
         {
-            title: "ID", field: "id", type: "numberic"
+            title: "ID", field: "id", type: "numeric",
+            validate: (rowData) => {
+                if (rowData.id === undefined || rowData.id === "") {
+                    return "Required!"
+                }
+                else if (rowData.id <= 0) {
+                    return "ID must not be negative!"
+                } else if (isNaN(rowData.id)) {
+                    return "Please enter a positive number!"
+                }
+                return true;
+            }
         },
         {
-            title: "Product Name", field: "name"
+            title: "Product Name", field: "name",
+            validate: (rowData) => {
+                if (rowData.name === undefined || rowData.name === "") {
+                    return "Required!"
+                }
+                return true;
+            }
+
         },
         {
             title: "Product Image", field: "image",
+            validate: (rowData) => {
+                if (rowData.image === undefined || rowData.image === "") {
+                    return "Required!"
+                }
+                return true;
+            },
             render: rowData => <img src={rowData.image} style={{ width: 200 }} />
         },
         {
-            title: "Number of keys", field: "keyNo", type: "numberic"
+            title: "Number of keys", field: "keyNo", type: "numeric",
+            validate: (rowData) => {
+                if (rowData.keyNo <= 0) {
+                    return "ID must not be negative!"
+                } else if (rowData.keyNo === undefined || rowData.keyNo === "") {
+                    return "Required!"
+                } else if (isNaN(rowData.keyNo)) {
+                    return "Please enter a positive number!"
+                }
+                return true;
+            }
         },
         {
-            title: "Description", field: "description"
+            title: "Description", field: "description",
+            validate: (rowData) => {
+                if (rowData.description === undefined || rowData.description === "") {
+                    return "Required!"
+                }
+                return true;
+            },
         },
         {
-            title: "Price", field: "price"
+            title: "Price", field: "price", type: "numeric",
+            validate: (rowData) => {
+                if (rowData.price <= 0) {
+                    return "ID must not be negative!"
+                } else if (rowData.price === undefined || rowData.price === "") {
+                    return "Required!"
+                } else if (isNaN(rowData.price)) {
+                    return "Please enter a positive number!"
+                }
+                return true;
+            }
+
         },
 
     ]
@@ -106,83 +139,139 @@ const ProductTable = () => {
             .then(res => setTableData(res.data))
     }, [])
 
+    const theme = createTheme({
+        palette: {
+            type: preferDarkMode ? "dark" : "light"
+        },
+    });
+
+    const darkModeChangeHandler = () => {
+        setPreferDarkMode(!preferDarkMode);
+        localStorage.setItem("tableDarkMode", !preferDarkMode)
+    }
+
+    const router = useRouter()
+    const handleClick = (e, id) => {
+        e.preventDefault()
+        router.push(`/products/${id}`)
+    }
+
     return (
         <div>
-            <MaterialTable title="Product Management"
-                data={tableData}
-                columns={columns}
-                icons={tableIcons}
-                // editable={{
-                //     onRowAdd: (newRow) => new Promise(async (resolve, reject) => {
-                //         try {
-                //             const result = await createUser(newRow.id, newRow.email, newRow.password, newRow.username, newRow.fullname, newRow.phoneNumber, newRow.gender, newRow.dob, newRow.status, newRow.role)
-                //             console.log(result);
-                //             // const users = await result.json();
-                //             setTableData([...tableData, newRow]);
-                //             setTimeout(() => resolve(), 500);
-                //         } catch (error) {
-                //             console.log(error);
-                //         }
-
-                //     }),
-
-                //     onRowUpdate: (newRow, oldRow) => new Promise(async (resolve, reject) => {
-                //         const response = await fetch('api/users/' + oldRow._id, {
-                //             method: 'PUT',
-                //             body: JSON.stringify(newRow),
-                //             headers: {
-                //                 'Content-Type': "application/json"
-                //             }
-                //         });
-
-                //         const users = await response.json();
-
-                //         if (!response.ok) {
-                //             // throw new Error(data.message || 'Something went wrong!');
-                //             console.log(response);
-                //         }
-                //         const updatedData = [...tableData];
-                //         updatedData[oldRow.tableData.id] = newRow;
-                //         setTableData(updatedData);
-                //         setTimeout(() => resolve(), 500);
-                //         return users;
-                //     }),
-
-                //     onRowDelete: (selectedRow) => new Promise(async (resolve, reject) => {
-                //         const response = await fetch('api/users/' + selectedRow._id, {
-                //             method: 'DELETE',
-                //             headers: {
-                //                 'Content-Type': "application/json"
-                //             }
-                //         });
-
-                //         const users = await response.json();
-
-                //         if (!response.ok) {
-                //             // throw new Error(data.message || 'Something went wrong!');
-                //             console.log(response);
-                //         }
-                //         const updatedData = [...tableData];
-                //         updatedData.splice(selectedRow.tableData.id, 1);
-                //         setTableData(updatedData);
-                //         // console.log(selectedRow);
-                //         setTimeout(() => resolve(), 500);
-                //         return users;
-                //     })
-
-                // }}
-                options={{
-                    // filtering: true,
-                    headerStyle: { 'font-weight': "bold" },
-                    exportButton: true,
-                    addRowPosition: "first",
-                    actionsColumnIndex: -1,
-                    pageSizeOptions: [2, 5, 10, 25, 50],
-                    paginationType: "stepped",
-                    columnsButton: true,
-                    rowStyle: (data, index) => index % 2 == 0 ? { background: "#f5f5f5" } : { background: "fff" }
-                }}
+            <FormControlLabel
+                value="top"
+                control={<Switch color="primary" checked={preferDarkMode} />}
+                onChange={darkModeChangeHandler}
+                label="Dark Mode"
+                labelPlacement="top"
             />
+            <ThemeProvider theme={theme}>
+
+                <MaterialTable
+                    title="Product Management"
+                    data={tableData}
+                    columns={columns}
+                    icons={tableIcons}
+                    actions={[
+                        {
+                            icon: () => <VisibilityIcon />,
+                            tooltip: 'View',
+                            onClick: (event, rowData) => {
+                                handleClick(event, rowData._id);
+                                // const response = await fetch('http://localhost:3000/api/products/' + rowData._id, {
+                                //     method: 'GET',
+                                //     headers: {
+                                //         'Content-Type': "application/json"
+                                //     }
+                                // });
+
+                                // const product = await response.json();
+                                // console.log(product.data._id);
+                            }
+                            // => new Promise((resolve, reject) => 
+
+
+
+
+                        }
+                    ]}
+
+                    editable={{
+                        onRowAdd: (newRow) => new Promise(async (resolve, reject) => {
+                            const result = await fetch('http://localhost:3000/api/products', {
+                                method: 'POST',
+                                body: JSON.stringify(newRow),
+                                headers: {
+                                    'Content-Type': "application/json"
+                                }
+                            });
+                            const products = await result.json();
+
+                            setTableData([...tableData, newRow]);
+                            setTimeout(() => resolve(), 500);
+                            return products;
+                        }),
+
+                        onRowUpdate: (newRow, oldRow) => new Promise(async (resolve, reject) => {
+                            const response = await fetch('api/products/' + oldRow._id, {
+                                method: 'PUT',
+                                body: JSON.stringify(newRow),
+                                headers: {
+                                    'Content-Type': "application/json"
+                                }
+                            });
+
+                            const products = await response.json();
+
+                            if (!response.ok) {
+                                // throw new Error(data.message || 'Something went wrong!');
+                                console.log(response);
+                            }
+                            const updatedData = [...tableData];
+                            updatedData[oldRow.tableData.id] = newRow;
+                            setTableData(updatedData);
+                            setTimeout(() => resolve(), 500);
+                            return products;
+                        }),
+
+                        onRowDelete: (selectedRow) => new Promise(async (resolve, reject) => {
+                            const response = await fetch('api/products/' + selectedRow._id, {
+                                method: 'DELETE',
+                                headers: {
+                                    'Content-Type': "application/json"
+                                }
+                            });
+
+                            const products = await response.json();
+
+                            if (!response.ok) {
+                                // throw new Error(data.message || 'Something went wrong!');
+                                console.log(response);
+                            }
+                            const updatedData = [...tableData];
+                            updatedData.splice(selectedRow.tableData.id, 1);
+                            setTableData(updatedData);
+                            // console.log(selectedRow);
+                            setTimeout(() => resolve(), 500);
+                            return products;
+                        })
+
+                    }}
+                    options={{
+                        search: true,
+                        headerStyle: { 'font-weight': "bold", 'text-align': 'center', 'font-size': '8' },
+                        cellStyle: { 'text-align': 'center', 'font-size': '8' },
+                        exportButton: true,
+                        addRowPosition: "first",
+                        actionsColumnIndex: -1,
+                        pageSizeOptions: [2, 5, 10, 25, 50],
+                        paginationType: "stepped",
+                        columnsButton: true,
+                        // rowStyle: (data, index) => index % 2 == 0 ? { background: "#f5f5f5" } : { background: "fff" }
+                    }}
+                />
+            </ThemeProvider>
+
 
         </div>
     );

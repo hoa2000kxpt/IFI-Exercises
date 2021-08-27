@@ -1,9 +1,11 @@
-import { signIn } from "next-auth/client";
+import { getSession, session, signIn } from "next-auth/client";
 import React from "react";
 import { Button, Container, Form, Row, Col, Alert } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Swal from 'sweetalert2';
 import styles from '../styles/Login.module.css';
+import { useRouter } from 'next/router';
+
 
 
 type Inputs = {
@@ -22,45 +24,62 @@ const userAccount = {
 }
 
 const Login = () => {
-
+    const router = useRouter();
     const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         const result = await signIn('credentials', {
             redirect: false,
             email: data.email,
-            password: data.password
+            password: data.password,
         });
-        console.log(result);
+        // console.log(data);
+        // console.log(result)
+        getSession().then(session => {
+            console.log(session)
+            if (session.user.name === 'admin') {
+                router.push("http://localhost:3000/admin")
+            } else if (session.user.name === 'user') {
+                router.push("http://localhost:3000/products")
+            }
+        })
 
-        if (adminAccount.email === data.email && adminAccount.password === data.password) {
-            localStorage.setItem('current-user', JSON.stringify(data))
-            Swal.fire({
-                title: 'Login successfully!',
-                // text: 'Email or password is not correct!',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            })
-            window.location.href = "http://localhost:3000/admin";
-        } else if (userAccount.email === data.email && userAccount.password === data.password) {
-            localStorage.setItem('current-user', JSON.stringify(data))
-            Swal.fire({
-                title: 'Login successfully!',
-                // text: 'Email or password is not correct!',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            })
-            window.location.href = "http://localhost:3000/products";
+        
 
-        } else {
-            Swal.fire({
-                title: 'Error!',
-                text: 'Email or password is not correct!',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            })
-            // alert("Email or password is not correct!")
-        }
+        // if (!result.error) {
+        //     router.push("http://localhost:3000/admin");
+        // }
+
+        // if (adminAccount.email === data.email && adminAccount.password === data.password && data.role === "admin") {
+        //     localStorage.setItem('current-user', JSON.stringify(data))
+        //     Swal.fire({
+        //         title: 'Login successfully!',
+        //         icon: 'success',
+        //         confirmButtonText: 'OK'
+        //     })
+        //     // router.push("http://localhost:3000/admin")
+        //     window.location.href = "http://localhost:3000/admin";
+
+        // }
+        // } else if (userAccount.email === data.email && userAccount.password === data.password) {
+        //     localStorage.setItem('current-user', JSON.stringify(data))
+        //     Swal.fire({
+        //         title: 'Login successfully!',
+        //         // text: 'Email or password is not correct!',
+        //         icon: 'success',
+        //         confirmButtonText: 'OK'
+        //     })
+        //     window.location.href = "http://localhost:3000/products";
+
+        // } else {
+        //     Swal.fire({
+        //         title: 'Error!',
+        //         text: 'Email or password is not correct!',
+        //         icon: 'error',
+        //         confirmButtonText: 'OK'
+        //     })
+        //     // alert("Email or password is not correct!")
+        // }
     }
     // fetch('http://localhost:3000', { method: 'POST', redirect: 'follow' })
     // .then(res => {
