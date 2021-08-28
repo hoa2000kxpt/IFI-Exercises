@@ -21,10 +21,10 @@ const TransactionSchema = new mongoose.Schema({
     },
 
 
-    // productID: {
-    //     type: Number,
-    //     // require: [true, 'Please enter your full name'],
-    // }
+    productID: {
+        type: String,
+        // require: [true, 'Please enter your full name'],
+    }
 
     
 })

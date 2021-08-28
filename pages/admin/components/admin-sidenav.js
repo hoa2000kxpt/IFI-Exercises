@@ -19,10 +19,12 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import GroupIcon from '@material-ui/icons/Group';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import {Button} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import styles from './admin-sidebar.module.css';
 import { signOut } from 'next-auth/client';
-
+import HomeIcon from '@material-ui/icons/Home';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import { useRouter } from 'next/router';
 
 const drawerWidth = 240;
 
@@ -87,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function AdminSidenav() {
+    const router = useRouter();
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -106,15 +109,34 @@ function AdminSidenav() {
         signOut();
     }
 
+    const itemsList = [
+        {
+            text: "Home",
+            icon: <HomeIcon />,
+            onClick: () => router.push('/admin/drawerPages/AdminHomepage')
+        },
+        {
+            text: "Admin",
+            icon: <ListAltIcon />,
+            onClick: () => router.push('/admin')
+        },
+        {
+            text: "Log out",
+            icon: <ExitToAppIcon />,
+            onClick: () => signOut()
+        },
+
+    ];
+
     return (
         <div className={classes.root}>
             <CssBaseline />
             <AppBar
-                position="fixed"
+                position="sticky"
                 className={clsx(classes.appBar, {
                     [classes.appBarShift]: open,
                 })}
-                style={{  background: '#060b26' }}
+                style={{ background: '#060b26' }}
             >
                 <Toolbar>
                     <IconButton
@@ -140,30 +162,24 @@ function AdminSidenav() {
                 classes={{
                     paper: classes.drawerPaper,
                 }}
-                style={{  background: '#060b26' }}
+                style={{ background: '#060b26' }}
             >
                 <div className={classes.drawerHeader}>
                     <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon style={{  color: '#fff' }}/> : <ChevronRightIcon />}
+                        {theme.direction === 'ltr' ? <ChevronLeftIcon style={{ color: '#fff' }} /> : <ChevronRightIcon />}
                     </IconButton>
                 </div>
                 <Divider />
                 <List>
-                    {['User Management'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon><GroupIcon style={{  color: '#fff' }}/></ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
-                <Divider />
-                <List>
-                    {['Log out'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon><ExitToAppIcon style={{  color: '#fff' }}/></ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
+                    {itemsList.map((item, index) => {
+                        const { text, icon, onClick } = item;
+                        return (
+                            <ListItem button key={text} onClick={onClick}>
+                                {icon && <ListItemIcon style={{color: "#fff"}}>{icon}</ListItemIcon>} {/* A && B: If A is undefined, then render B*/}
+                                <ListItemText primary={text} />
+                            </ListItem>
+                        );
+                    })}
                 </List>
             </Drawer>
         </div>

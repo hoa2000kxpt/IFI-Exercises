@@ -12,7 +12,8 @@ export default async (req, res) => {
     switch (method) {
         case 'GET':
             try {
-                const transactions = await Transactions.findById(id);
+                const transactions = await Transactions.find({"productID": id});
+                console.log("Hello");
                 if (!transactions) {
                     return res.status(400).json({ success: false });
                 }

@@ -19,9 +19,10 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useSession, signOut } from 'next-auth/client';
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import HomeIcon from '@material-ui/icons/Home';
+import { useRouter } from 'next/router';
 
 const drawerWidth = 240;
 
@@ -83,6 +84,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProductHeaderSidebar = () => {
+    const router = useRouter();
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -98,6 +100,25 @@ const ProductHeaderSidebar = () => {
     const logoutHandler = () => {
         signOut()
     }
+
+    const itemsList = [
+        {
+            text: "Home",
+            icon: <HomeIcon />,
+            onClick: () => router.push('/products/drawerPages/ProductHomepage')
+        },
+        {
+            text: "Product",
+            icon: <ListAltIcon />,
+            onClick: () => router.push('/products/')
+        },
+        {
+            text: "Log out",
+            icon: <ExitToAppIcon />,
+            onClick: () => signOut()
+        },
+
+    ];
 
     return (
         <div className={classes.root}>
@@ -140,26 +161,28 @@ const ProductHeaderSidebar = () => {
                 </div>
                 <Divider />
                 <List>
-                    
-                        <ListItem button key="Product">
+
+                    {itemsList.map((item, index) => {
+                        const { text, icon, onClick } = item;
+                        return (
+                            <ListItem button key={text} onClick={onClick}>
+                                {icon && <ListItemIcon>{icon}</ListItemIcon>} {/* A && B: If A is undefined, then render B*/}
+                                <ListItemText primary={text} />
+                            </ListItem>
+                        );
+                    })}
+
+                    {/* <ListItem button key="Product">
                             <ListItemIcon><ListAltIcon /></ListItemIcon>
                             <ListItemText primary="Product" />
                         </ListItem>
                         <ListItem button key="Home">
                             <ListItemIcon><HomeIcon /></ListItemIcon>
                             <ListItemText primary="Home" />
-                        </ListItem>
-                   
+                        </ListItem> */}
+
                 </List>
-                <Divider />
-                <List>
-                    {['Log out'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon><ExitToAppIcon onclick={logoutHandler}/></ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
+                
             </Drawer>
         </div>
 

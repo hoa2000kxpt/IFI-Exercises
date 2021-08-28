@@ -118,27 +118,13 @@ const AdminTable = () => {
         {
             title: "Email", field: "email",
             validate:  (rowData) => {
-                // const response = await fetch('http://localhost:3000/api/auth/email/' + rowData.email, {
-                //     method: 'GET',
-                //     headers: {
-                //         'Content-Type': "application/json"
-                //     }
-                // })
-                // console.log(rowData.email);
-                
-        
-
-                // // return result;
-                // if (response != "{}") {
-                //     return "duplicated data"
-                // }
-
-                // if (rowData.email === undefined || rowData.email === "") {
-                //     return "Required";
-                // } else if (!rowData.email.includes('@' && '.')) {
-                //     return "Please enter valid email!";
-                // }
-                // return true;
+            
+                if (rowData.email === undefined || rowData.email === "") {
+                    return "Required";
+                } else if (!rowData.email.includes('@' && '.')) {
+                    return "Please enter valid email!";
+                }
+                return true;
             },
             emptyValue: () => <em>null</em>
         },

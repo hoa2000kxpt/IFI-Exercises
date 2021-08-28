@@ -91,7 +91,7 @@ const ProductDetails = ({ product }) => {
         let currentValue = 0;
 
 
-        axios.get("http://localhost:3000/api/transactions")
+        axios.get(`http://localhost:3000/api/transactions/${product._id}`)
             .then(res => {
                 for (const dataObj of res.data.data) {
                     transDate.push(dataObj.transactionDate);
@@ -178,7 +178,8 @@ const ProductDetails = ({ product }) => {
     });
 
     const onSubmit = async (data) => {
-        console.log(data)
+        // console.log(product._id);
+        data['productID'] = product._id;
         const response = await fetch('http://localhost:3000/api/transactions', {
             method: 'POST',
             body: JSON.stringify(data),
@@ -192,6 +193,8 @@ const ProductDetails = ({ product }) => {
             // throw new Error(data.message || 'Something went wrong!');
             console.log(response);
         }
+
+        console.log(transaction)
 
         router.reload()
         return transaction;
