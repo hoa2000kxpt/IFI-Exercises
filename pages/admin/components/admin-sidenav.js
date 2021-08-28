@@ -116,7 +116,7 @@ function AdminSidenav() {
             onClick: () => router.push('/admin/drawerPages/AdminHomepage')
         },
         {
-            text: "Admin",
+            text: "Users",
             icon: <ListAltIcon />,
             onClick: () => router.push('/admin')
         },
