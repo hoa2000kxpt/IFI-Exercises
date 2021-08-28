@@ -53,7 +53,7 @@ const Admin = () => {
 export async function getServerSideProps(context: any) {
   const session = await getSession({ req: context.req });
 
-  if (!session && session.user.name === 'admin') {
+  if (!session) {
     return {
       redirect: {
         destination: '/',

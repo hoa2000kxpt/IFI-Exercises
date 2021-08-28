@@ -97,10 +97,11 @@ const ProductTable = () => {
             },
         },
         {
-            title: "Price", field: "price", type: "numeric",
+            title: "Price", field: "price", 
+            type: "currency", currencySetting:{ currencyCode:'VND', minimumFractionDigits:0, maximumFractionDigits:2},
             validate: (rowData) => {
                 if (rowData.price <= 0) {
-                    return "ID must not be negative!"
+                    return "Price must not be negative!"
                 } else if (rowData.price === undefined || rowData.price === "") {
                     return "Required!"
                 } else if (isNaN(rowData.price)) {
@@ -178,17 +179,9 @@ const ProductTable = () => {
                             tooltip: 'View',
                             onClick: (event, rowData) => {
                                 handleClick(event, rowData._id);
-                                // const response = await fetch('http://localhost:3000/api/products/' + rowData._id, {
-                                //     method: 'GET',
-                                //     headers: {
-                                //         'Content-Type': "application/json"
-                                //     }
-                                // });
-
-                                // const product = await response.json();
-                                // console.log(product.data._id);
+                                
                             }
-                            // => new Promise((resolve, reject) => 
+                            
 
 
 

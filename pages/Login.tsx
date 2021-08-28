@@ -35,16 +35,40 @@ const Login = () => {
         });
         // console.log(data);
         // console.log(result)
-        getSession().then(session => {
-            console.log(session)
-            if (session.user.name === 'admin') {
-                router.push("http://localhost:3000/admin")
-            } else if (session.user.name === 'user') {
-                router.push("http://localhost:3000/products")
-            }
-        })
-
         
+            getSession().then(session => {
+                console.log(session)
+                if (!session || session == null) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Email or password is not correct!',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    })
+                    router.push("http://localhost:3000");
+                }
+                else if (session.user.name === 'admin') {
+                    Swal.fire({
+                        title: 'Login successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                    router.push("http://localhost:3000/admin")
+                } else if (session.user.name === 'user') {
+                    Swal.fire({
+                        title: 'Login successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                    router.push("http://localhost:3000/products")
+                }
+            })
+        
+
+
+
+
+
 
         // if (!result.error) {
         //     router.push("http://localhost:3000/admin");
@@ -124,7 +148,7 @@ const Login = () => {
                                 <h3>Login Page</h3>
                                 <Form.Group className="mb-3">
                                     <Form.Label>Email address</Form.Label>
-                                    <Form.Control {...register('email', { required: true, pattern: "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" })} type="email" placeholder="Enter email" name="email" id="email" className={styles.formInput}/>
+                                    <Form.Control {...register('email', { required: true, pattern: "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" })} type="email" placeholder="Enter email" name="email" id="email" className={styles.formInput} />
                                     {errors?.email &&
                                         // if errors then display alert
                                         <Alert variant="danger" className={styles.alertDanger}>
@@ -136,7 +160,7 @@ const Login = () => {
 
                                 <Form.Group className="mb-3">
                                     <Form.Label>Password</Form.Label>
-                                    <Form.Control {...register('password', { required: true, minLength: 6 })} type="password" placeholder="Password" name="password" id="password" className={styles.formInput}/>
+                                    <Form.Control {...register('password', { required: true, minLength: 6 })} type="password" placeholder="Password" name="password" id="password" className={styles.formInput} />
                                     {errors?.password &&
                                         // if errors then display alert
                                         <Alert variant="danger" className={styles.alertDanger}>

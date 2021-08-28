@@ -19,6 +19,9 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useSession, signOut } from 'next-auth/client';
+import {Button} from "react-bootstrap";
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import HomeIcon from '@material-ui/icons/Home';
 
 const drawerWidth = 240;
 
@@ -118,6 +121,7 @@ const ProductHeaderSidebar = () => {
                     <Typography variant="h6" noWrap>
                         Product Pages
                     </Typography>
+                    <Button variant="danger" onClick={logoutHandler} style={{ "margin-left": "1em" }}>Log out</Button>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -136,12 +140,16 @@ const ProductHeaderSidebar = () => {
                 </div>
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
+                    
+                        <ListItem button key="Product">
+                            <ListItemIcon><ListAltIcon /></ListItemIcon>
+                            <ListItemText primary="Product" />
                         </ListItem>
-                    ))}
+                        <ListItem button key="Home">
+                            <ListItemIcon><HomeIcon /></ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </ListItem>
+                   
                 </List>
                 <Divider />
                 <List>

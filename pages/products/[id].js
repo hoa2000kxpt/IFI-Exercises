@@ -1,5 +1,5 @@
 import ProductHeaderSidebar from "./components/ProductHeaderSidebar";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -17,6 +17,8 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Container, Form, Row, Col, Alert } from "react-bootstrap";
+import { useRouter } from 'next/router';
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,43 +37,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-
-const data = {
-    labels: ['1', '2', '3', '4', '5', '6'],
-    datasets: [
-        {
-            label: 'Sell',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            fill: false,
-            tension: 0.1,
-            pointHoverBorderColor: '#fff',
-            data: [0, 10, 5, 2, 20, 30, 45]
-            // data: this.sellNumsArr
-        },
-
-        {
-            label: 'Buy',
-            backgroundColor: '#0984e3',
-            borderColor: '#0984e3',
-            fill: false,
-            tension: 0.1,
-            pointHoverBorderColor: '#fff',
-            data: [3, 20, 1, 23, 24, 50, 100]
-            // data: this.buyNumsArr
-        }
-    ],
-};
-
 const options = {
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
         x: {
             display: true,
             title: {
                 display: true,
-                text: "Transaction Date",
+                text: "Transaction History",
                 color: "#000",
                 font: {
                     size: 18,
@@ -100,10 +74,102 @@ const options = {
 
 const ProductDetails = ({ product }) => {
     const classes = useStyles();
+
+    const [chartData, setChartData] = useState({});
+    const [transactionDate, setTransactionDate] = useState([]);
+    const [transactionQuantity, setTransactionQuantity] = useState([]);
+    const [transactionStatus, setTransactionStatus] = useState([]);
+
+
+    const chart = () => {
+        let transDate = [];
+        // let transQuantity = [];
+        // let transStatus = [];
+        let transQuantitySell = [];
+        let transQuantityBuy = [];
+        let transQuantityCurrent = [];
+        let currentValue = 0;
+
+
+        axios.get("http://localhost:3000/api/transactions")
+            .then(res => {
+                for (const dataObj of res.data.data) {
+                    transDate.push(dataObj.transactionDate);
+                    // transQuantity.push(parseInt(dataObj.transactionQuantity));
+                    // transStatus.push(dataObj.transactionStatus);
+                    if (dataObj.transactionStatus === "buy") {
+                        transQuantityBuy.push(dataObj.transactionQuantity);
+                        transQuantitySell.push(null);
+                        currentValue += dataObj.transactionQuantity;
+                        transQuantityCurrent.push(currentValue);
+                    } else {
+                        transQuantitySell.push(dataObj.transactionQuantity)
+                        transQuantityBuy.push(null)
+                        currentValue -= dataObj.transactionQuantity;
+                        transQuantityCurrent.push(currentValue);
+                    }
+                    console.log(currentValue)
+                    console.log(transQuantityCurrent)
+
+
+                }
+
+                setChartData({
+                    labels: transDate,
+                    datasets: [
+                        {
+                            label: 'Sell',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            fill: false,
+                            tension: 0.1,
+                            pointHoverBorderColor: '#fff',
+                            data: transQuantitySell,
+                            // data: this.sellNumsArr
+                        },
+
+                        {
+                            label: 'Buy',
+                            backgroundColor: '#0984e3',
+                            borderColor: '#0984e3',
+                            fill: false,
+                            tension: 0.1,
+                            pointHoverBorderColor: '#fff',
+                            data: transQuantityBuy
+                            // data: this.buyNumsArr
+                        },
+
+                        {
+                            label: 'Current Quantity',
+                            backgroundColor: '#f1c40f',
+                            borderColor: '#f1c40f',
+                            fill: false,
+                            tension: 0.1,
+                            pointHoverBorderColor: '#fff',
+                            data: transQuantityCurrent
+                            // data: this.buyNumsArr
+                        },
+                    ],
+                })
+            })
+            .catch(err => { console.log(err) });
+
+        // console.log(transDate);
+        // // console.log(transQuantity);
+        // console.log(transStatus);
+        // console.log(transQuantitySell);
+        // console.log(transQuantityBuy);
+
+
+
+
+    }
+
     const [state, setState] = React.useState({
 
         right: false,
     });
+    const router = useRouter()
     // console.log(`{product.image}`)
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm({
@@ -111,7 +177,25 @@ const ProductDetails = ({ product }) => {
         shouldFocusError: true, // focus input field after submit if it is not following required rule of input field
     });
 
-    const onSubmit = data => console.log(data);
+    const onSubmit = async (data) => {
+        console.log(data)
+        const response = await fetch('http://localhost:3000/api/transactions', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': "application/json"
+            }
+        })
+        const transaction = await response.json();
+
+        if (!response.ok) {
+            // throw new Error(data.message || 'Something went wrong!');
+            console.log(response);
+        }
+
+        router.reload()
+        return transaction;
+    };
 
     const toggleDrawer = (anchor, open) => (event) => {
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -133,7 +217,7 @@ const ProductDetails = ({ product }) => {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Choose your transaction type</Form.Label>
-                        <Form.Select aria-label="Default select example" {...register("transactionType")}>
+                        <Form.Select aria-label="Default select example" {...register("transactionStatus")}>
                             <option value="sell" selected>Sell</option>
                             <option value="buy" >Buy</option>
                         </Form.Select>
@@ -141,11 +225,12 @@ const ProductDetails = ({ product }) => {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Transaction Quantity</Form.Label>
-                        <Form.Control {...register('transactionQuantity', { required: true })} type="number" name="transactionQuantity" id="transactionQuantity" />
+                        <Form.Control {...register('transactionQuantity', { required: true, min: 1 })} type="number" name="transactionQuantity" id="transactionQuantity" />
                         {errors?.transactionQuantity &&
                             // if errors then display alert
                             <Alert variant="danger">
                                 {errors.transactionQuantity?.type === "required" && <p>Transaction Quantity is required!</p>}
+                                {errors.transactionQuantity?.type === "min" && <p>Transaction Quantity must be positive</p>}
                             </Alert>
                         }
                     </Form.Group>
@@ -167,6 +252,10 @@ const ProductDetails = ({ product }) => {
         </div>
 
     );
+
+    useEffect(() => {
+        chart();
+    }, [])
 
 
     return (
@@ -203,45 +292,15 @@ const ProductDetails = ({ product }) => {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <Paper className={classes.paper}>
-                            <Line data={data} options={options} />
+                        <Paper className={classes.paper} >
+                            <Line data={chartData} options={options} width="500" height="500" />
                         </Paper>
                     </Grid>
                 </Grid>
 
-
-
-
-
-
             </div>
 
         </>
-
-
-        // <>
-
-        //     <Container>
-        //         <Row>
-        //             <Col md={6}>
-        //                 <div className="productImage">
-        //                     {/* <img src="{product.image}" /> */}
-        //                     <h1>Image</h1>
-        //                 </div>
-        //             </Col>
-
-        //             <Col md={6}>
-        //                 <div className="productImage">
-        //                     <h1>{product.name}</h1>
-        //                     <p>Number of keys: {product.keyNo}</p>
-        //                     <p>Price: {product.price} VND</p>
-        //                     <p>Description: {product.description}</p>
-        //                 </div>
-        //             </Col>
-        //         </Row>
-        //     </Container>
-
-        // </>
 
     );
 }
